@@ -59,22 +59,25 @@ I am **Riyansh Singh**, a passionate web developer and technology enthusiast wit
 ## 📂 Repository Structure
 
 portfolio/
+│
 ├── index.html
+│
 ├── images/
-│ ├── profile.jpg
-│ ├── turf-project.png
-│ ├── funhub-project.png
-│ ├── cert-infosys-ai.jpg
-│ ├── cert-infosys-generative.jpg
-│ ├── cert-launchpad.jpg
-│ ├── cert-robotics-achievement.jpg
-│ ├── cert-robotics-participation.jpg
-├── videos/
-├── turf-demo.mp4
-├── funhub-demo.mp4
-├── guitar.mp4
-├── singing.mp4
-├── guitar2.mp4
+│   ├── profile.jpg
+│   ├── turf-project.png
+│   ├── funhub-project.png
+│   ├── cert-infosys-ai.jpg
+│   ├── cert-infosys-generative.jpg
+│   ├── cert-launchpad.jpg
+│   ├── cert-robotics-achievement.jpg
+│   └── cert-robotics-participation.jpg
+│
+└── videos/
+    ├── turf-demo.mp4
+    ├── funhub-demo.mp4
+    ├── guitar.mp4
+    ├── singing.mp4
+    └── guitar2.mp4
 
 ---
 
