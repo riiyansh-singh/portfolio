@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riyansh Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .projects, .certificates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      padding: 15px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    a {
+      color: cyan;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1 class="title">Riyansh Singh</h1>
+  <p>Aspiring Engineer | Web Developer</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <p>
+    I build web projects and explore technology. Interested in robotics, programming,
+    and creating real-world applications.
+  </p>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="projects">
+
+    <div class="card">
+      <img src="images/turf-project.png">
+      <h3>Turf Tournament Website</h3>
+      <a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">View Project</a>
+    </div>
+
+    <div class="card">
+      <img src="images/funhub-project.png">
+      <h3>FunHub Website</h3>
+      <a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">View Project</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Demo Video</h2>
+  <video controls>
+    <source src="videos/riyansh-demo.mp4" type="video/mp4">
+  </video>
+</section>
+
+<section>
+  <h2>Certificates</h2>
+
+  <div class="certificates">
+    <img src="images/cert-infosys.jpg">
+    <img src="images/cert-google.jpg">
+    <img src="images/cert-robotics.jpg">
+  </div>
+
+</section>
+
+<script>
+  gsap.from(".title", {
+    opacity: 0,
+    y: -50,
+    duration: 1
+  });
+</script>
+
+</body>
+</html>
