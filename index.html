@@ -48,8 +48,24 @@ p{text-align:center;opacity:.8;max-width:700px;margin:auto;line-height:1.5;posit
 video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 
 /* CERTIFICATES SWIPE */
-.card-stack{position:relative;width:260px;height:350px;margin:60px auto;cursor:grab;}
-.card-cert{position:absolute;width:260px;border-radius:15px;transition:0.5s;box-shadow:0 10px 30px rgba(0,0,0,0.5);transform:rotate(-90deg);}
+.card-stack{
+  position:relative;
+  width:80vw;  /* responsive width */
+  max-width:260px;
+  height:60vw; /* responsive height */
+  max-height:350px;
+  margin:40px auto;
+  cursor:grab;
+}
+.card-cert{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:15px;
+  transition:0.5s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  transform:rotate(-90deg);
+}
 
 /* TIMELINE */
 .timeline{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:30px;}
@@ -69,9 +85,15 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 /* CURSOR GLOW */
 #cursor{position:fixed;width:20px;height:20px;background:cyan;border-radius:50%;pointer-events:none;mix-blend-mode:screen;transform:translate(-50%,-50%);transition:width .1s,height .1s;}
 
+/* About spacing */
+section p{margin-top:10px;margin-bottom:10px;}
+
+/* Jersey image */
+#jersey{display:block;max-width:80%;height:auto;margin:20px auto;border-radius:10px;box-shadow:0 0 20px cyan;}
+
 @media(max-width:768px){
 .projects{grid-template-columns:1fr;}
-.card-stack{width:200px;height:300px;}
+.card-stack{width:70vw;height:50vw;}
 .timeline{flex-direction:column;}
 .timeline-item::before{display:none;}
 }
@@ -99,9 +121,7 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 I build web projects and explore technology. Passionate about robotics and programming.  
 State-level football player as goalkeeper, showing discipline and teamwork.
 </p>
-<div style="text-align:center;margin-top:20px;">
-  <img src="images/jersey.jpeg" alt="Football Jersey" style="width:200px;max-width:80%;border-radius:10px;box-shadow:0 0 20px cyan;">
-</div>
+<img id="jersey" src="images/jersey.jpeg" alt="Football Jersey">
 </div>
 </section>
 
