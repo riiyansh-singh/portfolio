@@ -1,92 +1,70 @@
 # Riyansh Singh Portfolio
 
-Welcome to my portfolio! This repository showcases my web development projects, creative work, and key achievements.  
+Welcome to my personal portfolio! 🚀  
+
+I’m **Riyansh Singh**, an aspiring engineer, web developer, and tech enthusiast. This portfolio showcases my **projects, creative skills, certifications, and timeline of achievements**.
 
 ---
 
-## 👋 About Me
-
-I am **Riyansh Singh**, a passionate web developer and technology enthusiast with experience in robotics, programming, and creative work like music. I enjoy building projects that combine technical skills with creativity.  
-
-- 🔹 Web Development (HTML, CSS, JavaScript)  
-- 🔹 Robotics & Programming  
-- 🔹 Creative Projects (Music & Guitar)  
-- 🔹 Problem Solving & AI Enthusiasm  
+## 🔹 About Me
+- Passionate about **web development**, **robotics**, and **programming**.
+- State-level **football player** (goalkeeper) showcasing discipline and teamwork.
+- Currently learning **Java**, **Python**, and improving my **creative skills** in video editing.
 
 ---
 
-## 💻 Projects
-
-### 1. Turf Tournament Website (Client Project)
-- Live: [Turf Tournament](https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html)  
-- Description: A responsive website built for a local football tournament.  
-
-### 2. FunHub Website
-- Live: [FunHub](https://riiyansh-singh.github.io/FunHub/)  
-- Description: A fun interactive web application showcasing HTML, CSS, and JavaScript skills.  
+## 💻 Skills
+- **Web Development:** HTML, CSS, JavaScript, GitHub  
+- **Creative:** Video Editing, Cinematic Reels, Guitar, Singing  
+- **Other:** Robotics Concepts
 
 ---
 
-## 🎬 Project Demo Videos
-
-- **Turf Tournament Demo** – `videos/turf-demo.mp4`  
-- **FunHub Demo** – `videos/funhub-demo.mp4`  
-
----
-
-## 🎨 Creative Work
-
-- **Guitar Clip** – `videos/guitar.mp4`  
-- **Singing Clip** – `videos/singing.mp4`  
-- **Additional Guitar Clip** – `videos/guitar2.mp4`  
-
-> All clips are short highlights (30 seconds max) to showcase my creative skills.  
+## 🏆 Achievements
+- 2024: State Football League Player  
+- 2025: First Client Project (Turf Project)  
+- 2026: Learning new technologies and improving projects
 
 ---
 
-## 🏆 Certificates & Achievements
-
-- Infosys AI Certificate  
-- Infosys Generative AI Certificate  
-- Google Launchpad Completion Certificate  
-- Robotics Achievement Certificate  
-- Robotics Participation Certificate  
-
-> All certificates can be found in the `images/` folder.  
+## 📂 Projects
+- **Turf Project (Client)** – [Live Link](https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html)  
+- **FunHub** – [Live Link](https://riiyansh-singh.github.io/FunHub/)  
 
 ---
 
-## 📂 Repository Structure
+## 🎨 Creative Side
+- Guitar Performance → `guitar.mp4`  
+- Singing Performance → `singing.mp4`  
+- Video Editing Reels → `shot-1.mp4`, `shot-2.mp4`  
 
-portfolio/
-│
-├── index.html
-│
-├── images/
-│   ├── profile.jpg
-│   ├── turf-project.png
-│   ├── funhub-project.png
-│   ├── cert-infosys-ai.jpg
-│   ├── cert-infosys-generative.jpg
-│   ├── cert-launchpad.jpg
-│   ├── cert-robotics-achievement.jpg
-│   └── cert-robotics-participation.jpg
-│
-└── videos/
-    ├── turf-demo.mp4
-    ├── funhub-demo.mp4
-    ├── guitar.mp4
-    ├── singing.mp4
-    └── guitar2.mp4
+> Showcases cinematic editing, transitions, and storytelling.
 
 ---
 
-## 📬 Contact
+## 📜 Certificates
+Swipe through my certificates to see achievements in AI, Robotics, and Programming.
 
-- **Email:** `singhriyansh2006@gmail.com`  
-- **LinkedIn:** [Riyansh Singh](https://www.linkedin.com/in/riyansh-singh-839817385)  
+---
+
+## 📅 Timeline
+- 2024: State Football League  
+- 2025: First Client Project  
+- 2026: Learning Java & Python  
+
+---
+
+## 📫 Contact Me
+- **Email:** [singhriyansh2006@gmail.com](mailto:singhriyansh2006@gmail.com)  
 - **GitHub:** [riiyansh-singh](https://github.com/riiyansh-singh)  
+- **LinkedIn:** [Riyansh Singh](https://www.linkedin.com/in/riyansh-singh-839817385)  
+- **Instagram:** [riiiyanshh.3](https://www.instagram.com/riiiyanshh.3)
 
 ---
 
-> Feel free to explore my projects and creative work. I am open to collaborations, mentorship, and opportunities to grow as a developer and creator.
+## 🌐 Portfolio Live
+[View Live Portfolio](https://riiyansh-singh.github.io/portfolio/)
+
+---
+
+*This portfolio is fully responsive and showcases my coding and creative abilities. Updates will be added as I learn new skills and complete more projects.*
