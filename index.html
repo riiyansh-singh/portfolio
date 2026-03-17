@@ -50,7 +50,7 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
   position:relative;
   width:90vw;
   max-width:350px;
-  height:450px;
+  height:500px;
   margin:40px auto;
 }
 .card-cert{
@@ -61,6 +61,10 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
   box-shadow:0 10px 30px rgba(0,0,0,0.5);
   transition:0.5s;
   cursor:grab;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  transform-origin:center center;
 }
 
 /* TIMELINE */
@@ -84,8 +88,6 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 
 /* About spacing */
 section p{margin-top:10px;margin-bottom:10px;}
-
-/* Jersey image */
 #jersey{display:block;max-width:80%;height:auto;margin:20px auto;border-radius:10px;box-shadow:0 0 20px cyan;}
 
 @media(max-width:768px){
@@ -189,16 +191,16 @@ State-level football player as goalkeeper, showing discipline and teamwork.
 </div>
 </section>
 
-<!-- Certificates Stack -->
+<!-- Certificates Deck -->
 <section>
 <div class="container">
 <h2>Certificates</h2>
 <div class="card-stack">
-  <div class="card-cert" style="background:url('images/cert-infosys-ai.jpeg') no-repeat center/cover;"></div>
-  <div class="card-cert" style="background:url('images/cert-infosys-generative.jpeg') no-repeat center/cover;"></div>
-  <div class="card-cert" style="background:url('images/cert-launchpad.jpeg') no-repeat center/cover;"></div>
-  <div class="card-cert" style="background:url('images/cert-robotics-achievement.jpeg') no-repeat center/cover;"></div>
-  <div class="card-cert" style="background:url('images/cert-robotics-participation.jpeg') no-repeat center/cover;"></div>
+  <div class="card-cert" style="background:url('images/cert-infosys-ai.jpeg') no-repeat center/contain;"></div>
+  <div class="card-cert" style="background:url('images/cert-infosys-generative.jpeg') no-repeat center/contain;"></div>
+  <div class="card-cert" style="background:url('images/cert-launchpad.jpeg') no-repeat center/contain;"></div>
+  <div class="card-cert" style="background:url('images/cert-robotics-achievement.jpeg') no-repeat center/contain;"></div>
+  <div class="card-cert" style="background:url('images/cert-robotics-participation.jpeg') no-repeat center/contain;"></div>
 </div>
 </div>
 </section>
@@ -271,12 +273,12 @@ const stack = document.querySelector(".card-stack");
 let startX = 0;
 function swipeCard(diff){
   const topCard = stack.querySelector(".card-cert");
-  topCard.style.transform = `translateX(${diff > 0 ? 400 : -400}px) rotate(${diff > 0 ? 10 : -10}deg)`;
-  topCard.style.opacity = "0";
-  setTimeout(() => {
-    topCard.style.transition = "none";
-    topCard.style.transform = "translateX(0) rotate(0deg)";
-    topCard.style.opacity = "1";
+  topCard.style.transform = `translateX(${diff>0?400:-400}px) rotate(${diff>0?10:-10}deg)`;
+  topCard.style.opacity="0";
+  setTimeout(()=>{
+    topCard.style.transition="none";
+    topCard.style.transform="translateX(0) rotate(0deg)";
+    topCard.style.opacity="1";
     stack.appendChild(topCard);
     setTimeout(()=>{topCard.style.transition="0.5s";},50);
   },400);
@@ -284,12 +286,12 @@ function swipeCard(diff){
 stack.addEventListener("mousedown",(e)=>{startX=e.clientX;});
 stack.addEventListener("mouseup",(e)=>{
   const diff = e.clientX - startX;
-  if(Math.abs(diff) > 50) swipeCard(diff);
+  if(Math.abs(diff)>50) swipeCard(diff);
 });
 stack.addEventListener("touchstart",(e)=>{startX=e.touches[0].clientX;});
 stack.addEventListener("touchend",(e)=>{
   const diff = e.changedTouches[0].clientX - startX;
-  if(Math.abs(diff) > 50) swipeCard(diff);
+  if(Math.abs(diff)>50) swipeCard(diff);
 });
 
 // Smooth Scroll
