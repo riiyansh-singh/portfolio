@@ -8,7 +8,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.0.6/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
@@ -20,7 +19,6 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(
 /* HERO */
 .hero{position:relative;padding-top:120px;padding-bottom:40px;overflow:hidden;}
 .hero img{width:140px;height:140px;border-radius:50%;border:3px solid cyan;margin:20px auto;display:block;box-shadow:0 0 25px cyan;z-index:2;position:relative;}
-#tsparticles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;}
 
 /* TEXT */
 h1{font-size:3rem;position:relative;z-index:2;}
@@ -46,27 +44,8 @@ p{opacity:.8;max-width:700px;line-height:1.5;position:relative;z-index:2;}
 video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 
 /* CERTIFICATES STACK ROTATED LEFT */
-.card-stack{
-  position:relative;
-  width:90vw;
-  max-width:500px;
-  height:350px;
-  margin:40px auto;
-  transform: rotate(-90deg);
-}
-.card-cert{
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:15px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  transition:0.5s;
-  cursor:grab;
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
-  transform-origin:center center;
-}
+.card-stack{position:relative;width:90vw;max-width:500px;height:350px;margin:40px auto;transform: rotate(-90deg);}
+.card-cert{position:absolute;width:100%;height:100%;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);transition:0.5s;cursor:grab;background-size:contain;background-repeat:no-repeat;background-position:center;transform-origin:center center;}
 
 /* TIMELINE */
 .timeline{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:30px;}
@@ -107,7 +86,6 @@ section p{margin-top:10px;margin-bottom:10px;}
 <nav>Riyansh Singh</nav>
 
 <section class="hero">
-<div id="tsparticles"></div>
 <div class="container">
 <img src="images/profile.jpeg" alt="Profile">
 <h1 class="title">Riyansh Singh</h1>
@@ -180,15 +158,16 @@ State-level football player as goalkeeper, showing discipline and teamwork.
 <source src="./videos/singing.mp4" type="video/mp4">
 </video>
 
-</div>
-</section>
-
-<section class="video">
-<div class="container">
-<h2>Football Highlights</h2>
+<h3>Video Editing Reel 1</h3>
 <video controls>
-  <source src="./videos/football.mp4" type="video/mp4">
+<source src="./videos/shot-1.mp4" type="video/mp4">
 </video>
+
+<h3>Video Editing Reel 2</h3>
+<video controls>
+<source src="./videos/shot-2.mp4" type="video/mp4">
+</video>
+
 </div>
 </section>
 
@@ -305,23 +284,6 @@ const cursor = document.getElementById("cursor");
 document.addEventListener("mousemove",(e)=>{
 cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
-});
-
-// Particles
-tsParticles.load("tsparticles", {
-  fpsLimit: 60,
-  particles: {
-    number: {value:60,density:{enable:true,value_area:800}},
-    color:{value:"#00ffff"},
-    shape:{type:"circle"},
-    opacity:{value:0.3,random:true},
-    size:{value:3,random:true},
-    move:{enable:true,speed:1,direction:"none",random:true,straight:false,out_mode:"out"}
-  },
-  interactivity:{
-    events:{onhover:{enable:true,mode:"repulse"},onclick:{enable:true,mode:"push"}}
-  },
-  detectRetina:true
 });
 </script>
 
