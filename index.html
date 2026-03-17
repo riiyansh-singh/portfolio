@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Riyansh Portfolio</title>
+  <title>Riyansh Singh Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- GSAP -->
+  <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
@@ -14,7 +14,6 @@
       font-family: Arial, sans-serif;
       background: #0f0f0f;
       color: white;
-      scroll-behavior: smooth;
     }
 
     header {
@@ -22,14 +21,29 @@
       padding: 80px 20px;
     }
 
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid cyan;
+      display: block;
+      margin: 0 auto 15px auto;
+    }
+
     header h1 {
       font-size: 3rem;
+      margin: 10px 0 5px 0;
     }
 
     section {
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
     }
 
     .projects, .certificates {
@@ -47,6 +61,7 @@
 
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 5px 15px cyan;
     }
 
     img {
@@ -57,11 +72,20 @@
     video {
       width: 100%;
       border-radius: 10px;
+      margin-top: 10px;
     }
 
     a {
       color: cyan;
       text-decoration: none;
+    }
+
+    h3 {
+      margin: 10px 0 5px 0;
+    }
+
+    p {
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -69,62 +93,86 @@
 <body>
 
 <header>
+  <img src="images/profile.jpg" alt="Riyansh Singh">
   <h1 class="title">Riyansh Singh</h1>
-  <p>Aspiring Engineer | Web Developer</p>
+  <p>Aspiring Engineer | Web Developer | Music & Tech Enthusiast</p>
 </header>
 
 <section>
   <h2>About Me</h2>
   <p>
-    I build web projects and explore technology. Interested in robotics, programming,
-    and creating real-world applications.
+    I build web projects and explore technology. I am passionate about robotics, programming,
+    and creating real-world applications. I also enjoy music and creative work, bringing
+    both technical and creative skills together.
   </p>
 </section>
 
 <section>
   <h2>Projects</h2>
-
   <div class="projects">
 
     <div class="card">
-      <img src="images/turf-project.png">
-      <h3>Turf Tournament Website</h3>
-      <a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">View Project</a>
+      <img src="images/turf-project.png" alt="Turf Tournament Screenshot">
+      <h3>Turf Tournament Website (Client Project)</h3>
+      <a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">View Live</a>
     </div>
 
     <div class="card">
-      <img src="images/funhub-project.png">
+      <img src="images/funhub-project.png" alt="FunHub Screenshot">
       <h3>FunHub Website</h3>
-      <a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">View Project</a>
+      <a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">View Live</a>
     </div>
 
   </div>
 </section>
 
 <section>
-  <h2>Demo Video</h2>
+  <h2>Project Demo Videos</h2>
+
+  <h3>Turf Tournament</h3>
   <video controls>
-    <source src="videos/riyansh-demo.mp4" type="video/mp4">
+    <source src="videos/turf-demo.mp4" type="video/mp4">
+  </video>
+
+  <h3>FunHub</h3>
+  <video controls>
+    <source src="videos/funhub-demo.mp4" type="video/mp4">
   </video>
 </section>
 
 <section>
-  <h2>Certificates</h2>
+  <h2>Creative Work</h2>
 
-  <div class="certificates">
-    <img src="images/cert-infosys.jpg">
-    <img src="images/cert-google.jpg">
-    <img src="images/cert-robotics.jpg">
-  </div>
+  <h3>Guitar Clip</h3>
+  <video controls>
+    <source src="videos/guitar.mp4" type="video/mp4">
+  </video>
+
+  <h3>Singing Clip</h3>
+  <video controls>
+    <source src="videos/singing.mp4" type="video/mp4">
+  </video>
+
+  <h3>Additional Guitar Clip</h3>
+  <video controls>
+    <source src="videos/guitar2.mp4" type="video/mp4">
+  </video>
 
 </section>
 
+<section>
+  <h2>Certificates & Achievements</h2>
+  <div class="certificates">
+    <img src="images/cert-infosys-ai.jpg" alt="Infosys AI Certificate">
+    <img src="images/cert-infosys-generative.jpg" alt="Infosys Generative AI Certificate">
+    <img src="images/cert-launchpad.jpg" alt="Google Launchpad Certificate">
+    <img src="images/cert-robotics-achievement.jpg" alt="Robotics Achievement">
+    <img src="images/cert-robotics-participation.jpg" alt="Robotics Participation Certificate">
+  </div>
+</section>
+
 <script>
-  gsap.from(".title", {
-    opacity: 0,
-    y: -50,
-    duration: 1
-  });
+  gsap.from(".title", { opacity: 0, y: -50, duration: 1 });
 </script>
 
 </body>
