@@ -36,12 +36,11 @@ backdrop-filter:blur(10px);
 z-index:999;
 }
 
-/* BETTER SPACING */
+/* SPACING */
 section{
 padding:70px 0;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
 section + section{
 margin-top:-30px;
 }
@@ -51,7 +50,7 @@ h2{text-align:center;margin-bottom:15px}
 h3{text-align:center;margin-top:20px}
 p{text-align:center;opacity:.8;max-width:700px;margin:auto}
 
-/* HERO FIX */
+/* HERO */
 .hero{
 padding-top:120px;
 padding-bottom:40px;
@@ -119,30 +118,28 @@ border-radius:10px;
 margin-top:15px;
 }
 
-/* CERT SWIPE */
-.cert-wrapper{
-overflow:hidden;
-margin-top:30px;
+/* CERT STACK */
+.card-stack{
+position:relative;
+width:300px;
+height:200px;
+margin:40px auto;
 }
-.cert-track{
-display:flex;
-gap:20px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-scroll-behavior:smooth;
-padding:10px;
-}
-.cert-track::-webkit-scrollbar{display:none;}
-.cert-track img{
-width:280px;
+
+.card-cert{
+position:absolute;
+width:100%;
 border-radius:15px;
-flex-shrink:0;
-scroll-snap-align:center;
-transition:.3s;
+cursor:pointer;
+transition:0.5s;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
-.cert-track img:hover{
-transform:scale(1.05);
-}
+
+.card-cert:nth-child(1){transform:rotate(0deg); z-index:5;}
+.card-cert:nth-child(2){transform:rotate(-5deg); z-index:4;}
+.card-cert:nth-child(3){transform:rotate(5deg); z-index:3;}
+.card-cert:nth-child(4){transform:rotate(-8deg); z-index:2;}
+.card-cert:nth-child(5){transform:rotate(8deg); z-index:1;}
 
 /* ICONS */
 .icons{
@@ -178,7 +175,7 @@ transform:scale(1.2);
 <h2>About</h2>
 <p>
 I build web projects and explore technology. Passionate about robotics and programming.
-State-level football player and selected for National Football Camp, showing discipline, teamwork and competitive mindset.
+State-level football player and selected for National Football Camp.
 </p>
 </div>
 </section>
@@ -226,11 +223,6 @@ State-level football player and selected for National Football Camp, showing dis
 <source src="./videos/funhub-demo.mp4" type="video/mp4">
 </video>
 
-<h3>Turf Demo</h3>
-<video controls playsinline preload="metadata">
-<source src="./videos/turf-demo.mp4" type="video/mp4">
-</video>
-
 </div>
 </section>
 
@@ -255,14 +247,12 @@ State-level football player and selected for National Football Camp, showing dis
 <div class="container">
 <h2>Certificates</h2>
 
-<div class="cert-wrapper">
-<div class="cert-track">
-<img src="images/cert-infosys-ai.jpeg">
-<img src="images/cert-infosys-generative.jpeg">
-<img src="images/cert-launchpad.jpeg">
-<img src="images/cert-robotics-achievement.jpeg">
-<img src="images/cert-robotics-participation.jpeg">
-</div>
+<div class="card-stack">
+<img src="images/cert-infosys-ai.jpeg" class="card-cert">
+<img src="images/cert-infosys-generative.jpeg" class="card-cert">
+<img src="images/cert-launchpad.jpeg" class="card-cert">
+<img src="images/cert-robotics-achievement.jpeg" class="card-cert">
+<img src="images/cert-robotics-participation.jpeg" class="card-cert">
 </div>
 
 </div>
@@ -273,7 +263,7 @@ State-level football player and selected for National Football Camp, showing dis
 <h2>Achievements</h2>
 <div class="skills">
 <div class="skill">State-Level Football Player</div>
-<div class="skill">Selected for National Football Camp</div>
+<div class="skill">National Football Camp Selection</div>
 </div>
 </div>
 </section>
@@ -314,23 +304,26 @@ duration:1
 })
 });
 
-/* DRAG SWIPE CERT */
-const slider=document.querySelector(".cert-track");
-let isDown=false,startX,scrollLeft;
+/* CERT CARD SWIPE */
+const cards = document.querySelectorAll(".card-cert");
 
-slider.addEventListener("mousedown",(e)=>{
-isDown=true;
-startX=e.pageX-slider.offsetLeft;
-scrollLeft=slider.scrollLeft;
+cards.forEach(card=>{
+card.addEventListener("click", ()=>{
+card.style.transform="translateX(-150%) rotate(-20deg)";
+card.style.opacity="0";
+
+setTimeout(()=>{
+card.style.transition="none";
+card.style.transform="";
+card.style.opacity="1";
+document.querySelector(".card-stack").appendChild(card);
+
+setTimeout(()=>{
+card.style.transition="0.5s";
+},50);
+
+},500);
 });
-slider.addEventListener("mouseleave",()=>isDown=false);
-slider.addEventListener("mouseup",()=>isDown=false);
-slider.addEventListener("mousemove",(e)=>{
-if(!isDown)return;
-e.preventDefault();
-const x=e.pageX-slider.offsetLeft;
-const walk=(x-startX)*2;
-slider.scrollLeft=scrollLeft-walk;
 });
 
 /* SMOOTH SCROLL */
