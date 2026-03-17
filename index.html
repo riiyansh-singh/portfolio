@@ -121,25 +121,22 @@ margin-top:15px;
 /* CERT STACK */
 .card-stack{
 position:relative;
-width:300px;
-height:200px;
-margin:40px auto;
+width:260px;
+height:350px;
+margin:60px auto;
 }
 
 .card-cert{
 position:absolute;
-width:100%;
+width:260px;
 border-radius:15px;
-cursor:pointer;
+cursor:grab;
 transition:0.5s;
 box-shadow:0 10px 30px rgba(0,0,0,0.5);
-}
 
-.card-cert:nth-child(1){transform:rotate(0deg); z-index:5;}
-.card-cert:nth-child(2){transform:rotate(-5deg); z-index:4;}
-.card-cert:nth-child(3){transform:rotate(5deg); z-index:3;}
-.card-cert:nth-child(4){transform:rotate(-8deg); z-index:2;}
-.card-cert:nth-child(5){transform:rotate(8deg); z-index:1;}
+/* ROTATED */
+transform:rotate(-90deg);
+}
 
 /* ICONS */
 .icons{
@@ -304,26 +301,65 @@ duration:1
 })
 });
 
-/* CERT CARD SWIPE */
-const cards = document.querySelectorAll(".card-cert");
+/* SWIPE CERTIFICATES */
+const stack = document.querySelector(".card-stack");
+let startX = 0;
 
-cards.forEach(card=>{
-card.addEventListener("click", ()=>{
-card.style.transform="translateX(-150%) rotate(-20deg)";
-card.style.opacity="0";
+stack.addEventListener("mousedown",(e)=>{
+startX = e.clientX;
+});
+
+stack.addEventListener("mouseup",(e)=>{
+let diff = e.clientX - startX;
+
+if(Math.abs(diff) > 50){
+const topCard = stack.querySelector(".card-cert");
+
+topCard.style.transform = `translateX(${diff>0?200:-200}px) rotate(-120deg)`;
+topCard.style.opacity = "0";
 
 setTimeout(()=>{
-card.style.transition="none";
-card.style.transform="";
-card.style.opacity="1";
-document.querySelector(".card-stack").appendChild(card);
+topCard.style.transition="none";
+topCard.style.transform="rotate(-90deg)";
+topCard.style.opacity="1";
+
+stack.appendChild(topCard);
 
 setTimeout(()=>{
-card.style.transition="0.5s";
+topCard.style.transition="0.5s";
 },50);
 
-},500);
+},400);
+}
 });
+
+/* MOBILE SWIPE */
+stack.addEventListener("touchstart",(e)=>{
+startX = e.touches[0].clientX;
+});
+
+stack.addEventListener("touchend",(e)=>{
+let diff = e.changedTouches[0].clientX - startX;
+
+if(Math.abs(diff) > 50){
+const topCard = stack.querySelector(".card-cert");
+
+topCard.style.transform = `translateX(${diff>0?200:-200}px) rotate(-120deg)`;
+topCard.style.opacity = "0";
+
+setTimeout(()=>{
+topCard.style.transition="none";
+topCard.style.transform="rotate(-90deg)";
+topCard.style.opacity="1";
+
+stack.appendChild(topCard);
+
+setTimeout(()=>{
+topCard.style.transition="0.5s";
+},50);
+
+},400);
+}
 });
 
 /* SMOOTH SCROLL */
