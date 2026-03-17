@@ -3,255 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyansh Singh</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.0.6/dist/lenis.min.js"></script>
+<title>Riyansh Singh | Portfolio</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#050505;color:#fff;overflow-x:hidden}
-
-/* CONTAINER */
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
 }
 
-/* NAV */
-nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(255,255,255,0.05);
-padding:10px 25px;
-border-radius:30px;
-backdrop-filter:blur(10px);
-z-index:999;
+header {
+  text-align: center;
+  padding: 50px 20px;
 }
 
-/* SECTIONS */
-section{
-padding:100px 0;
+header img {
+  width: 140px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
 }
 
-/* TEXT */
-h1{font-size:3rem;text-align:center}
-h2{text-align:center;margin-bottom:20px}
-p{text-align:center;opacity:.8;max-width:700px;margin:auto}
-
-/* HERO */
-.hero img{
-width:140px;
-height:140px;
-border-radius:50%;
-border:3px solid cyan;
-margin:20px auto;
-display:block;
+h1 {
+  margin: 15px 0 5px;
 }
 
-/* SKILLS */
-.skills{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
-justify-content:center;
-margin-top:20px;
-}
-.skill{
-border:1px solid #333;
-padding:10px 20px;
-border-radius:20px;
-transition:.3s;
-}
-.skill:hover{
-background:cyan;
-color:#000;
+.section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
 }
 
-/* PROJECT GRID */
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-margin-top:30px;
-}
-.card{
-background:#0a0a0a;
-padding:15px;
-border:1px solid #222;
-transition:.3s;
-}
-.card img{
-width:100%;
-margin-bottom:10px;
-}
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px rgba(0,255,255,0.3);
+.card {
+  background: #1e293b;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 12px;
 }
 
-/* VIDEO */
-.video{
-text-align:center;
-}
-video{
-width:320px;
-border-radius:10px;
-margin-top:20px;
+a {
+  color: #38bdf8;
+  text-decoration: none;
 }
 
-/* CERT */
-.cert{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-margin-top:20px;
-}
-.cert img{
-width:200px;
-transition:.3s;
-}
-.cert img:hover{
-transform:scale(1.1);
+.video {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-/* ICONS */
-.icons{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-top:20px;
+img.project-img {
+  width: 100%;
+  border-radius: 10px;
 }
-.icons img{
-width:30px;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.cert img {
+  width: 100%;
+  border-radius: 10px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<nav>Riyansh Singh</nav>
+<header>
+  <img src="images/profile.jpeg" alt="Profile">
+  <h1>Riyansh Singh</h1>
+  <p>JEE Aspirant | Developer | Video Editor</p>
+</header>
 
-<section class="hero">
-<div class="container">
-<img src="images/riyansh.jpg">
-<h1 class="title">Riyansh Singh</h1>
-<p>Aspiring Engineer | Web Developer | Tech Enthusiast</p>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>About</h2>
-<p>
-I build web projects and explore technology. Passionate about robotics and programming.
-
-State-level football player and selected for National Football Camp, showing discipline, teamwork and competitive mindset.
-</p>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>Skills</h2>
-<div class="skills">
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">GitHub</div>
-<div class="skill">Editing</div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>Projects</h2>
-<div class="projects">
-
-<div class="card">
-<img src="images/turf-project.png">
-<h3>Turf Project (Client)</h3>
-<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">Live</a>
+<div class="section">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I’m a Class 12 student passionate about technology, programming, and problem-solving.
+      I enjoy building projects, exploring web development, and working on real-world ideas.
+    </p>
+  </div>
 </div>
 
-<div class="card">
-<img src="images/funhub-project.png">
-<h3>FunHub</h3>
-<a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live</a>
-</div>
+<div class="section">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>FunHub Website</h3>
+    <img src="images/funhub-project.png" class="project-img">
+    <video src="videos/funhub-demo.mp4" controls class="video"></video>
+    <p><a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live Project</a></p>
+  </div>
+
+  <div class="card">
+    <h3>Turf Tournament Website (Client Project)</h3>
+    <img src="images/turf-project.png" class="project-img">
+    <video src="videos/turf-demo.mp4" controls class="video"></video>
+    <p>Freelance project built for a tournament.</p>
+  </div>
 
 </div>
-</div>
-</section>
 
-<section class="video">
-<div class="container">
-<h2>Project Demo</h2>
-<video controls>
-<source src="videos/riyansh-demo.mp4">
-</video>
+<div class="section">
+  <h2>Certificates</h2>
+  <div class="grid cert">
+    <img src="images/cert-infosys-ai.jpeg">
+    <img src="images/cert-infosys-generative.jpeg">
+    <img src="images/cert-launchpad.jpeg">
+    <img src="images/cert-robotics-achievement.jpeg">
+    <img src="images/cert-robotics-participation.jpeg">
+  </div>
 </div>
-</section>
 
-<section>
-<div class="container">
-<h2>Certificates</h2>
-<div class="cert">
-<img src="images/cert-infosys.jpg">
-<img src="images/cert-google.jpg">
-<img src="images/cert-robotics.jpg">
+<div class="section">
+  <h2>Skills</h2>
+  <div class="card">
+    <p>HTML, CSS, JavaScript</p>
+    <p>Video Editing</p>
+    <p>Basic Programming & Problem Solving</p>
+  </div>
 </div>
+
+<div class="section">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: singhriyansh2006@gmail.com</p>
+    <p><a href="https://github.com/riiyansh-singh" target="_blank">GitHub</a></p>
+    <p><a href="https://www.linkedin.com/in/riyansh-singh-839817385" target="_blank">LinkedIn</a></p>
+  </div>
 </div>
-</section>
-
-<section>
-<div class="container">
-<h2>Achievements</h2>
-<div class="skills">
-<div class="skill">State-Level Football Player</div>
-<div class="skill">Selected for National Football Camp</div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="container">
-<h2>Contact</h2>
-<p>Email: singhriyansh2006@gmail.com</p>
-<div class="icons">
-<a href="https://github.com/riiyansh-singh"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"></a>
-<a href="https://www.linkedin.com/in/riyansh-singh-839817385"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
-</div>
-</div>
-</section>
-
-<script>
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".title",{y:80,opacity:0,duration:1});
-
-gsap.utils.toArray("section").forEach(sec=>{
-gsap.from(sec,{
-scrollTrigger:sec,
-opacity:0,
-y:60,
-duration:1
-})
-});
-
-const lenis=new Lenis();
-function raf(time){
-lenis.raf(time);
-requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-</script>
 
 </body>
 </html>
