@@ -45,26 +45,22 @@ p{opacity:.8;max-width:700px;line-height:1.5;position:relative;z-index:2;}
 .video{text-align:center;}
 video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 
-/* CERTIFICATES SWIPE */
+/* CERTIFICATES STACK */
 .card-stack{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  width:90vw;
-  max-width:600px;
-  height:350px;
-  margin:40px auto;
   position:relative;
-  cursor:grab;
+  width:90vw;
+  max-width:350px;
+  height:450px;
+  margin:40px auto;
 }
 .card-cert{
   position:absolute;
-  width:80%;
+  width:100%;
   height:100%;
   border-radius:15px;
   box-shadow:0 10px 30px rgba(0,0,0,0.5);
   transition:0.5s;
+  cursor:grab;
 }
 
 /* TIMELINE */
@@ -193,7 +189,7 @@ State-level football player as goalkeeper, showing discipline and teamwork.
 </div>
 </section>
 
-<!-- Certificates Horizontal Swipe -->
+<!-- Certificates Stack -->
 <section>
 <div class="container">
 <h2>Certificates</h2>
@@ -270,12 +266,12 @@ gsap.utils.toArray("section").forEach(sec=>{
   gsap.from(sec,{scrollTrigger:sec,opacity:0,y:60,duration:1});
 });
 
-// Certificates swipe horizontal
+// Certificates swipe deck
 const stack = document.querySelector(".card-stack");
 let startX = 0;
 function swipeCard(diff){
   const topCard = stack.querySelector(".card-cert");
-  topCard.style.transform = `translateX(${diff > 0 ? 400 : -400}px) rotate(${diff > 0 ? 15 : -15}deg)`;
+  topCard.style.transform = `translateX(${diff > 0 ? 400 : -400}px) rotate(${diff > 0 ? 10 : -10}deg)`;
   topCard.style.opacity = "0";
   setTimeout(() => {
     topCard.style.transition = "none";
