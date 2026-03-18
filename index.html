@@ -35,9 +35,7 @@ nav{
   z-index:999;
 }
 
-.hero{
-  padding-top:120px;
-}
+.hero{padding-top:120px;}
 
 .hero img{
   width:140px;
@@ -49,13 +47,14 @@ nav{
 
 h1{font-size:3rem;margin:10px 0;}
 h2{margin-bottom:15px;}
-p{opacity:.8;max-width:700px;margin:auto;}
+p{opacity:.8;max-width:750px;margin:auto;line-height:1.6;}
 
 .skills{
   display:flex;
   flex-wrap:wrap;
   gap:15px;
   justify-content:center;
+  margin-top:20px;
 }
 
 .skill{
@@ -70,7 +69,7 @@ p{opacity:.8;max-width:700px;margin:auto;}
   color:#000;
 }
 
-/* PROJECT GRID FIXED */
+/* PROJECT GRID */
 .projects{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -96,7 +95,7 @@ video{
   margin-top:10px;
 }
 
-/* CERTIFICATES FIX */
+/* CERTIFICATES */
 .cert-wrapper{
   overflow-x:auto;
   width:100%;
@@ -151,37 +150,73 @@ video{
 <section>
 <div class="container">
 <h2>About</h2>
-<p>Web developer exploring tech & robotics. State-level football goalkeeper.</p>
-<img src="images/jersey.jpeg" style="max-width:300px;border-radius:10px;margin-top:15px;">
+<p>
+I’m a passionate and self-driven aspiring engineer with a growing interest in technology, web development, and innovation. I enjoy creating modern, interactive, and visually appealing websites that not only look good but also deliver a smooth user experience.
+
+Currently, I am focused on strengthening my foundation in programming with Java and Python while exploring the basics of robotics and problem-solving. I believe in learning by building, which is why I actively work on real-world projects to improve my practical skills.
+
+Beyond tech, I am also a state-level football goalkeeper. The sport has taught me discipline, teamwork, quick decision-making, and how to stay calm under pressure — qualities that I bring into my work and learning process.
+
+Right now, my goal is to grow consistently, build strong technical skills, and prepare myself for future opportunities in engineering and development. I’m always open to learning new things, experimenting with ideas, and pushing myself to improve every day.
+</p>
+
+<img src="images/jersey.jpeg" style="max-width:300px;border-radius:10px;margin-top:20px;">
 </div>
 </section>
 
+<!-- EDUCATION -->
 <section>
 <div class="container">
-<h2>Skills</h2>
+<h2>Education</h2>
+
 <div class="skills">
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">Editing</div>
+<div class="skill">📘 High School<br><span style="opacity:0.6;">Completed</span></div>
+<div class="skill">🎓 Senior Secondary (PCM)<br><span style="opacity:0.6;">Completed • 2026</span></div>
+<div class="skill">🚀 Future Plan<br><span style="opacity:0.6;">B.Tech (CS)</span></div>
 </div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+<div class="container">
+<h2>Experience</h2>
+
+<div class="skills">
+<div class="skill">💻 Freelance Web Developer<br><span style="opacity:0.6;">2025 - Present</span></div>
+<div class="skill">🎬 Video Editor<br><span style="opacity:0.6;">Cinematic Edits</span></div>
+<div class="skill">⚽ Football Goalkeeper<br><span style="opacity:0.6;">State League</span></div>
+</div>
+
 </div>
 </section>
 
 <section>
 <div class="container">
 <h2>Projects</h2>
+
 <div class="projects">
 
 <div class="card">
 <img src="images/turf-project.png">
 <h3>Turf Project</h3>
+
+<a href="https://riiyansh-singh.github.io/turf-project/" target="_blank" style="color:cyan;display:block;margin:10px 0;">
+🔗 Live Project
+</a>
+
 <video controls src="videos/turf-demo.mp4"></video>
 </div>
 
 <div class="card">
 <img src="images/funhub-project.png">
 <h3>FunHub</h3>
+
+<a href="https://riiyansh-singh.github.io/funhub/" target="_blank" style="color:cyan;display:block;margin:10px 0;">
+🔗 Live Project
+</a>
+
 <video controls src="videos/funhub-demo.mp4"></video>
 </div>
 
@@ -232,17 +267,9 @@ video{
 <p>Email: singhriyansh2006@gmail.com</p>
 
 <div class="icons">
-<a href="https://github.com/riiyansh-singh">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733553.png">
-</a>
-
-<a href="https://www.linkedin.com/in/riyansh-singh-839817385">
-<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png">
-</a>
-
-<a href="https://www.instagram.com/riiiyanshh.3">
-<img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-</a>
+<a href="https://github.com/riiyansh-singh"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png"></a>
+<a href="https://www.linkedin.com/in/riyansh-singh-839817385"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
+<a href="https://www.instagram.com/riiiyanshh.3"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
 </div>
 
 </div>
@@ -251,18 +278,11 @@ video{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.from(".title",{
-  y:80,
-  opacity:0,
-  duration:1
-});
+gsap.from(".title",{y:80,opacity:0,duration:1});
 
 gsap.utils.toArray("section").forEach(sec=>{
   gsap.from(sec,{
-    scrollTrigger:{
-      trigger:sec,
-      start:"top 80%"
-    },
+    scrollTrigger:{trigger:sec,start:"top 80%"},
     opacity:0,
     y:60,
     duration:1
