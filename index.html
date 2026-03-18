@@ -14,69 +14,58 @@
 body{background: radial-gradient(circle at top, #0f172a, #020617);color:#fff;overflow-x:hidden;cursor:none;}
 a{text-decoration:none;color:cyan;}
 .container{max-width:1100px;margin:auto;padding:40px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;}
-nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.05);padding:10px 25px;border-radius:30px;backdrop-filter:blur(10px);z-index:999;text-align:center;font-weight:bold;}
 
-.hero{position:relative;padding-top:120px;padding-bottom:40px;overflow:hidden;}
-.hero img{width:140px;height:140px;border-radius:50%;border:3px solid cyan;margin:20px auto;display:block;box-shadow:0 0 25px cyan;z-index:2;position:relative;}
+nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.05);padding:10px 25px;border-radius:30px;backdrop-filter:blur(10px);z-index:999;}
 
-h1{font-size:3rem;position:relative;z-index:2;}
+.hero{padding-top:120px;}
+.hero img{width:140px;height:140px;border-radius:50%;border:3px solid cyan;box-shadow:0 0 25px cyan;}
+
+h1{font-size:3rem;}
 h2{margin-bottom:15px;}
-h3{margin-top:15px;}
-p{opacity:.8;max-width:700px;line-height:1.5;position:relative;z-index:2;}
+p{opacity:.8;max-width:700px;}
 
-.skills{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:20px;}
-.skill{border:1px solid #333;padding:10px 20px;border-radius:20px;transition:.3s;text-align:center;}
-.skill:hover{background:cyan;color:#000;transform:scale(1.05);}
+.skills{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+.skill{border:1px solid #333;padding:10px 20px;border-radius:20px;transition:.3s;}
+.skill:hover{background:cyan;color:#000;}
 
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:30px;}
-.card{background:#0a0a0a;padding:15px;border:1px solid #222;border-radius:10px;transition:.3s;position:relative;overflow:hidden;}
-.card:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 0 25px rgba(0,255,255,0.3);}
-.card img{width:100%;border-radius:10px;margin-bottom:10px;pointer-events:none;}
-.card video{width:100%;border-radius:10px;display:none;}
-.card:hover video{display:block;position:absolute;top:0;left:0;}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.card{background:#0a0a0a;padding:15px;border-radius:10px;}
+.card img{width:100%;border-radius:10px;}
 
-.video{text-align:center;}
-video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
+video{width:90%;max-width:400px;border-radius:10px;margin-top:10px;}
 
-.card-stack{position:relative;width:90vw;max-width:500px;height:350px;margin:40px auto;transform: rotate(-90deg);}
-.card-cert{position:absolute;width:100%;height:100%;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);transition:0.5s;cursor:grab;background-size:contain;background-repeat:no-repeat;background-position:center;}
+.card-stack{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:20px;
+}
 
-.timeline{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-top:30px;}
-.timeline-item{background:#0a0a0a;padding:15px 20px;border-radius:15px;border:1px solid #222;min-width:180px;text-align:center;flex:1;position:relative;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:10px;}
-.timeline-item:hover{transform:scale(1.05);box-shadow:0 0 20px cyan;}
-.timeline-item img{width:50px;height:50px;}
-.timeline-item::before{content:"";position:absolute;top:50%;left:-10px;width:20px;height:2px;background:cyan;transform:translateY(-50%);}
-.timeline-item:first-child::before{display:none;}
+.card-cert{
+  min-width:260px;
+  height:360px;
+  border-radius:10px;
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  transform:rotate(-90deg);
+}
 
-.learning{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;margin-top:20px;}
-
-.icons{display:flex;justify-content:center;gap:20px;margin-top:20px;}
+/* CONTACT */
+.icons{display:flex;gap:20px;margin-top:15px;}
 .icons img{width:32px;transition:.3s;}
 .icons img:hover{transform:scale(1.2);}
-
-#cursor{position:fixed;width:20px;height:20px;background:cyan;border-radius:50%;pointer-events:none;mix-blend-mode:screen;transform:translate(-50%,-50%);}
-
-#jersey{display:block;max-width:80%;margin:20px auto;border-radius:10px;box-shadow:0 0 20px cyan;}
-
-@media(max-width:768px){
-.projects{grid-template-columns:1fr;}
-.card-stack{width:80vw;height:70vw;}
-.timeline{flex-direction:column;}
-.timeline-item::before{display:none;}
-.timeline-item img{width:40px;height:40px;}
-}
 </style>
 </head>
 
 <body>
 
-<div id="cursor"></div>
 <nav>Riyansh Singh</nav>
 
 <section class="hero">
 <div class="container">
 <img src="images/profile.jpeg">
-<h1 class="title">Riyansh Singh</h1>
+<h1>Riyansh Singh</h1>
 <p>Aspiring Engineer | Web Developer | Tech Enthusiast</p>
 </div>
 </section>
@@ -84,9 +73,8 @@ video{width:90%;max-width:400px;border-radius:10px;margin-top:15px;}
 <section>
 <div class="container">
 <h2>About</h2>
-<p>I build web projects and explore technology. Passionate about robotics and programming.  
-State-level football player as goalkeeper, showing discipline and teamwork.</p>
-<img id="jersey" src="images/jersey.jpeg">
+<p>Web dev + robotics learner. State-level football goalkeeper.</p>
+<img src="images/jersey.jpeg" style="max-width:300px;border-radius:10px;">
 </div>
 </section>
 
@@ -96,9 +84,8 @@ State-level football player as goalkeeper, showing discipline and teamwork.</p>
 <div class="skills">
 <div class="skill">HTML</div>
 <div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">GitHub</div>
-<div class="skill">Video Editing</div>
+<div class="skill">JS</div>
+<div class="skill">Editing</div>
 </div>
 </div>
 </section>
@@ -110,112 +97,69 @@ State-level football player as goalkeeper, showing discipline and teamwork.</p>
 
 <div class="card">
 <img src="images/turf-project.png">
-<h3>Turf Project</h3>
-<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html">Live</a>
-<video controls><source src="./videos/turf-demo.mp4"></video>
+<h3>Turf</h3>
+<video controls><source src="videos/turf-demo.mp4"></video>
 </div>
 
 <div class="card">
 <img src="images/funhub-project.png">
 <h3>FunHub</h3>
-<a href="https://riiyansh-singh.github.io/FunHub/">Live</a>
-<video controls><source src="./videos/funhub-demo.mp4"></video>
+<video controls><source src="videos/funhub-demo.mp4"></video>
 </div>
 
 </div>
 </div>
 </section>
 
-<section class="video">
+<!-- CREATIVE -->
+<section>
 <div class="container">
-<h2>Creative Side</h2>
+<h2>Creative</h2>
 
-<video controls><source src="./videos/shot-1.mp4"></video>
-<video controls><source src="./videos/shot-2.mp4"></video>
+<h3>🎸 Guitar</h3>
+<video controls><source src="videos/guitar.mp4"></video>
+
+<h3>🎤 Singing</h3>
+<video controls><source src="videos/singing.mp4"></video>
+
+<h3>🎬 Edits</h3>
+<video controls><source src="videos/shot-1.mp4"></video>
+<video controls><source src="videos/shot-2.mp4"></video>
 
 </div>
 </section>
 
+<!-- CERTIFICATES FIXED -->
 <section>
 <div class="container">
 <h2>Certificates</h2>
+
 <div class="card-stack">
-<div class="card-cert" style="background:url('images/cert-infosys-ai.jpeg')"></div>
-<div class="card-cert" style="background:url('images/cert-infosys-generative.jpeg')"></div>
+<div class="card-cert" style="background-image:url('images/cert-infosys-ai.jpeg')"></div>
+<div class="card-cert" style="background-image:url('images/cert-infosys-generative.jpeg')"></div>
+<div class="card-cert" style="background-image:url('images/cert-launchpad.jpeg')"></div>
+<div class="card-cert" style="background-image:url('images/cert-robotics-achievement.jpeg')"></div>
+<div class="card-cert" style="background-image:url('images/cert-robotics-participation.jpeg')"></div>
 </div>
-<p style="opacity:0.7;font-style:italic;">Swipe left/right to view certificates</p>
+
 </div>
 </section>
 
-<section>
-<div class="container">
-<h2>Timeline</h2>
-<div class="timeline">
-<div class="timeline-item">2024<br>Football</div>
-<div class="timeline-item">2025<br>Client Project</div>
-<div class="timeline-item">2026<br>Learning</div>
-</div>
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section>
-<div class="container">
-<h2>Education</h2>
-<div class="timeline">
-<div class="timeline-item">
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
-<strong>Senior Secondary (PCM)</strong>
-<span>Completed • 2026</span>
-<p>Physics, Chemistry & Mathematics</p>
-</div>
-
-<div class="timeline-item">
-<img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
-<strong>B.Tech (Upcoming)</strong>
-<span>Future</span>
-<p>Computer Science / Robotics</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section>
-<div class="container">
-<h2>Experience</h2>
-<div class="timeline">
-<div class="timeline-item">
-<img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png">
-<strong>Freelance Developer</strong>
-<span>2025 - Present</span>
-<p>Built real client websites</p>
-</div>
-
-<div class="timeline-item">
-<img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png">
-<strong>Video Editor</strong>
-<span>Ongoing</span>
-<p>Cinematic reels & edits</p>
-</div>
-</div>
-</div>
-</section>
-
+<!-- CONTACT -->
 <section>
 <div class="container">
 <h2>Contact</h2>
+
 <p>Email: singhriyansh2006@gmail.com</p>
+
+<div class="icons">
+<a href="https://github.com/riiyansh-singh"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png"></a>
+<a href="https://www.linkedin.com/in/riyansh-singh-839817385"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
+<a href="https://www.instagram.com/riiiyanshh.3"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+</div>
+
 </div>
 </section>
-
-<script>
-gsap.registerPlugin(ScrollTrigger);
-gsap.from(".title",{y:80,opacity:0,duration:1});
-gsap.utils.toArray("section").forEach(sec=>{
-gsap.from(sec,{scrollTrigger:sec,opacity:0,y:60,duration:1});
-});
-</script>
 
 </body>
 </html>
