@@ -32,7 +32,6 @@ nav{
   padding:10px 25px;
   border-radius:30px;
   backdrop-filter:blur(10px);
-  z-index:999;
 }
 
 .hero{padding-top:120px;}
@@ -46,8 +45,22 @@ nav{
 }
 
 h1{font-size:3rem;margin:10px 0;}
-h2{margin-bottom:15px;}
-p{opacity:.8;max-width:750px;margin:auto;line-height:1.6;}
+h2{margin-bottom:20px;}
+
+.about-box{
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:15px;
+  margin-top:20px;
+  line-height:1.7;
+}
+
+.about-box p{margin-bottom:12px;opacity:.85}
+
+.highlight{
+  color:cyan;
+  font-weight:bold;
+}
 
 .skills{
   display:flex;
@@ -69,7 +82,6 @@ p{opacity:.8;max-width:750px;margin:auto;line-height:1.6;}
   color:#000;
 }
 
-/* PROJECT GRID */
 .projects{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -95,10 +107,24 @@ video{
   margin-top:10px;
 }
 
-/* CERTIFICATES */
+.live-btn{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:20px;
+  background:cyan;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:0.3s;
+}
+
+.live-btn:hover{
+  transform:scale(1.1);
+}
+
+/* Certificates */
 .cert-wrapper{
   overflow-x:auto;
-  width:100%;
   padding:20px 0;
 }
 
@@ -111,12 +137,11 @@ video{
   height:250px;
   width:auto;
   border-radius:10px;
-  flex-shrink:0;
   object-fit:contain;
   background:#000;
 }
 
-/* CONTACT */
+/* Contact */
 .icons{
   display:flex;
   justify-content:center;
@@ -143,22 +168,30 @@ video{
 <div class="container">
 <img src="images/profile.jpeg">
 <h1 class="title">Riyansh Singh</h1>
-<p>Aspiring Engineer | Web Developer | Tech Enthusiast</p>
+<p>Aspiring Engineer | Developer | Creator</p>
 </div>
 </section>
 
+<!-- ABOUT -->
 <section>
 <div class="container">
-<h2>About</h2>
-<p>
-I’m a passionate and self-driven aspiring engineer with a growing interest in technology, web development, and innovation. I enjoy creating modern, interactive, and visually appealing websites that not only look good but also deliver a smooth user experience.
+<h2>About Me</h2>
 
-Currently, I am focused on strengthening my foundation in programming with Java and Python while exploring the basics of robotics and problem-solving. I believe in learning by building, which is why I actively work on real-world projects to improve my practical skills.
+<div class="about-box">
 
-Beyond tech, I am also a state-level football goalkeeper. The sport has taught me discipline, teamwork, quick decision-making, and how to stay calm under pressure — qualities that I bring into my work and learning process.
+<p>Hey 👋, I’m <span class="highlight">Riyansh</span> — a self-driven learner exploring the world of <span class="highlight">technology, web development, and innovation</span>.</p>
 
-Right now, my goal is to grow consistently, build strong technical skills, and prepare myself for future opportunities in engineering and development. I’m always open to learning new things, experimenting with ideas, and pushing myself to improve every day.
-</p>
+<p>I enjoy building <span class="highlight">modern, interactive websites</span> that are not just visually clean but also smooth and user-friendly.</p>
+
+<p>Currently, I’m focused on learning <span class="highlight">Java, Python</span>, and exploring <span class="highlight">robotics</span> while strengthening my problem-solving skills.</p>
+
+<p>I believe in <span class="highlight">learning by building</span>, which is why I keep working on real-world projects to improve every day.</p>
+
+<p>Outside tech, I’m a <span class="highlight">state-level football goalkeeper</span> — a role that has shaped my discipline, mindset, and ability to perform under pressure.</p>
+
+<p>Right now, my goal is simple: <span class="highlight">keep growing, keep building, and stay consistent</span> 🚀</p>
+
+</div>
 
 <img src="images/jersey.jpeg" style="max-width:300px;border-radius:10px;margin-top:20px;">
 </div>
@@ -168,13 +201,11 @@ Right now, my goal is to grow consistently, build strong technical skills, and p
 <section>
 <div class="container">
 <h2>Education</h2>
-
 <div class="skills">
-<div class="skill">📘 High School<br><span style="opacity:0.6;">Completed</span></div>
-<div class="skill">🎓 Senior Secondary (PCM)<br><span style="opacity:0.6;">Completed • 2026</span></div>
-<div class="skill">🚀 Future Plan<br><span style="opacity:0.6;">B.Tech (CS)</span></div>
+<div class="skill">📘 High School</div>
+<div class="skill">🎓 PCM (Completed 2026)</div>
+<div class="skill">🚀 Future: B.Tech CS</div>
 </div>
-
 </div>
 </section>
 
@@ -182,16 +213,15 @@ Right now, my goal is to grow consistently, build strong technical skills, and p
 <section>
 <div class="container">
 <h2>Experience</h2>
-
 <div class="skills">
-<div class="skill">💻 Freelance Web Developer<br><span style="opacity:0.6;">2025 - Present</span></div>
-<div class="skill">🎬 Video Editor<br><span style="opacity:0.6;">Cinematic Edits</span></div>
-<div class="skill">⚽ Football Goalkeeper<br><span style="opacity:0.6;">State League</span></div>
+<div class="skill">💻 Freelance Developer</div>
+<div class="skill">🎬 Video Editing</div>
+<div class="skill">⚽ State Football League</div>
 </div>
-
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section>
 <div class="container">
 <h2>Projects</h2>
@@ -201,22 +231,14 @@ Right now, my goal is to grow consistently, build strong technical skills, and p
 <div class="card">
 <img src="images/turf-project.png">
 <h3>Turf Project</h3>
-
-<a href="https://riiyansh-singh.github.io/turf-project/" target="_blank" style="color:cyan;display:block;margin:10px 0;">
-🔗 Live Project
-</a>
-
+<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank" class="live-btn">🔗 Live Project</a>
 <video controls src="videos/turf-demo.mp4"></video>
 </div>
 
 <div class="card">
 <img src="images/funhub-project.png">
 <h3>FunHub</h3>
-
-<a href="https://riiyansh-singh.github.io/funhub/" target="_blank" style="color:cyan;display:block;margin:10px 0;">
-🔗 Live Project
-</a>
-
+<a href="https://riiyansh-singh.github.io/FunHub/" target="_blank" class="live-btn">🔗 Live Project</a>
 <video controls src="videos/funhub-demo.mp4"></video>
 </div>
 
@@ -224,35 +246,19 @@ Right now, my goal is to grow consistently, build strong technical skills, and p
 </div>
 </section>
 
-<section>
-<div class="container">
-<h2>Creative</h2>
-
-<h3>🎬 Edits</h3>
-<video controls src="videos/shot-1.mp4"></video>
-<video controls src="videos/shot-2.mp4"></video>
-
-<h3>🎸 Guitar</h3>
-<video controls src="videos/guitar.mp4"></video>
-
-<h3>🎤 Singing</h3>
-<video controls src="videos/singing.mp4"></video>
-
-</div>
-</section>
-
+<!-- CERTIFICATES -->
 <section>
 <div class="container">
 <h2>Certificates</h2>
 
 <div class="cert-wrapper">
-  <div class="cert-track">
-    <img src="images/cert-infosys-ai.jpeg">
-    <img src="images/cert-infosys-generative.jpeg">
-    <img src="images/cert-launchpad.jpeg">
-    <img src="images/cert-robotics-achievement.jpeg">
-    <img src="images/cert-robotics-participation.jpeg">
-  </div>
+<div class="cert-track">
+<img src="images/cert-infosys-ai.jpeg">
+<img src="images/cert-infosys-generative.jpeg">
+<img src="images/cert-launchpad.jpeg">
+<img src="images/cert-robotics-achievement.jpeg">
+<img src="images/cert-robotics-participation.jpeg">
+</div>
 </div>
 
 <p style="opacity:0.6;">Swipe → to view all certificates</p>
@@ -260,10 +266,10 @@ Right now, my goal is to grow consistently, build strong technical skills, and p
 </div>
 </section>
 
+<!-- CONTACT -->
 <section>
 <div class="container">
 <h2>Contact</h2>
-
 <p>Email: singhriyansh2006@gmail.com</p>
 
 <div class="icons">
@@ -281,12 +287,12 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.from(".title",{y:80,opacity:0,duration:1});
 
 gsap.utils.toArray("section").forEach(sec=>{
-  gsap.from(sec,{
-    scrollTrigger:{trigger:sec,start:"top 80%"},
-    opacity:0,
-    y:60,
-    duration:1
-  });
+gsap.from(sec,{
+scrollTrigger:{trigger:sec,start:"top 80%"},
+opacity:0,
+y:60,
+duration:1
+});
 });
 </script>
 
