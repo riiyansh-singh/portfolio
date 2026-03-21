@@ -11,16 +11,17 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 body{background:#050505;color:#fff;overflow-x:hidden;position:relative;}
 
-/* BACKGROUND TEXT */
+/* 🔥 BACKGROUND TEXT FIXED */
 body::before{
 content:"Riyansh Portfolio • Developer • Builder";
 position:fixed;
-top:50%;left:50%;
+top:50%;
+left:50%;
 transform:translate(-50%,-50%);
 font-size:6vw;
 color:rgba(255,255,255,0.02);
 white-space:nowrap;
-z-index:0;
+z-index:-1; /* FIXED */
 pointer-events:none;
 }
 
@@ -119,7 +120,12 @@ transition:.3s;
 .socials a:hover{background:cyan;color:black;}
 
 /* SECTION */
-section{padding:80px 10%;position:relative;z-index:1;}
+section{
+padding:80px 10%;
+position:relative;
+z-index:1; /* FIXED */
+}
+
 h2{text-align:center;margin-bottom:40px;}
 
 /* ABOUT */
@@ -239,62 +245,10 @@ background:#111;border-radius:10px;
 <section class="fade">
 <h2>About Me</h2>
 <div class="about-box">
-I’m an aspiring engineer focused on building real-world skills in robotics, development, and creative tech...
+I’m an aspiring engineer focused on building real-world skills in robotics, development, and creative tech.  
+From Arduino-based projects like a motor car and robotic arm to web projects like Slice Frenzy and FunHub, I focus on learning by building.  
+Alongside tech, I also explore creative work like editing and visuals, while balancing academics and football at a competitive level.
 </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="fade">
-<h2>Projects</h2>
-<div class="projects">
-<div class="card">
-<img src="images/slice-frenzy.png">
-<h3>Slice Frenzy</h3>
-<p class="desc">Interactive slicing game</p>
-<a class="link-btn" href="https://riiyansh-singh.github.io/slice-frenzy/">Play</a>
-<video controls src="videos/Fruit.mp4"></video>
-</div>
-</div>
-</section>
-
-<!-- ROBOTICS -->
-<section class="fade">
-<h2>Robotics</h2>
-<div class="projects">
-<div class="card">
-<div class="double-img">
-<img src="images/robot-car.jpg">
-<img src="images/robot-car1.jpg">
-</div>
-<h3>Motor Car</h3>
-<p class="desc">Individual project</p>
-</div>
-</div>
-</section>
-
-<!-- TIMELINE -->
-<section class="fade">
-<h2>Journey</h2>
-<div class="timeline">
-<div class="timeline-item">2024 - High School</div>
-</div>
-</section>
-
-<!-- CERTIFICATES -->
-<section class="fade">
-<h2>Certificates</h2>
-<div class="certificates">
-<div>
-<img src="images/cert-infosys-ai.jpeg">
-<p class="desc">Infosys AI</p>
-</div>
-</div>
-</section>
-
-<!-- CREATIVE -->
-<section class="fade">
-<h2>Creative Work</h2>
-<video controls src="videos/guitar.mp4"></video>
 </section>
 
 <!-- FINAL CONTACT -->
@@ -322,6 +276,15 @@ Contact Me
 </section>
 
 <script>
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
 function hireMe(){
 window.location.href="mailto:singhriyansh2006@gmail.com";
 }
