@@ -5,296 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Riyansh Singh</title>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
-  text-align:center;
-}
-
-nav{
-  position:fixed;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(255,255,255,0.05);
-  padding:10px 25px;
-  border-radius:30px;
-  backdrop-filter:blur(10px);
-}
-
-.hero{padding-top:120px;}
-
-.hero img{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:3px solid cyan;
-  box-shadow:0 0 25px cyan;
-}
-
-h1{font-size:3rem;margin:10px 0;}
-h2{margin-bottom:20px;}
-
-.about-box{
-  background:rgba(255,255,255,0.05);
-  padding:25px;
-  border-radius:15px;
-  margin-top:20px;
-  line-height:1.7;
-}
-
-.about-box p{margin-bottom:12px;opacity:.85}
-
-.highlight{
-  color:cyan;
-  font-weight:bold;
-}
-
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-  justify-content:center;
-  margin-top:20px;
-}
-
-.skill{
-  border:1px solid #333;
-  padding:10px 20px;
-  border-radius:20px;
-  transition:.3s;
-}
-
-.skill:hover{
-  background:cyan;
-  color:#000;
-}
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-  margin-top:20px;
-}
-
-.card{
-  background:#0a0a0a;
-  padding:15px;
-  border-radius:10px;
-}
-
-.card img{
-  width:100%;
-  border-radius:10px;
-}
-
-video{
-  width:90%;
-  max-width:400px;
-  border-radius:10px;
-  margin-top:10px;
-}
-
-.live-btn{
-  display:inline-block;
-  padding:8px 16px;
-  border-radius:20px;
-  background:cyan;
-  color:#000;
-  text-decoration:none;
-  font-size:0.9rem;
-  transition:0.3s;
-}
-
-.live-btn:hover{
-  transform:scale(1.1);
-}
-
-/* Certificates */
-.cert-wrapper{
-  overflow-x:auto;
-  padding:20px 0;
-}
-
-.cert-track{
-  display:flex;
-  gap:20px;
-}
-
-.cert-track img{
-  height:250px;
-  width:auto;
-  border-radius:10px;
-  object-fit:contain;
-  background:#000;
-}
-
-/* Contact */
-.icons{
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  margin-top:15px;
-}
-
-.icons img{
-  width:32px;
-  transition:.3s;
-}
-
-.icons img:hover{
-  transform:scale(1.2);
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <nav>Riyansh Singh</nav>
 
+<!-- HERO -->
 <section class="hero">
-<div class="container">
 <img src="images/profile.jpeg">
-<h1 class="title">Riyansh Singh</h1>
-<p>Aspiring Engineer | Developer | Creator</p>
-</div>
+<h1>Hi, I'm Riyansh</h1>
+<p>Developer • Robotics • Creative Editor</p>
 </section>
 
 <!-- ABOUT -->
 <section>
-<div class="container">
 <h2>About Me</h2>
+<p>
+I'm Riyansh Singh, a developer exploring both software and hardware. I build websites,
+experiment with robotics, and constantly push my limits. I was selected for the National
+U-19 Football Camp as a goalkeeper and left defender, but later focused on academics and tech.
+</p>
 
-<div class="about-box">
-
-<p>Hey 👋, I’m <span class="highlight">Riyansh</span> — a self-driven learner exploring the world of <span class="highlight">technology, web development, and innovation</span>.</p>
-
-<p>I enjoy building <span class="highlight">modern, interactive websites</span> that are not just visually clean but also smooth and user-friendly.</p>
-
-<p>Currently, I’m focused on learning <span class="highlight">Java, Python</span>, and exploring <span class="highlight">robotics</span> while strengthening my problem-solving skills.</p>
-
-<p>I believe in <span class="highlight">learning by building</span>, which is why I keep working on real-world projects to improve every day.</p>
-
-<p>Outside tech, I’m a <span class="highlight">state-level football goalkeeper</span> — a role that has shaped my discipline, mindset, and ability to perform under pressure.</p>
-
-<p>Right now, my goal is simple: <span class="highlight">keep growing, keep building, and stay consistent</span> 🚀</p>
-
-</div>
-
-<img src="images/jersey.jpeg" style="max-width:300px;border-radius:10px;margin-top:20px;">
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section>
-<div class="container">
-<h2>Education</h2>
-<div class="skills">
-<div class="skill">📘 High School</div>
-<div class="skill">🎓 PCM (Completed 2026)</div>
-<div class="skill">🚀 Future: B.Tech CS</div>
-</div>
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section>
-<div class="container">
-<h2>Experience</h2>
-<div class="skills">
-<div class="skill">💻 Freelance Developer</div>
-<div class="skill">🎬 Video Editing</div>
-<div class="skill">⚽ State Football League</div>
-</div>
-</div>
+<img src="images/jersey.jpeg" class="jersey">
 </section>
 
 <!-- PROJECTS -->
 <section>
-<div class="container">
 <h2>Projects</h2>
 
 <div class="projects">
 
 <div class="card">
 <img src="images/turf-project.png">
-<h3>Turf Project</h3>
-<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank" class="live-btn">🔗 Live Project</a>
+<h3>Turf Tournament</h3>
+<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">Live</a>
 <video controls src="videos/turf-demo.mp4"></video>
+
+<div class="badges">
+<span class="badge">HTML</span>
+<span class="badge">CSS</span>
+<span class="badge">UI</span>
+</div>
 </div>
 
 <div class="card">
 <img src="images/funhub-project.png">
 <h3>FunHub</h3>
-<a href="https://riiyansh-singh.github.io/FunHub/" target="_blank" class="live-btn">🔗 Live Project</a>
+<a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live</a>
 <video controls src="videos/funhub-demo.mp4"></video>
+
+<div class="badges">
+<span class="badge">JavaScript</span>
+<span class="badge">Creative</span>
+</div>
+</div>
+
+<div class="card">
+<img src="images/slice-frenzy.png">
+<h3>Slice Frenzy</h3>
+<a href="https://riiyansh-singh.github.io/slice-frenzy/" target="_blank">Play</a>
+<video controls src="videos/shot-1.mp4"></video>
+
+<div class="badges">
+<span class="badge">Game</span>
+<span class="badge">JS</span>
+</div>
 </div>
 
 </div>
+</section>
+
+<!-- ROBOTICS -->
+<section>
+<h2>Robotics</h2>
+
+<div class="projects">
+
+<div class="card">
+<div class="double-img">
+<img src="images/robot-car.jpg">
+<img src="images/robot-car1.jpg">
 </div>
+
+<h3>Sensor-Based Motor Car</h3>
+<p>Individual final-term project using Arduino and sensors.</p>
+
+<div class="badges">
+<span class="badge">Arduino</span>
+<span class="badge">Sensors</span>
+</div>
+</div>
+
+<div class="card">
+<div class="double-img">
+<img src="images/robot-hand.jpg">
+<img src="images/robot-hand1.jpg">
+</div>
+
+<h3>Robotic Hand Prototype</h3>
+<p>Group project from robotics camp focused on servo motors.</p>
+
+<div class="badges">
+<span class="badge">Servo</span>
+<span class="badge">Teamwork</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CREATIVE -->
+<section>
+<h2>Creative Work</h2>
+
+<video controls src="videos/guitar.mp4"></video>
+<video controls src="videos/guitar2.mp4"></video>
+<video controls src="videos/singing.mp4"></video>
+<video controls src="videos/shot-1.mp4"></video>
+<video controls src="videos/shot-2.mp4"></video>
+
 </section>
 
 <!-- CERTIFICATES -->
 <section>
-<div class="container">
 <h2>Certificates</h2>
 
-<div class="cert-wrapper">
-<div class="cert-track">
+<div class="certificates">
 <img src="images/cert-infosys-ai.jpeg">
 <img src="images/cert-infosys-generative.jpeg">
 <img src="images/cert-launchpad.jpeg">
 <img src="images/cert-robotics-achievement.jpeg">
 <img src="images/cert-robotics-participation.jpeg">
 </div>
-</div>
 
-<p style="opacity:0.6;">Swipe → to view all certificates</p>
-
-</div>
 </section>
 
 <!-- CONTACT -->
 <section>
-<div class="container">
 <h2>Contact</h2>
-<p>Email: singhriyansh2006@gmail.com</p>
+
+<p class="center">Email: singhriyansh2006@gmail.com</p>
 
 <div class="icons">
-<a href="https://github.com/riiyansh-singh"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png"></a>
-<a href="https://www.linkedin.com/in/riyansh-singh-839817385"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></a>
-<a href="https://www.instagram.com/riiiyanshh.3"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+<a href="https://github.com/riiyansh-singh" target="_blank">GitHub</a>
+<a href="https://www.linkedin.com/in/riyansh-singh-839817385" target="_blank">LinkedIn</a>
+<a href="https://www.instagram.com/riiiyanshh.3" target="_blank">Instagram</a>
 </div>
 
-</div>
 </section>
 
-<script>
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.from(".title",{y:80,opacity:0,duration:1});
-
-gsap.utils.toArray("section").forEach(sec=>{
-gsap.from(sec,{
-scrollTrigger:{trigger:sec,start:"top 80%"},
-opacity:0,
-y:60,
-duration:1
-});
-});
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
