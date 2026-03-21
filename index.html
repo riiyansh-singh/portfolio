@@ -6,174 +6,122 @@
 <title>Riyansh Singh</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
-body{background:#050505;color:#fff;line-height:1.6;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{
+background: radial-gradient(circle at top,#0f172a,#020617);
+color:#fff;
+line-height:1.6;
+overflow-x:hidden;
+}
 
+/* NAV */
 nav{
 position:fixed;
-top:0;
-width:100%;
-padding:15px;
-text-align:center;
-background:#000;
-z-index:1000;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(255,255,255,0.05);
+padding:10px 25px;
+border-radius:30px;
+backdrop-filter:blur(10px);
+z-index:999;
 font-weight:bold;
-letter-spacing:1px;
 }
 
 /* HERO */
-.hero{
-text-align:center;
-padding:110px 20px 70px;
-}
-
+.hero{text-align:center;padding:120px 20px 70px;}
 .hero img{
 width:150px;height:150px;border-radius:50%;
 border:3px solid cyan;
+box-shadow:0 0 25px cyan;
 object-fit:cover;
-margin-bottom:15px;
 }
+.hero h1{font-size:2.5rem;margin-top:15px;}
+.hero p{opacity:.7;margin-top:10px;}
 
-.hero h1{
-font-size:2.2rem;
-margin-bottom:10px;
-}
-
-.hero p{
-opacity:0.7;
-}
-
-/* SECTIONS */
-section{
-max-width:1000px;
-margin:auto;
-padding:60px 20px;
-}
-
-h2{
-text-align:center;
-margin-bottom:25px;
-font-size:1.8rem;
-position:relative;
-}
-
+/* SECTION */
+section{max-width:1100px;margin:auto;padding:70px 20px;}
+h2{text-align:center;font-size:2rem;margin-bottom:30px;}
 h2::after{
-content:"";
-width:60px;
-height:3px;
-background:cyan;
-display:block;
-margin:8px auto 0;
+content:"";display:block;width:60px;height:3px;
+background:cyan;margin:10px auto;
 }
 
 /* ABOUT */
 .about p{
-max-width:750px;
-margin:auto;
-text-align:center;
-opacity:0.85;
+max-width:750px;margin:auto;text-align:center;
+opacity:.85;font-size:1.05rem;
 }
-
 .jersey{
-width:250px;
-display:block;
-margin:25px auto;
-border-radius:10px;
-box-shadow:0 0 20px rgba(0,255,255,0.2);
+width:260px;margin:30px auto;display:block;
+border-radius:12px;
+box-shadow:0 0 30px rgba(0,255,255,0.2);
 }
 
 /* GRID */
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 }
 
 .card{
-background:#111;
-padding:15px;
-border-radius:12px;
-transition:0.3s;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+padding:15px;border-radius:20px;
+transition:.3s;
+backdrop-filter:blur(10px);
 }
-
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 20px rgba(0,255,255,0.15);
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 0 25px rgba(0,255,255,0.25);
 }
-
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-.card h3{
-margin:10px 0;
-}
-
-.card a{
-color:cyan;
-font-size:14px;
-}
+.card img{width:100%;border-radius:12px;margin-bottom:10px;}
+.card a{color:cyan;font-size:14px;display:inline-block;margin-bottom:10px;}
 
 /* DOUBLE IMG */
-.double-img{
-display:flex;
-gap:10px;
-}
-.double-img img{
-width:50%;
-}
+.double-img{display:flex;gap:10px;}
+.double-img img{width:50%;}
 
 /* BADGES */
-.badges{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-top:10px;
-}
-
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 .badge{
-background:#222;
-padding:5px 10px;
-border-radius:20px;
+background:rgba(255,255,255,0.05);
+padding:6px 12px;border-radius:20px;
 font-size:12px;
-border:1px solid #333;
+border:1px solid rgba(255,255,255,0.1);
 }
 
 /* VIDEO */
 video{
-width:100%;
-max-width:400px;
-display:block;
-margin:15px auto;
-border-radius:10px;
+width:100%;max-width:420px;
+display:block;margin:15px auto;
+border-radius:12px;
 }
 
 /* CERTIFICATES */
 .certificates{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 .certificates img{
-width:100%;
-border-radius:10px;
+width:100%;border-radius:12px;
+transition:.3s;
 }
+.certificates img:hover{transform:scale(1.05);}
 
 /* CONTACT */
 .center{text-align:center;}
-
-.icons{
-text-align:center;
-margin-top:20px;
-}
+.icons{text-align:center;margin-top:25px;}
 .icons a{
-margin:10px;
-color:cyan;
-text-decoration:none;
+margin:10px;color:cyan;text-decoration:none;
 font-weight:bold;
+padding:8px 14px;border-radius:20px;
+border:1px solid rgba(255,255,255,0.1);
+transition:.3s;
 }
+.icons a:hover{background:cyan;color:#000;}
 </style>
 </head>
 
@@ -191,18 +139,18 @@ font-weight:bold;
 <!-- ABOUT -->
 <section class="about">
 <h2>About Me</h2>
-
 <p>
-I don’t just learn tech — I build with it.  
-My journey started with hands-on robotics, experimenting with sensors, Arduino, and real hardware.
+I don’t just learn tech — I build with it. My journey started with hands-on robotics,
+experimenting with sensors, Arduino, and real hardware.
 
-That curiosity pushed me into web development, where I now create interactive projects, games, and real-world websites.
+That curiosity pushed me into web development, where I now create interactive projects,
+games, and real-world websites.
 
-From building a browser game like <b>Slice Frenzy</b> to delivering a <b>client-based Turf Tournament website</b>, I focus on turning ideas into actual working products.
+From building <b>Slice Frenzy</b> to delivering a <b>client-based Turf Tournament website</b>,
+I focus on turning ideas into working products.
 
-Alongside tech, I was selected for a national-level football camp as a goalkeeper and left defender — where I learned discipline, pressure handling, and teamwork — the same mindset I bring into my work today.
-
-Right now, I’m focused on leveling up my fundamentals, building more projects, and turning skills into real opportunities.
+Alongside tech, I was selected for a national-level football camp as a goalkeeper and left defender —
+learning discipline, pressure handling, and teamwork, which I apply in my work today.
 </p>
 
 <img src="images/jersey.jpeg" class="jersey">
@@ -219,7 +167,6 @@ Right now, I’m focused on leveling up my fundamentals, building more projects,
 <h3>Turf Tournament</h3>
 <a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">Live</a>
 <video controls src="videos/turf-demo.mp4"></video>
-
 <div class="badges">
 <span class="badge">HTML</span>
 <span class="badge">CSS</span>
@@ -232,7 +179,6 @@ Right now, I’m focused on leveling up my fundamentals, building more projects,
 <h3>FunHub</h3>
 <a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live</a>
 <video controls src="videos/funhub-demo.mp4"></video>
-
 <div class="badges">
 <span class="badge">JavaScript</span>
 <span class="badge">Creative</span>
@@ -244,7 +190,6 @@ Right now, I’m focused on leveling up my fundamentals, building more projects,
 <h3>Slice Frenzy</h3>
 <a href="https://riiyansh-singh.github.io/slice-frenzy/" target="_blank">Play</a>
 <video controls src="videos/Fruit.mp4"></video>
-
 <div class="badges">
 <span class="badge">Game</span>
 <span class="badge">JS</span>
@@ -266,10 +211,8 @@ Right now, I’m focused on leveling up my fundamentals, building more projects,
 <img src="images/robot-car.jpg">
 <img src="images/robot-car1.jpg">
 </div>
-
 <h3>Sensor-Based Motor Car</h3>
-<p>Individual project using Arduino, sensors, and motor control logic.</p>
-
+<p>Individual Arduino-based project using sensors and motor control.</p>
 <div class="badges">
 <span class="badge">Arduino</span>
 <span class="badge">Sensors</span>
@@ -282,10 +225,8 @@ Right now, I’m focused on leveling up my fundamentals, building more projects,
 <img src="images/robot-hand.jpg">
 <img src="images/robot-hand1.jpg">
 </div>
-
 <h3>Robotic Arm Prototype</h3>
-<p>Group robotics camp project focused on servo motors and mechanical coordination.</p>
-
+<p>Group robotics camp project using servo motors and mechanical control.</p>
 <div class="badges">
 <span class="badge">Servo</span>
 <span class="badge">Mechanics</span>
