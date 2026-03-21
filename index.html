@@ -9,9 +9,9 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#050505;color:#fff;overflow-x:hidden;}
+body{background:#050505;color:#fff;overflow-x:hidden;position:relative;}
 
-/* BACKGROUND TEXT FIXED */
+/* BACKGROUND TEXT */
 body::before{
 content:"Riyansh Portfolio • Developer • Builder";
 position:fixed;
@@ -20,7 +20,8 @@ transform:translate(-50%,-50%);
 font-size:6vw;
 color:rgba(255,255,255,0.02);
 white-space:nowrap;
-z-index:-1;
+z-index:0;
+pointer-events:none;
 }
 
 /* NAV */
@@ -28,78 +29,177 @@ z-index:-1;
 position:fixed;top:0;width:100%;
 padding:20px;
 display:flex;justify-content:space-between;
+align-items:center;
 z-index:100;
 background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 }
 
 .logo{
-width:40px;height:40px;background:#fff;color:#000;
+width:40px;height:40px;
+background:#fff;color:#000;
 display:flex;align-items:center;justify-content:center;
-border-radius:10px;font-weight:bold;
+font-weight:bold;border-radius:10px;
 }
 
+.nav button{
+background:#fff;color:#000;
+padding:10px 20px;border:none;
+border-radius:20px;cursor:pointer;
+}
+
+/* HERO */
 .hero{
-display:flex;justify-content:space-between;
+display:flex;
+justify-content:space-between;
 align-items:center;
 min-height:100vh;
 padding:100px 10%;
+position:relative;
+z-index:1;
 }
 
-.hero-left h1{font-size:6vw;font-weight:900;}
-.hero-left span{color:cyan;}
+.hero-left h1{
+font-size:6vw;
+font-weight:900;
+line-height:0.8;
+text-transform:uppercase;
+}
+.hero-left span{
+background:linear-gradient(to right,white,gray);
+-webkit-background-clip:text;
+color:transparent;
+}
+.hero-left h2{margin-top:20px;color:cyan;}
+.hero-left p{margin-top:15px;max-width:400px;opacity:0.7;}
+
+.hero-right{
+display:flex;
+flex-direction:column;
+gap:20px;
+align-items:center;
+}
 
 .hero-img{
-width:140px;height:140px;border-radius:50%;
+width:140px;height:140px;
+object-fit:cover;
+border-radius:50%;
 border:3px solid cyan;
+box-shadow:0 0 25px cyan;
 }
 
-.status-box, .contact-box{
-background:#111;padding:15px;border-radius:15px;margin-top:10px;
+/* STATUS BOX */
+.status-box{
+background:#111;
+padding:15px;
+border-radius:15px;
+border:1px solid #222;
+text-align:center;
+font-size:12px;
 }
 
+/* CONTACT */
+.contact-box{
+background:#111;
+padding:15px 20px;
+border-radius:20px;
+border:1px solid #222;
+}
+
+/* SOCIAL */
+.socials{display:flex;gap:15px;}
 .socials a{
-margin:5px;font-size:20px;color:white;
+font-size:20px;
+padding:12px;
+background:#111;
+border-radius:15px;
+color:white;
+transition:.3s;
 }
+.socials a:hover{background:cyan;color:black;}
 
 /* SECTION */
-section{padding:80px 10%;}
+section{padding:80px 10%;position:relative;z-index:1;}
+h2{text-align:center;margin-bottom:40px;}
 
-h2{text-align:center;margin-bottom:30px;}
+/* ABOUT */
+.about-box{
+max-width:800px;margin:auto;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:35px;border-radius:25px;
+backdrop-filter:blur(10px);
+line-height:1.8;
+font-size:15px;
+}
 
-/* GRID */
+/* PROJECTS */
 .projects{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
-
-.card{background:#111;padding:15px;border-radius:15px;}
+.card{
+background:#111;
+padding:15px;
+border-radius:15px;
+transition:.3s;
+}
+.card:hover{transform:translateY(-5px);}
 .card img{width:100%;border-radius:10px;}
+
+.desc{font-size:13px;opacity:0.7;margin-top:5px;}
+
+.link-btn{
+display:inline-block;
+margin-top:10px;
+padding:6px 12px;
+background:cyan;
+color:black;
+border-radius:10px;
+font-size:12px;
+text-decoration:none;
+font-weight:bold;
+}
 
 video{width:100%;margin-top:10px;border-radius:10px;}
 
+/* ROBOTICS */
 .double-img{display:flex;gap:10px;}
 .double-img img{width:50%;}
 
+/* CERTIFICATES */
 .certificates{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
-
-.timeline-item{
-padding:15px;border-left:3px solid cyan;
-background:#111;margin-bottom:10px;
+.certificates div{
+text-align:center;
+}
+.certificates img{
+width:100%;
+border-radius:10px;
 }
 
-/* FINAL */
-.fade{opacity:1;}
+/* TIMELINE */
+.timeline{
+max-width:700px;margin:auto;
+display:flex;flex-direction:column;gap:20px;
+}
+.timeline-item{
+padding:15px;
+border-left:3px solid cyan;
+background:#111;border-radius:10px;
+}
 
-button{
-padding:10px 20px;
-background:cyan;border:none;
-border-radius:20px;cursor:pointer;
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(40px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center;gap:40px;}
+.hero-left h1{font-size:60px;}
 }
 </style>
 </head>
@@ -111,18 +211,20 @@ border-radius:20px;cursor:pointer;
 <button onclick="hireMe()">Contact</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <div class="hero-left">
 <h1>Riyansh <br><span>Singh</span></h1>
-<p>Developer • Robotics • Creative Tech</p>
+<h2>Developer & Creative Builder</h2>
+<p>Exploring code, robotics, and creative visuals while building real-world projects.</p>
 </div>
 
-<div>
+<div class="hero-right">
 <img src="images/profile.jpeg" class="hero-img">
 
 <div class="status-box">
-📍 Agra, India <br> Student / Developer
+📍 Agra, India <br>
+🟢 Student / Developer <br>
+⚡ Building & Learning
 </div>
 
 <div class="contact-box">📩 singhriyansh2006@gmail.com</div>
@@ -135,103 +237,50 @@ border-radius:20px;cursor:pointer;
 </div>
 </section>
 
-<!-- ABOUT -->
-<section>
-<h2>About</h2>
-<p>
-Aspiring engineer working on robotics and web development. Built projects like Slice Frenzy, FunHub and Arduino-based robotics systems.
-</p>
-</section>
-
-<!-- PROJECTS -->
-<section>
-<h2>Projects</h2>
-<div class="projects">
-
-<div class="card">
-<img src="images/slice-frenzy.png">
-<h3>Slice Frenzy</h3>
-<video controls src="videos/Fruit.mp4"></video>
-</div>
-
-<div class="card">
-<img src="images/funhub-project.png">
-<h3>FunHub</h3>
-</div>
-
-</div>
-</section>
-
-<!-- ROBOTICS -->
-<section>
-<h2>Robotics</h2>
-
-<div class="projects">
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-car.jpg">
-<img src="images/robot-car1.jpg">
-</div>
-<p>Motor Car (Individual)</p>
-</div>
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-hand.jpg">
-<img src="images/robot-hand1.jpg">
-</div>
-<p>Robotic Arm (Group)</p>
-</div>
-
-</div>
-</section>
-
-<!-- TIMELINE -->
-<section>
-<h2>Journey</h2>
-<div class="timeline-item">2024 - School</div>
-<div class="timeline-item">2025 - Projects</div>
-<div class="timeline-item">2026 - PCM</div>
-</section>
+<!-- KEEP REST SAME (ABOUT, PROJECTS, ROBOTICS, TIMELINE, CREATIVE etc.) -->
 
 <!-- CERTIFICATES -->
-<section>
+<section class="fade">
 <h2>Certificates</h2>
 <div class="certificates">
 
 <div>
 <img src="images/cert-infosys-ai.jpeg">
-<p>Infosys AI</p>
+<p class="desc">Infosys AI Certification</p>
+</div>
+
+<div>
+<img src="images/cert-infosys-generative.jpeg">
+<p class="desc">Generative AI</p>
 </div>
 
 <div>
 <img src="images/cert-launchpad.jpeg">
-<p>Launchpad</p>
+<p class="desc">Launchpad Program</p>
+</div>
+
+<div>
+<img src="images/cert-robotics-achievement.jpeg">
+<p class="desc">Robotics Achievement</p>
+</div>
+
+<div>
+<img src="images/cert-robotics-participation.jpeg">
+<p class="desc">Robotics Participation</p>
 </div>
 
 </div>
-</section>
-
-<!-- CREATIVE -->
-<section>
-<h2>Creative</h2>
-<video controls src="videos/guitar.mp4"></video>
-<video controls src="videos/singing.mp4"></video>
-</section>
-
-<!-- FINAL CONTACT -->
-<section style="text-align:center;">
-<h2>Let’s Build Something</h2>
-<p>Open to collaboration and opportunities.</p>
-<button onclick="hireMe()">Contact Me</button>
-
-<p style="margin-top:20px;opacity:0.5;">
-“Started with curiosity, continuing with consistency.”
-</p>
 </section>
 
 <script>
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
 function hireMe(){
 window.location.href="mailto:singhriyansh2006@gmail.com";
 }
