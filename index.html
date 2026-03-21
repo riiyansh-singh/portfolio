@@ -67,8 +67,20 @@ color:transparent;
 display:flex;
 flex-direction:column;
 gap:20px;
+align-items:center;
 }
 
+/* PROFILE IMAGE */
+.hero-img{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:50%;
+border:3px solid cyan;
+box-shadow:0 0 25px cyan;
+}
+
+/* CONTACT */
 .contact-box{
 background:#111;
 padding:15px 20px;
@@ -76,6 +88,7 @@ border-radius:20px;
 border:1px solid #222;
 }
 
+/* SOCIAL */
 .socials{display:flex;gap:15px;}
 
 .socials a{
@@ -96,12 +109,33 @@ color:black;
 section{padding:80px 10%;}
 h2{text-align:center;margin-bottom:40px;}
 
-/* ABOUT */
-.about p{
+/* ABOUT BOX */
+.about-box{
 max-width:750px;
 margin:auto;
-text-align:center;
-opacity:.85;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:30px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(0,255,255,0.08);
+transition:0.3s;
+}
+
+.about-box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 40px rgba(0,255,255,0.2);
+}
+
+.about-box p{
+font-size:1.05rem;
+line-height:1.7;
+opacity:0.9;
+}
+
+.about-highlight{
+color:cyan;
+font-weight:600;
 }
 
 /* PROJECTS */
@@ -122,7 +156,7 @@ transition:.3s;
 .card img{width:100%;border-radius:10px;}
 video{width:100%;margin-top:10px;border-radius:10px;}
 
-/* DOUBLE IMG */
+/* ROBOTICS */
 .double-img{display:flex;gap:10px;}
 .double-img img{width:50%;}
 
@@ -147,7 +181,6 @@ display:flex;
 flex-direction:column;
 gap:20px;
 }
-
 .timeline-item{
 padding:15px;
 border-left:3px solid cyan;
@@ -196,6 +229,8 @@ gap:40px;
 </div>
 
 <div class="hero-right">
+<img src="images/profile.png" class="hero-img">
+
 <div class="contact-box">📩 singhriyansh2006@gmail.com</div>
 
 <div class="socials">
@@ -208,13 +243,25 @@ gap:40px;
 </section>
 
 <!-- ABOUT -->
-<section class="about fade">
+<section class="fade">
 <h2>About Me</h2>
+
+<div class="about-box">
 <p>
-I build real things while learning. Starting from robotics and Arduino, I moved into web development and created projects like Slice Frenzy and a live Turf Tournament website.
-Also selected for a national-level football camp as goalkeeper and left defender.
+I’m someone who doesn’t just learn tech — I <span class="about-highlight">build with it</span>.
+
+My journey started with <span class="about-highlight">robotics and Arduino</span>, exploring sensors, motors, and real hardware.
+That curiosity pushed me into <span class="about-highlight">web development</span>, where I now create interactive projects,
+games, and real-world websites.
+
+I’ve built projects like <span class="about-highlight">Slice Frenzy</span> and a live
+<span class="about-highlight">Turf Tournament website</span>, focusing on execution over theory.
+
+Beyond tech, I was selected for a <span class="about-highlight">national-level football camp</span>,
+which built discipline and consistency I apply in my work.
 </p>
-<img src="images/profile.jpeg" style="width:150px;border-radius:50%;margin:auto;display:block;">
+</div>
+
 </section>
 
 <!-- PROJECTS -->
@@ -256,7 +303,7 @@ Also selected for a national-level football camp as goalkeeper and left defender
 <img src="images/robot-car.jpg">
 <img src="images/robot-car1.jpg">
 </div>
-<h3>Motor Car (Individual Project)</h3>
+<h3>Motor Car (Individual)</h3>
 </div>
 
 <div class="card">
@@ -264,7 +311,7 @@ Also selected for a national-level football camp as goalkeeper and left defender
 <img src="images/robot-hand.jpg">
 <img src="images/robot-hand1.jpg">
 </div>
-<h3>Robotic Arm (Group Project)</h3>
+<h3>Robotic Arm (Group)</h3>
 </div>
 
 </div>
@@ -273,20 +320,17 @@ Also selected for a national-level football camp as goalkeeper and left defender
 <!-- TIMELINE -->
 <section class="fade">
 <h2>Journey</h2>
-
 <div class="timeline">
 <div class="timeline-item">2024 - High School Completed</div>
 <div class="timeline-item">2025 - Web Development & Robotics</div>
-<div class="timeline-item">2026 - PCM Studies (Ongoing)</div>
+<div class="timeline-item">2026 - PCM Studies</div>
 <div class="timeline-item">Future - Engineering</div>
 </div>
-
 </section>
 
 <!-- CERTIFICATES -->
 <section class="fade">
 <h2>Certificates</h2>
-
 <div class="certificates">
 <img src="images/cert-infosys-ai.jpeg">
 <img src="images/cert-infosys-generative.jpeg">
@@ -294,19 +338,16 @@ Also selected for a national-level football camp as goalkeeper and left defender
 <img src="images/cert-robotics-achievement.jpeg">
 <img src="images/cert-robotics-participation.jpeg">
 </div>
-
 </section>
 
 <!-- CREATIVE -->
 <section class="fade">
 <h2>Creative Work</h2>
-
 <video controls src="videos/guitar.mp4"></video>
 <video controls src="videos/guitar2.mp4"></video>
 <video controls src="videos/singing.mp4"></video>
 <video controls src="videos/shot-1.mp4"></video>
 <video controls src="videos/shot-2.mp4"></video>
-
 </section>
 
 <script>
@@ -318,6 +359,7 @@ el.classList.add('show');
 }
 });
 });
+
 function hireMe(){
 window.location.href="mailto:singhriyansh2006@gmail.com";
 }
