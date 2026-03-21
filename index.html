@@ -5,159 +5,162 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Riyansh Singh</title>
 
+<!-- ICONS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{
-background: radial-gradient(circle at top,#0f172a,#020617);
-color:#fff;
-line-height:1.6;
-overflow-x:hidden;
-}
+body{background:#050505;color:#fff;overflow-x:hidden;}
 
 /* NAV */
-nav{
+.nav{
 position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(255,255,255,0.05);
-padding:10px 25px;
-border-radius:30px;
-backdrop-filter:blur(10px);
-z-index:999;
-font-weight:bold;
+top:0;
+width:100%;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+}
+.logo{
+width:40px;height:40px;
+background:#fff;color:#000;
+display:flex;align-items:center;justify-content:center;
+font-weight:bold;border-radius:10px;
+}
+.nav button{
+background:#fff;color:#000;
+padding:10px 20px;border:none;
+border-radius:20px;cursor:pointer;
 }
 
 /* HERO */
-.hero{text-align:center;padding:120px 20px 70px;}
-.hero img{
-width:150px;height:150px;border-radius:50%;
-border:3px solid cyan;
-box-shadow:0 0 25px cyan;
-object-fit:cover;
-}
-.hero h1{font-size:2.5rem;margin-top:15px;}
-.hero p{opacity:.7;margin-top:10px;}
-
-/* SECTION */
-section{max-width:1100px;margin:auto;padding:70px 20px;}
-h2{text-align:center;font-size:2rem;margin-bottom:30px;}
-h2::after{
-content:"";display:block;width:60px;height:3px;
-background:cyan;margin:10px auto;
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+min-height:100vh;
+padding:100px 10%;
 }
 
-/* ABOUT */
-.about p{
-max-width:750px;margin:auto;text-align:center;
-opacity:.85;font-size:1.05rem;
+.hero-left h1{
+font-size:6vw;
+font-weight:900;
+line-height:0.8;
+text-transform:uppercase;
 }
-.jersey{
-width:260px;margin:30px auto;display:block;
-border-radius:12px;
-box-shadow:0 0 30px rgba(0,255,255,0.2);
+.hero-left span{
+background:linear-gradient(to right,white,gray);
+-webkit-background-clip:text;
+color:transparent;
 }
+.hero-left h2{margin-top:20px;color:cyan;}
+.hero-left p{margin-top:15px;max-width:400px;opacity:0.7;}
 
-/* GRID */
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.card{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.08);
-padding:15px;border-radius:20px;
-transition:.3s;
-backdrop-filter:blur(10px);
-}
-.card:hover{
-transform:translateY(-8px) scale(1.02);
-box-shadow:0 0 25px rgba(0,255,255,0.25);
-}
-.card img{width:100%;border-radius:12px;margin-bottom:10px;}
-.card a{color:cyan;font-size:14px;display:inline-block;margin-bottom:10px;}
-
-/* DOUBLE IMG */
-.double-img{display:flex;gap:10px;}
-.double-img img{width:50%;}
-
-/* BADGES */
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
-.badge{
-background:rgba(255,255,255,0.05);
-padding:6px 12px;border-radius:20px;
-font-size:12px;
-border:1px solid rgba(255,255,255,0.1);
-}
-
-/* VIDEO */
-video{
-width:100%;max-width:420px;
-display:block;margin:15px auto;
-border-radius:12px;
-}
-
-/* CERTIFICATES */
-.certificates{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+.hero-right{
+display:flex;
+flex-direction:column;
 gap:20px;
 }
-.certificates img{
-width:100%;border-radius:12px;
+.contact-box{
+background:#111;
+padding:15px 20px;
+border-radius:20px;
+border:1px solid #222;
+}
+.socials{display:flex;gap:15px;}
+.socials a{
+font-size:20px;
+padding:12px;
+background:#111;
+border-radius:15px;
+color:white;
 transition:.3s;
 }
-.certificates img:hover{transform:scale(1.05);}
+.socials a:hover{background:cyan;color:black;}
 
-/* CONTACT */
-.center{text-align:center;}
-.icons{text-align:center;margin-top:25px;}
-.icons a{
-margin:10px;color:cyan;text-decoration:none;
-font-weight:bold;
-padding:8px 14px;border-radius:20px;
-border:1px solid rgba(255,255,255,0.1);
+/* SECTION */
+section{padding:80px 10%;}
+h2{text-align:center;margin-bottom:40px;}
+
+/* PROJECTS */
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.card{
+background:#111;
+padding:15px;
+border-radius:15px;
 transition:.3s;
 }
-.icons a:hover{background:cyan;color:#000;}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;border-radius:10px;}
+video{width:100%;margin-top:10px;border-radius:10px;}
+
+/* ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero{flex-direction:column;text-align:center;gap:40px;}
+.hero-left h1{font-size:60px;}
+}
 </style>
 </head>
 
 <body>
 
-<nav>Riyansh Singh</nav>
+<!-- NAV -->
+<nav class="nav">
+<div class="logo">R</div>
+<button onclick="hireMe()">Contact</button>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
-<img src="images/profile.jpeg">
-<h1>Hi, I'm Riyansh</h1>
-<p>Building Web Projects • Exploring Robotics • Creating Visuals</p>
-</section>
 
-<!-- ABOUT -->
-<section class="about">
-<h2>About Me</h2>
+<div class="hero-left">
+<h1>
+Riyansh <br>
+<span>Singh</span>
+</h1>
+
+<h2>Developer & Creative Builder</h2>
+
 <p>
-I don’t just learn tech — I build with it. My journey started with hands-on robotics,
-experimenting with sensors, Arduino, and real hardware.
-
-That curiosity pushed me into web development, where I now create interactive projects,
-games, and real-world websites.
-
-From building <b>Slice Frenzy</b> to delivering a <b>client-based Turf Tournament website</b>,
-I focus on turning ideas into working products.
-
-Alongside tech, I was selected for a national-level football camp as a goalkeeper and left defender —
-learning discipline, pressure handling, and teamwork, which I apply in my work today.
+Exploring code, robotics, and creative visuals while building real-world projects.
 </p>
+</div>
 
-<img src="images/jersey.jpeg" class="jersey">
+<div class="hero-right">
+
+<div class="contact-box">
+<p>📩 singhriyansh2006@gmail.com</p>
+</div>
+
+<div class="socials">
+<a href="https://github.com/riiyansh-singh" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/riyansh-singh-839817385" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://www.instagram.com/riiiyanshh.3" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+
+</div>
+
 </section>
 
 <!-- PROJECTS -->
-<section>
+<section class="fade">
 <h2>Projects</h2>
 
 <div class="projects">
@@ -167,11 +170,6 @@ learning discipline, pressure handling, and teamwork, which I apply in my work t
 <h3>Turf Tournament</h3>
 <a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">Live</a>
 <video controls src="videos/turf-demo.mp4"></video>
-<div class="badges">
-<span class="badge">HTML</span>
-<span class="badge">CSS</span>
-<span class="badge">UI</span>
-</div>
 </div>
 
 <div class="card">
@@ -179,10 +177,6 @@ learning discipline, pressure handling, and teamwork, which I apply in my work t
 <h3>FunHub</h3>
 <a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live</a>
 <video controls src="videos/funhub-demo.mp4"></video>
-<div class="badges">
-<span class="badge">JavaScript</span>
-<span class="badge">Creative</span>
-</div>
 </div>
 
 <div class="card">
@@ -190,92 +184,29 @@ learning discipline, pressure handling, and teamwork, which I apply in my work t
 <h3>Slice Frenzy</h3>
 <a href="https://riiyansh-singh.github.io/slice-frenzy/" target="_blank">Play</a>
 <video controls src="videos/Fruit.mp4"></video>
-<div class="badges">
-<span class="badge">Game</span>
-<span class="badge">JS</span>
-<span class="badge">Interactive</span>
-</div>
 </div>
 
 </div>
 </section>
 
-<!-- ROBOTICS -->
-<section>
-<h2>Robotics</h2>
+<script>
+// fade animation
+const faders = document.querySelectorAll('.fade');
 
-<div class="projects">
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
 
-<div class="card">
-<div class="double-img">
-<img src="images/robot-car.jpg">
-<img src="images/robot-car1.jpg">
-</div>
-<h3>Sensor-Based Motor Car</h3>
-<p>Individual Arduino-based project using sensors and motor control.</p>
-<div class="badges">
-<span class="badge">Arduino</span>
-<span class="badge">Sensors</span>
-<span class="badge">Hardware</span>
-</div>
-</div>
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-hand.jpg">
-<img src="images/robot-hand1.jpg">
-</div>
-<h3>Robotic Arm Prototype</h3>
-<p>Group robotics camp project using servo motors and mechanical control.</p>
-<div class="badges">
-<span class="badge">Servo</span>
-<span class="badge">Mechanics</span>
-<span class="badge">Teamwork</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- CREATIVE -->
-<section>
-<h2>Creative Work</h2>
-
-<video controls src="videos/guitar.mp4"></video>
-<video controls src="videos/guitar2.mp4"></video>
-<video controls src="videos/singing.mp4"></video>
-<video controls src="videos/shot-1.mp4"></video>
-<video controls src="videos/shot-2.mp4"></video>
-
-</section>
-
-<!-- CERTIFICATES -->
-<section>
-<h2>Certificates</h2>
-
-<div class="certificates">
-<img src="images/cert-infosys-ai.jpeg">
-<img src="images/cert-infosys-generative.jpeg">
-<img src="images/cert-launchpad.jpeg">
-<img src="images/cert-robotics-achievement.jpeg">
-<img src="images/cert-robotics-participation.jpeg">
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section>
-<h2>Contact</h2>
-
-<p class="center">Email: singhriyansh2006@gmail.com</p>
-
-<div class="icons">
-<a href="https://github.com/riiyansh-singh" target="_blank">GitHub</a>
-<a href="https://www.linkedin.com/in/riyansh-singh-839817385" target="_blank">LinkedIn</a>
-<a href="https://www.instagram.com/riiiyanshh.3" target="_blank">Instagram</a>
-</div>
-
-</section>
+// contact button
+function hireMe(){
+  window.location.href = "mailto:singhriyansh2006@gmail.com";
+}
+</script>
 
 </body>
 </html>
