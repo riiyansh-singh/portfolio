@@ -450,6 +450,20 @@ el.classList.add('show');
 function hireMe(){
 window.location.href="mailto:singhriyansh2006@gmail.com";
 }
+
+const now = new Date();
+const target = new Date("2026-08-01");
+
+const status2026 = document.getElementById("status2026");
+const statusNext = document.getElementById("statusNext");
+
+if(now >= target){
+    status2026.innerText = "PCM Studies Completed";
+    statusNext.innerText = "B.Tech Engineering (Computer Science)";
+} else {
+    status2026.innerText = "PCM Studies Ongoing";
+    statusNext.innerText = "B.Tech Engineering (Planned)";
+}
 </script>
 
 <!-- END CARD -->
