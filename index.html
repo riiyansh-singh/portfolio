@@ -1,162 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyansh Singh</title>
-
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyansh Singh | Official Portfolio</title>
+    <!-- Tailwind for layout, Lucide for icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+<body class="bg-[#050505] text-zinc-100 selection:bg-cyan-400 selection:text-black">
 
-<body>
+    <div class="fixed inset-0 grain pointer-events-none opacity-10 z-50"></div>
 
-<nav>Riyansh Singh</nav>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-[100] transition-all duration-500 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-black font-black italic">R</div>
+                <span class="font-black tracking-tighter uppercase italic hidden md:block">Riyansh Singh</span>
+            </div>
+            <a href="mailto:singhriyansh2006@gmail.com" class="bg-white text-black px-6 py-2 rounded-full hover:bg-cyan-400 transition-all font-black text-[10px] uppercase tracking-widest">Contact</a>
+        </div>
+    </nav>
 
-<!-- HERO -->
-<section class="hero">
-<img src="images/profile.jpeg">
-<h1>Hi, I'm Riyansh</h1>
-<p>Developer • Robotics • Creative Editor</p>
-</section>
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto pt-20">
+            <h1 class="text-[16vw] md:text-[12vw] font-black leading-[0.75] tracking-tighter uppercase italic mb-4">
+                RIYANSH <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-zinc-800">SINGH</span>
+            </h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12 items-end">
+                <div class="space-y-6">
+                    <h2 class="text-2xl md:text-4xl font-black uppercase italic text-cyan-500 leading-none">Developer & Student</h2>
+                    <p class="text-zinc-500 text-xl font-light max-w-lg leading-snug">
+                        Building functional software and robotics projects while mastering the foundations of PCM.
+                    </p>
+                </div>
+                <div class="flex gap-4 md:justify-end social-links">
+                    <!-- Links populated by logic or hardcoded -->
+                    <a href="https://github.com/riiyansh-singh" target="_blank" class="p-5 rounded-3xl bg-zinc-900 border border-white/5 hover:bg-zinc-800 transition-all"><i data-lucide="github"></i></a>
+                    <a href="https://linkedin.com/in/riyansh-singh-839817385" target="_blank" class="p-5 rounded-3xl bg-zinc-900 border border-white/5 hover:bg-zinc-800 transition-all"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+        </section>
 
-<!-- ABOUT -->
-<section>
-<h2>About Me</h2>
-<p>
-I'm Riyansh Singh, a developer exploring both software and hardware. I build websites,
-experiment with robotics, and constantly push my limits. I was selected for the National
-U-19 Football Camp as a goalkeeper and left defender, but later focused on academics and tech.
-</p>
+        <!-- Robotics Section -->
+        <section class="py-24 px-6 max-w-7xl mx-auto">
+            <h3 class="text-5xl md:text-8xl font-black italic tracking-tighter uppercase mb-16">Robotics</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group bg-zinc-900/40 border border-white/5 rounded-[3.5rem] overflow-hidden p-5 transition-all hover:border-cyan-500/50">
+                    <div class="aspect-[16/10] rounded-[2.8rem] overflow-hidden bg-zinc-950 mb-8 border border-white/5">
+                        <img src="images/robot-car.jpg" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" alt="Robot Car">
+                    </div>
+                    <h4 class="text-3xl font-black italic uppercase mb-2">Sensor Motor Car</h4>
+                </div>
+                <div class="group bg-zinc-900/40 border border-white/5 rounded-[3.5rem] overflow-hidden p-5 transition-all hover:border-cyan-500/50">
+                    <div class="aspect-[16/10] rounded-[2.8rem] overflow-hidden bg-zinc-950 mb-8 border border-white/5">
+                        <img src="images/robot-hand.jpg" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" alt="Robot Hand">
+                    </div>
+                    <h4 class="text-3xl font-black italic uppercase mb-2">Robotic Hand</h4>
+                </div>
+            </div>
+        </section>
 
-<img src="images/jersey.jpeg" class="jersey">
-</section>
+        <!-- Dynamic Timeline -->
+        <section class="py-24 px-6 max-w-7xl mx-auto">
+            <h3 class="text-4xl font-black italic uppercase mb-12 tracking-tighter underline decoration-cyan-500 underline-offset-8">The Timeline</h3>
+            <div id="timeline-container" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- JS will inject timeline items here -->
+            </div>
+        </section>
 
-<!-- PROJECTS -->
-<section>
-<h2>Projects</h2>
+        <!-- Footer -->
+        <footer class="py-24 px-6 text-center">
+            <h2 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-[0.8] mb-16 text-outline">RIYANSH</h2>
+            <div class="flex justify-center gap-6">
+                 <a href="https://instagram.com/riiiyanshh.3" target="_blank" class="p-4 bg-zinc-900 rounded-2xl"><i data-lucide="instagram"></i></a>
+            </div>
+        </footer>
+    </main>
 
-<div class="projects">
-
-<div class="card">
-<img src="images/turf-project.png">
-<h3>Turf Tournament</h3>
-<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html" target="_blank">Live</a>
-<video controls src="videos/turf-demo.mp4"></video>
-
-<div class="badges">
-<span class="badge">HTML</span>
-<span class="badge">CSS</span>
-<span class="badge">UI</span>
-</div>
-</div>
-
-<div class="card">
-<img src="images/funhub-project.png">
-<h3>FunHub</h3>
-<a href="https://riiyansh-singh.github.io/FunHub/" target="_blank">Live</a>
-<video controls src="videos/funhub-demo.mp4"></video>
-
-<div class="badges">
-<span class="badge">JavaScript</span>
-<span class="badge">Creative</span>
-</div>
-</div>
-
-<div class="card">
-<img src="images/slice-frenzy.png">
-<h3>Slice Frenzy</h3>
-<a href="https://riiyansh-singh.github.io/slice-frenzy/" target="_blank">Play</a>
-<video controls src="videos/shot-1.mp4"></video>
-
-<div class="badges">
-<span class="badge">Game</span>
-<span class="badge">JS</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- ROBOTICS -->
-<section>
-<h2>Robotics</h2>
-
-<div class="projects">
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-car.jpg">
-<img src="images/robot-car1.jpg">
-</div>
-
-<h3>Sensor-Based Motor Car</h3>
-<p>Individual final-term project using Arduino and sensors.</p>
-
-<div class="badges">
-<span class="badge">Arduino</span>
-<span class="badge">Sensors</span>
-</div>
-</div>
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-hand.jpg">
-<img src="images/robot-hand1.jpg">
-</div>
-
-<h3>Robotic Hand Prototype</h3>
-<p>Group project from robotics camp focused on servo motors.</p>
-
-<div class="badges">
-<span class="badge">Servo</span>
-<span class="badge">Teamwork</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- CREATIVE -->
-<section>
-<h2>Creative Work</h2>
-
-<video controls src="videos/guitar.mp4"></video>
-<video controls src="videos/guitar2.mp4"></video>
-<video controls src="videos/singing.mp4"></video>
-<video controls src="videos/shot-1.mp4"></video>
-<video controls src="videos/shot-2.mp4"></video>
-
-</section>
-
-<!-- CERTIFICATES -->
-<section>
-<h2>Certificates</h2>
-
-<div class="certificates">
-<img src="images/cert-infosys-ai.jpeg">
-<img src="images/cert-infosys-generative.jpeg">
-<img src="images/cert-launchpad.jpeg">
-<img src="images/cert-robotics-achievement.jpeg">
-<img src="images/cert-robotics-participation.jpeg">
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section>
-<h2>Contact</h2>
-
-<p class="center">Email: singhriyansh2006@gmail.com</p>
-
-<div class="icons">
-<a href="https://github.com/riiyansh-singh" target="_blank">GitHub</a>
-<a href="https://www.linkedin.com/in/riyansh-singh-839817385" target="_blank">LinkedIn</a>
-<a href="https://www.instagram.com/riiiyanshh.3" target="_blank">Instagram</a>
-</div>
-
-</section>
-
-<script src="js/script.js"></script>
-
+    <script src="js/script.js"></script>
 </body>
 </html>
+
