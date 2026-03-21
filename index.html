@@ -9,16 +9,28 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#050505;color:#fff;overflow-x:hidden;}
+body{background:#050505;color:#fff;overflow-x:hidden;position:relative;}
+
+/* BACKGROUND TEXT */
+body::before{
+content:"Riyansh Portfolio • Developer • Builder";
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:6vw;
+color:rgba(255,255,255,0.02);
+white-space:nowrap;
+z-index:0;
+pointer-events:none;
+}
 
 /* NAV */
 .nav{
 position:fixed;
-top:0;
-width:100%;
+top:0;width:100%;
 padding:20px;
-display:flex;
-justify-content:space-between;
+display:flex;justify-content:space-between;
 align-items:center;
 z-index:100;
 background:rgba(0,0,0,0.6);
@@ -45,6 +57,8 @@ justify-content:space-between;
 align-items:center;
 min-height:100vh;
 padding:100px 10%;
+position:relative;
+z-index:1;
 }
 
 .hero-left h1{
@@ -53,7 +67,6 @@ font-weight:900;
 line-height:0.8;
 text-transform:uppercase;
 }
-
 .hero-left span{
 background:linear-gradient(to right,white,gray);
 -webkit-background-clip:text;
@@ -72,12 +85,21 @@ align-items:center;
 
 /* PROFILE IMAGE */
 .hero-img{
-width:140px;
-height:140px;
+width:140px;height:140px;
 object-fit:cover;
 border-radius:50%;
 border:3px solid cyan;
 box-shadow:0 0 25px cyan;
+}
+
+/* STATUS BOX */
+.status-box{
+background:#111;
+padding:15px;
+border-radius:15px;
+border:1px solid #222;
+text-align:center;
+font-size:12px;
 }
 
 /* CONTACT */
@@ -90,7 +112,6 @@ border:1px solid #222;
 
 /* SOCIAL */
 .socials{display:flex;gap:15px;}
-
 .socials a{
 font-size:20px;
 padding:12px;
@@ -99,43 +120,19 @@ border-radius:15px;
 color:white;
 transition:.3s;
 }
-
-.socials a:hover{
-background:cyan;
-color:black;
-}
+.socials a:hover{background:cyan;color:black;}
 
 /* SECTIONS */
-section{padding:80px 10%;}
+section{padding:80px 10%;position:relative;z-index:1;}
 h2{text-align:center;margin-bottom:40px;}
 
-/* ABOUT BOX */
+/* ABOUT */
 .about-box{
-max-width:750px;
-margin:auto;
+max-width:750px;margin:auto;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
-padding:30px;
-border-radius:25px;
+padding:30px;border-radius:25px;
 backdrop-filter:blur(10px);
-box-shadow:0 0 30px rgba(0,255,255,0.08);
-transition:0.3s;
-}
-
-.about-box:hover{
-transform:translateY(-5px);
-box-shadow:0 0 40px rgba(0,255,255,0.2);
-}
-
-.about-box p{
-font-size:1.05rem;
-line-height:1.7;
-opacity:0.9;
-}
-
-.about-highlight{
-color:cyan;
-font-weight:600;
 }
 
 /* PROJECTS */
@@ -151,9 +148,28 @@ padding:15px;
 border-radius:15px;
 transition:.3s;
 }
-
 .card:hover{transform:translateY(-5px);}
 .card img{width:100%;border-radius:10px;}
+
+.desc{
+font-size:13px;
+opacity:0.7;
+margin-top:5px;
+}
+
+/* BUTTON LINK */
+.link-btn{
+display:inline-block;
+margin-top:10px;
+padding:6px 12px;
+background:cyan;
+color:black;
+border-radius:10px;
+font-size:12px;
+text-decoration:none;
+font-weight:bold;
+}
+
 video{width:100%;margin-top:10px;border-radius:10px;}
 
 /* ROBOTICS */
@@ -166,46 +182,35 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
+
+.certificates div{
+text-align:center;
+}
+
 .certificates img{
 width:100%;
+transform:rotate(-90deg);
 border-radius:10px;
-transition:.3s;
 }
-.certificates img:hover{transform:scale(1.05);}
 
 /* TIMELINE */
 .timeline{
-max-width:700px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:20px;
+max-width:700px;margin:auto;
+display:flex;flex-direction:column;gap:20px;
 }
 .timeline-item{
 padding:15px;
 border-left:3px solid cyan;
-background:#111;
-border-radius:10px;
+background:#111;border-radius:10px;
 }
 
 /* ANIMATION */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
+.fade{opacity:0;transform:translateY(40px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
 
 /* MOBILE */
 @media(max-width:768px){
-.hero{
-flex-direction:column;
-text-align:center;
-gap:40px;
-}
+.hero{flex-direction:column;text-align:center;gap:40px;}
 .hero-left h1{font-size:60px;}
 }
 </style>
@@ -213,15 +218,12 @@ gap:40px;
 
 <body>
 
-<!-- NAV -->
 <nav class="nav">
 <div class="logo">R</div>
 <button onclick="hireMe()">Contact</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-
 <div class="hero-left">
 <h1>Riyansh <br><span>Singh</span></h1>
 <h2>Developer & Creative Builder</h2>
@@ -229,7 +231,13 @@ gap:40px;
 </div>
 
 <div class="hero-right">
-<img src="images/profile.png" class="hero-img">
+<img src="images/profile.jpeg" class="hero-img">
+
+<div class="status-box">
+📍 Agra, India <br>
+🟢 Student / Developer <br>
+⚡ Building & Learning
+</div>
 
 <div class="contact-box">📩 singhriyansh2006@gmail.com</div>
 
@@ -239,29 +247,14 @@ gap:40px;
 <a href="https://www.instagram.com/riiiyanshh.3"><i class="fab fa-instagram"></i></a>
 </div>
 </div>
-
 </section>
 
 <!-- ABOUT -->
 <section class="fade">
 <h2>About Me</h2>
-
 <div class="about-box">
-<p>
-I’m someone who doesn’t just learn tech — I <span class="about-highlight">build with it</span>.
-
-My journey started with <span class="about-highlight">robotics and Arduino</span>, exploring sensors, motors, and real hardware.
-That curiosity pushed me into <span class="about-highlight">web development</span>, where I now create interactive projects,
-games, and real-world websites.
-
-I’ve built projects like <span class="about-highlight">Slice Frenzy</span> and a live
-<span class="about-highlight">Turf Tournament website</span>, focusing on execution over theory.
-
-Beyond tech, I was selected for a <span class="about-highlight">national-level football camp</span>,
-which built discipline and consistency I apply in my work.
-</p>
+<p>I build real things while learning — from robotics to web development, turning ideas into working projects.</p>
 </div>
-
 </section>
 
 <!-- PROJECTS -->
@@ -272,82 +265,28 @@ which built discipline and consistency I apply in my work.
 <div class="card">
 <img src="images/turf-project.png">
 <h3>Turf Tournament</h3>
-<a href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html">Live</a>
+<p class="desc">Modern tournament website UI</p>
+<a class="link-btn" href="https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html">Live</a>
 <video controls src="videos/turf-demo.mp4"></video>
 </div>
 
 <div class="card">
 <img src="images/funhub-project.png">
 <h3>FunHub</h3>
-<a href="https://riiyansh-singh.github.io/FunHub/">Live</a>
+<p class="desc">Creative experimental web project</p>
+<a class="link-btn" href="https://riiyansh-singh.github.io/FunHub/">Live</a>
 <video controls src="videos/funhub-demo.mp4"></video>
 </div>
 
 <div class="card">
 <img src="images/slice-frenzy.png">
 <h3>Slice Frenzy</h3>
-<a href="https://riiyansh-singh.github.io/slice-frenzy/">Play</a>
+<p class="desc">Interactive slicing game</p>
+<a class="link-btn" href="https://riiyansh-singh.github.io/slice-frenzy/">Play</a>
 <video controls src="videos/Fruit.mp4"></video>
 </div>
 
 </div>
-</section>
-
-<!-- ROBOTICS -->
-<section class="fade">
-<h2>Robotics</h2>
-<div class="projects">
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-car.jpg">
-<img src="images/robot-car1.jpg">
-</div>
-<h3>Motor Car (Individual)</h3>
-</div>
-
-<div class="card">
-<div class="double-img">
-<img src="images/robot-hand.jpg">
-<img src="images/robot-hand1.jpg">
-</div>
-<h3>Robotic Arm (Group)</h3>
-</div>
-
-</div>
-</section>
-
-<!-- TIMELINE -->
-<section class="fade">
-<h2>Journey</h2>
-<div class="timeline">
-<div class="timeline-item">2024 - High School Completed</div>
-<div class="timeline-item">2025 - Web Development & Robotics</div>
-<div class="timeline-item">2026 - PCM Studies</div>
-<div class="timeline-item">Future - Engineering</div>
-</div>
-</section>
-
-<!-- CERTIFICATES -->
-<section class="fade">
-<h2>Certificates</h2>
-<div class="certificates">
-<img src="images/cert-infosys-ai.jpeg">
-<img src="images/cert-infosys-generative.jpeg">
-<img src="images/cert-launchpad.jpeg">
-<img src="images/cert-robotics-achievement.jpeg">
-<img src="images/cert-robotics-participation.jpeg">
-</div>
-</section>
-
-<!-- CREATIVE -->
-<section class="fade">
-<h2>Creative Work</h2>
-<video controls src="videos/guitar.mp4"></video>
-<video controls src="videos/guitar2.mp4"></video>
-<video controls src="videos/singing.mp4"></video>
-<video controls src="videos/shot-1.mp4"></video>
-<video controls src="videos/shot-2.mp4"></video>
 </section>
 
 <script>
@@ -359,7 +298,6 @@ el.classList.add('show');
 }
 });
 });
-
 function hireMe(){
 window.location.href="mailto:singhriyansh2006@gmail.com";
 }
