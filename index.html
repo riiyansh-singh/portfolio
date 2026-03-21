@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riyansh Singh | Official Portfolio</title>
-    <!-- Tailwind for layout, Lucide for icons -->
+    <!-- Tailwind CSS for modern layout -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for the exact same icons from React -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-[#050505] text-zinc-100 selection:bg-cyan-400 selection:text-black">
+<body class="bg-[#050505] text-zinc-100 selection:bg-cyan-400 selection:text-black overflow-x-hidden">
 
-    <div class="fixed inset-0 grain pointer-events-none opacity-10 z-50"></div>
+    <!-- Noise Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-10 z-50 grain"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-[100] transition-all duration-500 px-6 py-4">
@@ -20,7 +22,7 @@
                 <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-black font-black italic">R</div>
                 <span class="font-black tracking-tighter uppercase italic hidden md:block">Riyansh Singh</span>
             </div>
-            <a href="mailto:singhriyansh2006@gmail.com" class="bg-white text-black px-6 py-2 rounded-full hover:bg-cyan-400 transition-all font-black text-[10px] uppercase tracking-widest">Contact</a>
+            <a href="mailto:singhriyansh2006@gmail.com" class="bg-white text-black px-6 py-2 rounded-full hover:bg-cyan-400 transition-all font-black text-[10px] uppercase tracking-widest">Email Me</a>
         </div>
     </nav>
 
@@ -35,49 +37,77 @@
                 <div class="space-y-6">
                     <h2 class="text-2xl md:text-4xl font-black uppercase italic text-cyan-500 leading-none">Developer & Student</h2>
                     <p class="text-zinc-500 text-xl font-light max-w-lg leading-snug">
-                        Building functional software and robotics projects while mastering the foundations of PCM.
+                        Exploring the intersection of core science and creative code. Building websites and hardware projects.
                     </p>
                 </div>
-                <div class="flex gap-4 md:justify-end social-links">
-                    <!-- Links populated by logic or hardcoded -->
+                <div class="flex gap-4 md:justify-end">
+                    <a href="https://instagram.com/riiiyanshh.3" target="_blank" class="p-5 rounded-3xl bg-zinc-900 border border-white/5 hover:bg-zinc-800 transition-all"><i data-lucide="instagram"></i></a>
                     <a href="https://github.com/riiyansh-singh" target="_blank" class="p-5 rounded-3xl bg-zinc-900 border border-white/5 hover:bg-zinc-800 transition-all"><i data-lucide="github"></i></a>
                     <a href="https://linkedin.com/in/riyansh-singh-839817385" target="_blank" class="p-5 rounded-3xl bg-zinc-900 border border-white/5 hover:bg-zinc-800 transition-all"><i data-lucide="linkedin"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Robotics Section -->
+        <!-- Robotics Grid -->
         <section class="py-24 px-6 max-w-7xl mx-auto">
             <h3 class="text-5xl md:text-8xl font-black italic tracking-tighter uppercase mb-16">Robotics</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group bg-zinc-900/40 border border-white/5 rounded-[3.5rem] overflow-hidden p-5 transition-all hover:border-cyan-500/50">
-                    <div class="aspect-[16/10] rounded-[2.8rem] overflow-hidden bg-zinc-950 mb-8 border border-white/5">
-                        <img src="images/robot-car.jpg" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" alt="Robot Car">
-                    </div>
-                    <h4 class="text-3xl font-black italic uppercase mb-2">Sensor Motor Car</h4>
-                </div>
-                <div class="group bg-zinc-900/40 border border-white/5 rounded-[3.5rem] overflow-hidden p-5 transition-all hover:border-cyan-500/50">
-                    <div class="aspect-[16/10] rounded-[2.8rem] overflow-hidden bg-zinc-950 mb-8 border border-white/5">
-                        <img src="images/robot-hand.jpg" class="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" alt="Robot Hand">
-                    </div>
-                    <h4 class="text-3xl font-black italic uppercase mb-2">Robotic Hand</h4>
+            <div id="robotics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Data Injected by JS -->
+            </div>
+        </section>
+
+        <!-- Video Vault -->
+        <section class="py-24 px-6 bg-[#080808]">
+            <div class="max-w-7xl mx-auto">
+                <h3 class="text-4xl font-black italic uppercase mb-12 tracking-tighter flex items-center gap-4">
+                    <i data-lucide="video" class="text-cyan-500"></i> Life & Demos
+                </h3>
+                <div id="video-vault" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Data Injected by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- Dynamic Timeline -->
+        <!-- Projects Grid -->
         <section class="py-24 px-6 max-w-7xl mx-auto">
-            <h3 class="text-4xl font-black italic uppercase mb-12 tracking-tighter underline decoration-cyan-500 underline-offset-8">The Timeline</h3>
-            <div id="timeline-container" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <!-- JS will inject timeline items here -->
+            <h3 class="text-sm font-black text-cyan-500 uppercase tracking-widest italic mb-16 underline decoration-cyan-500 underline-offset-8">Projects</h3>
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Data Injected by JS -->
+            </div>
+        </section>
+
+        <!-- Journey & Certificate Vault -->
+        <section class="py-24 px-6 bg-[#080808]">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <!-- Timeline -->
+                <div class="lg:col-span-5">
+                    <h3 class="text-4xl font-black italic uppercase mb-12 tracking-tighter">Journey</h3>
+                    <div id="timeline-container" class="space-y-4">
+                        <!-- Data Injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Certificates Slider -->
+                <div class="lg:col-span-7 overflow-hidden">
+                    <div class="flex justify-between items-center mb-12 px-4">
+                        <h3 class="text-4xl font-black italic uppercase tracking-tighter">The Vault</h3>
+                        <div class="flex gap-2">
+                            <button id="slide-left" class="p-4 border border-zinc-800 rounded-full hover:bg-white hover:text-black transition-all"><i data-lucide="chevron-left"></i></button>
+                            <button id="slide-right" class="p-4 border border-zinc-800 rounded-full hover:bg-white hover:text-black transition-all"><i data-lucide="chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div id="cert-slider" class="flex gap-6 overflow-x-auto no-scrollbar snap-x pb-8 px-4">
+                        <!-- Data Injected by JS -->
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="py-24 px-6 text-center">
-            <h2 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-[0.8] mb-16 text-outline">RIYANSH</h2>
-            <div class="flex justify-center gap-6">
-                 <a href="https://instagram.com/riiiyanshh.3" target="_blank" class="p-4 bg-zinc-900 rounded-2xl"><i data-lucide="instagram"></i></a>
+        <footer class="py-24 px-6 bg-black border-t border-white/5">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-7xl md:text-[12rem] font-black italic tracking-tighter uppercase leading-[0.8] mb-12 opacity-10">SINGH</h2>
+                <p class="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">EST. 2006 • AGRA • INDIA</p>
             </div>
         </footer>
     </main>
