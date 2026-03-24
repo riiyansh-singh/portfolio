@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Admin — Riyansh Singh</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#07070a;--bg2:#0f0f14;--bg3:#15151d;--bg4:#1a1a24;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --cyan:#00e5ff;--purple:#7b5ea7;--green:#00ff88;--red:#ff4d6d;--yellow:#ffd166;
+  --white:#f0f0f5;--muted:rgba(240,240,245,0.45);
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);min-height:100vh;}
+::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--cyan);}
+
+/* ── PASSWORD SCREEN ── */
+#pw-screen{
+  position:fixed;inset:0;background:var(--bg);z-index:9999;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;
+}
+.pw-box{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:40px;width:360px;text-align:center;}
+.pw-logo{font-family:var(--fh);font-size:28px;font-weight:800;margin-bottom:6px;}
+.pw-logo span{color:var(--cyan);}
+.pw-sub{font-size:12px;color:var(--muted);margin-bottom:28px;}
+.pw-input{
+  width:100%;background:var(--bg4);border:1px solid var(--border);border-radius:12px;
+  padding:13px 16px;color:var(--white);font-family:var(--fb);font-size:15px;
+  outline:none;text-align:center;letter-spacing:4px;transition:.3s;margin-bottom:14px;
+}
+.pw-input:focus{border-color:var(--cyan);}
+.pw-btn{
+  width:100%;padding:13px;background:var(--cyan);color:#000;border:none;
+  border-radius:50px;font-family:var(--fh);font-size:14px;font-weight:700;cursor:pointer;transition:.3s;
+}
+.pw-btn:hover{box-shadow:0 0 25px rgba(0,229,255,.4);}
+.pw-err{font-size:12px;color:var(--red);margin-top:10px;display:none;}
+.pw-hint{font-size:11px;color:var(--muted);margin-top:16px;}
+
+/* ── LAYOUT ── */
+#app{display:none;}
+.shell{display:flex;min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:250px;flex-shrink:0;background:var(--bg2);
+  border-right:1px solid var(--border);
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;padding:0;overflow-y:auto;
+}
+.sb-top{padding:22px 24px;border-bottom:1px solid var(--border);}
+.sb-logo{font-family:var(--fh);font-size:18px;font-weight:800;}
+.sb-logo span{color:var(--cyan);}
+.sb-tagline{font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:2px;}
+
+.sb-nav{flex:1;padding:12px 0;overflow-y:auto;}
+.sb-group{padding:6px 20px 4px;font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;}
+.sb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 20px;font-size:13px;color:var(--muted);
+  cursor:pointer;transition:.2s;border-left:2px solid transparent;
+}
+.sb-item:hover{color:var(--white);background:rgba(255,255,255,.02);}
+.sb-item.active{color:var(--cyan);border-left-color:var(--cyan);background:rgba(0,229,255,.04);}
+.sb-item i{width:16px;font-size:12px;text-align:center;}
+.sb-badge{margin-left:auto;font-size:10px;padding:1px 7px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);color:var(--cyan);border-radius:50px;}
+
+.sb-bottom{padding:16px 20px;border-top:1px solid var(--border);}
+.export-btn{
+  width:100%;padding:11px;background:var(--cyan);color:#000;
+  border:none;border-radius:50px;font-family:var(--fh);
+  font-size:13px;font-weight:700;cursor:pointer;transition:.3s;
+  box-shadow:0 0 20px rgba(0,229,255,.2);
+}
+.export-btn:hover{box-shadow:0 0 30px rgba(0,229,255,.5);transform:translateY(-1px);}
+
+/* ── MAIN ── */
+.main{flex:1;padding:36px 48px;overflow-y:auto;}
+.page{display:none;} .page.active{display:block;}
+
+.page-header{margin-bottom:32px;}
+.page-title{font-family:var(--fh);font-size:26px;font-weight:800;letter-spacing:-1px;}
+.page-title span{color:var(--cyan);}
+.page-desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6;max-width:600px;}
+
+/* ── CARDS ── */
+.card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:14px;transition:.2s;}
+.card:hover{border-color:var(--border2);}
+.card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.card-hd h3{font-family:var(--fh);font-size:14px;font-weight:700;}
+.card-hd .badge{font-size:10px;padding:3px 10px;border-radius:50px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);color:var(--cyan);}
+.card-actions{display:flex;gap:8px;align-items:center;}
+.del-btn{background:none;border:1px solid rgba(255,77,109,.2);color:var(--red);padding:5px 10px;border-radius:8px;font-size:11px;cursor:pointer;transition:.2s;}
+.del-btn:hover{background:rgba(255,77,109,.1);}
+.move-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 8px;border-radius:8px;font-size:11px;cursor:pointer;transition:.2s;}
+.move-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* ── FORM ── */
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-size:10px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;}
+.fg input,.fg textarea,.fg select{
+  background:var(--bg4);border:1px solid var(--border);border-radius:10px;
+  padding:10px 14px;color:var(--white);font-family:var(--fb);font-size:13px;
+  outline:none;transition:.2s;resize:vertical;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--cyan);}
+.fg select option{background:var(--bg3);}
+.fg textarea{min-height:70px;}
+.grid{display:grid;gap:12px;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.g1{grid-template-columns:1fr;}
+.s2{grid-column:span 2;}
+.s3{grid-column:span 3;}
+
+/* ── ADD BUTTON ── */
+.add-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:12px;background:var(--bg3);
+  border:1px dashed rgba(0,229,255,.25);border-radius:12px;
+  color:var(--cyan);font-size:13px;cursor:pointer;transition:.3s;
+  font-family:var(--fb);margin-top:6px;
+}
+.add-btn:hover{background:rgba(0,229,255,.04);border-color:var(--cyan);}
+
+/* ── TAGS ── */
+.tags-wrap{background:var(--bg4);border:1px solid var(--border);border-radius:10px;padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px;cursor:text;transition:.2s;min-height:44px;}
+.tags-wrap:focus-within{border-color:var(--cyan);}
+.tag-chip{padding:3px 10px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);border-radius:50px;font-size:11px;color:var(--cyan);display:flex;align-items:center;gap:5px;}
+.tag-chip button{background:none;border:none;color:var(--cyan);font-size:12px;cursor:pointer;padding:0;line-height:1;}
+.tags-wrap input{background:none;border:none;outline:none;color:var(--white);font-size:12px;font-family:var(--fb);min-width:80px;flex:1;padding:2px 4px;}
+
+/* ── NOTICE ── */
+.notice{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-radius:12px;margin-bottom:20px;font-size:13px;line-height:1.6;}
+.notice.info{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.12);color:rgba(240,240,245,.8);}
+.notice.warn{background:rgba(255,209,102,.05);border:1px solid rgba(255,209,102,.18);color:rgba(240,240,245,.8);}
+.notice.ok{background:rgba(0,255,136,.05);border:1px solid rgba(0,255,136,.18);color:rgba(240,240,245,.8);}
+
+/* ── TOGGLE ── */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;}
+.toggle-info .tname{font-size:14px;font-weight:500;}
+.toggle-info .tdesc{font-size:11px;color:var(--muted);margin-top:2px;}
+.sw{position:relative;width:44px;height:24px;flex-shrink:0;}
+.sw input{opacity:0;width:0;height:0;}
+.sl{position:absolute;inset:0;background:var(--bg4);border-radius:50px;cursor:pointer;transition:.3s;border:1px solid var(--border);}
+.sl::before{content:'';position:absolute;width:16px;height:16px;background:var(--muted);border-radius:50%;left:3px;bottom:3px;transition:.3s;}
+.sw input:checked+.sl{background:rgba(0,229,255,.1);border-color:var(--cyan);}
+.sw input:checked+.sl::before{transform:translateX(20px);background:var(--cyan);}
+
+/* ── SECTION BUILDER ── */
+.section-type-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:20px;}
+.type-card{
+  background:var(--bg4);border:1px solid var(--border);border-radius:12px;
+  padding:16px 12px;text-align:center;cursor:pointer;transition:.3s;
+}
+.type-card:hover{border-color:rgba(0,229,255,.3);background:rgba(0,229,255,.04);}
+.type-card.selected{border-color:var(--cyan);background:rgba(0,229,255,.08);}
+.type-card i{font-size:22px;color:var(--cyan);margin-bottom:8px;display:block;}
+.type-card .tname{font-size:12px;font-weight:600;}
+.type-card .tsub{font-size:10px;color:var(--muted);margin-top:2px;}
+
+.custom-section-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:14px;}
+.cs-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.cs-type-badge{font-size:10px;padding:3px 10px;background:rgba(123,94,167,.1);border:1px solid rgba(123,94,167,.3);color:var(--purple);border-radius:50px;}
+
+/* ── EXPORT PAGE ── */
+.dl-box{background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(123,94,167,.05));border:1px solid rgba(0,229,255,.15);border-radius:16px;padding:32px;text-align:center;}
+.dl-box h3{font-family:var(--fh);font-size:20px;font-weight:700;margin-bottom:8px;}
+.dl-box p{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
+.dl-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:var(--cyan);color:#000;border:none;border-radius:50px;font-family:var(--fh);font-size:14px;font-weight:700;cursor:pointer;transition:.3s;box-shadow:0 0 25px rgba(0,229,255,.25);}
+.dl-btn:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,229,255,.5);}
+.steps{display:flex;flex-direction:column;gap:10px;margin-top:24px;text-align:left;}
+.step{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--muted);}
+.snum{width:24px;height:24px;border-radius:50%;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ── HOW TO ACCESS ── */
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.access-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:20px;}
+.access-card h4{font-family:var(--fh);font-size:14px;font-weight:700;margin-bottom:10px;}
+.access-card p{font-size:12px;color:var(--muted);line-height:1.7;}
+.access-card code{color:var(--cyan);font-size:11px;background:rgba(0,229,255,.07);padding:2px 7px;border-radius:5px;}
+.access-card .pro{color:var(--green);font-size:11px;margin-top:6px;display:block;}
+.access-card .con{color:var(--red);font-size:11px;margin-top:4px;display:block;}
+
+/* ── PW CHANGE ── */
+.pw-section{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:22px;margin-top:20px;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--bg3);border:1px solid var(--green);padding:11px 18px;border-radius:12px;font-size:13px;color:var(--green);display:none;align-items:center;gap:8px;box-shadow:0 0 30px rgba(0,255,136,.15);}
+#toast.show{display:flex;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .sidebar{display:none;}.main{padding:20px;}
+  .g2,.g3{grid-template-columns:1fr;}.s2,.s3{grid-column:span 1;}
+  .access-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg"></span></div>
+
+<!-- ══ PASSWORD SCREEN ══ -->
+<div id="pw-screen">
+  <div class="pw-box">
+    <div class="pw-logo">Admin<span>.</span></div>
+    <div class="pw-sub">PORTFOLIO EDITOR · RIYANSH SINGH</div>
+    <input class="pw-input" type="password" id="pw-inp" placeholder="••••••" onkeydown="if(event.key==='Enter')checkPw()">
+    <button class="pw-btn" onclick="checkPw()"><i class="fas fa-unlock" style="margin-right:6px;"></i>Enter</button>
+    <div class="pw-err" id="pw-err">Wrong password. Try again.</div>
+    <div class="pw-hint">Default password: <b>riyansh2006</b><br>Change it in Settings after login.</div>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div id="app">
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-top">
+      <div class="sb-logo">Admin<span>.</span></div>
+      <div class="sb-tagline">PORTFOLIO EDITOR</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-group">Core Info</div>
+      <div class="sb-item active" onclick="go('basics')"><i class="fas fa-user"></i> Basics & Bio</div>
+      <div class="sb-item" onclick="go('socials')"><i class="fas fa-share-alt"></i> Socials</div>
+      <div class="sb-item" onclick="go('stats')"><i class="fas fa-chart-bar"></i> Stats Strip</div>
+      <div class="sb-item" onclick="go('skills')"><i class="fas fa-code"></i> Skills & Tags</div>
+
+      <div class="sb-group">Sections</div>
+      <div class="sb-item" onclick="go('projects')"><i class="fas fa-folder-open"></i> Projects</div>
+      <div class="sb-item" onclick="go('robotics')"><i class="fas fa-robot"></i> Robotics</div>
+      <div class="sb-item" onclick="go('github')"><i class="fab fa-github"></i> GitHub Settings</div>
+      <div class="sb-item" onclick="go('creative')"><i class="fas fa-film"></i> Creative Videos</div>
+      <div class="sb-item" onclick="go('certs')"><i class="fas fa-certificate"></i> Certificates</div>
+      <div class="sb-item" onclick="go('achievements')"><i class="fas fa-trophy"></i> Achievements</div>
+      <div class="sb-item" onclick="go('journey')"><i class="fas fa-road"></i> Journey Timeline</div>
+      <div class="sb-item" onclick="go('contact')"><i class="fas fa-envelope"></i> Contact Section</div>
+      <div class="sb-item" onclick="go('custom')"><i class="fas fa-puzzle-piece"></i> Custom Sections <span class="sb-badge">NEW</span></div>
+
+      <div class="sb-group">Config</div>
+      <div class="sb-item" onclick="go('visibility')"><i class="fas fa-eye"></i> Show / Hide</div>
+      <div class="sb-item" onclick="go('access')"><i class="fas fa-lock"></i> Access & Password</div>
+      <div class="sb-item" onclick="go('export')"><i class="fas fa-download"></i> Export & Import</div>
+    </nav>
+    <div class="sb-bottom">
+      <button class="export-btn" onclick="exportJSON()"><i class="fas fa-download" style="margin-right:6px;"></i>Download data.json</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ════ BASICS ════ -->
+    <div class="page active" id="page-basics">
+      <div class="page-header">
+        <div class="page-title">Basics <span>& Bio</span></div>
+        <div class="page-desc">Your name, DOB, tagline, location, email — and the bio paragraphs shown in the About section. You can use &lt;b&gt;text&lt;/b&gt; for bold.</div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Personal Info</h3></div>
+        <div class="grid g2">
+          <div class="fg"><label>Full Name</label><input id="b-name" placeholder="Riyansh Singh"></div>
+          <div class="fg"><label>Date of Birth</label><input id="b-dob" type="date"></div>
+          <div class="fg"><label>Tagline</label><input id="b-tagline" placeholder="Developer & Creative Builder"></div>
+          <div class="fg"><label>Location</label><input id="b-loc" placeholder="Agra, India"></div>
+          <div class="fg s2"><label>Email</label><input id="b-email" type="email" placeholder="you@email.com"></div>
+          <div class="fg"><label>GitHub Username (for live repos)</label><input id="b-ghuser" placeholder="riiyansh-singh"></div>
+          <div class="fg"><label>Footer Quote</label><input id="b-quote" placeholder="Build. Break. Learn. Repeat."></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Bio Paragraphs</h3><span class="badge">About Section</span></div>
+        <div class="notice info"><i class="fas fa-info-circle" style="color:var(--cyan)"></i> Each paragraph = one block. Use &lt;b&gt;bold&lt;/b&gt; for highlights. Drag to reorder not needed — just add/delete.</div>
+        <div id="bio-list"></div>
+        <button class="add-btn" onclick="addBio()"><i class="fas fa-plus"></i> Add Paragraph</button>
+      </div>
+    </div>
+
+    <!-- ════ SOCIALS ════ -->
+    <div class="page" id="page-socials">
+      <div class="page-header">
+        <div class="page-title">Social <span>Links</span></div>
+        <div class="page-desc">These appear as icon buttons in the hero, contact section, and footer. Leave blank to hide.</div>
+      </div>
+      <div class="card">
+        <div class="grid g2">
+          <div class="fg"><label><i class="fab fa-github"></i> GitHub URL</label><input id="s-github" placeholder="https://github.com/..."></div>
+          <div class="fg"><label><i class="fab fa-linkedin"></i> LinkedIn URL</label><input id="s-linkedin" placeholder="https://linkedin.com/in/..."></div>
+          <div class="fg"><label><i class="fab fa-instagram"></i> Instagram URL</label><input id="s-instagram" placeholder="https://instagram.com/..."></div>
+          <div class="fg"><label><i class="fab fa-twitter"></i> Twitter / X URL</label><input id="s-twitter" placeholder="https://twitter.com/..."></div>
+          <div class="fg"><label><i class="fab fa-youtube"></i> YouTube URL</label><input id="s-youtube" placeholder="https://youtube.com/..."></div>
+          <div class="fg"><label><i class="fas fa-globe"></i> Personal Website</label><input id="s-website" placeholder="https://yoursite.com"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ STATS ════ -->
+    <div class="page" id="page-stats">
+      <div class="page-header">
+        <div class="page-title">Stats <span>Strip</span></div>
+        <div class="page-desc">The big animated numbers shown below the hero. Update numbers whenever you hit a new milestone — e.g. 4 projects, new cert count, etc.</div>
+      </div>
+      <div id="stats-list"></div>
+      <button class="add-btn" onclick="addStat()"><i class="fas fa-plus"></i> Add Stat</button>
+    </div>
+
+    <!-- ════ SKILLS ════ -->
+    <div class="page" id="page-skills">
+      <div class="page-header">
+        <div class="page-title">Skills <span>& Tags</span></div>
+        <div class="page-desc">Skill bars with percentage shown in the About section. Tags are the chip labels below your bio.</div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Skill Bars</h3></div>
+        <div id="skills-list"></div>
+        <button class="add-btn" onclick="addSkill()"><i class="fas fa-plus"></i> Add Skill</button>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Tag Chips</h3></div>
+        <div class="notice info"><i class="fas fa-info-circle" style="color:var(--cyan)"></i> Type a tag and press <b>Enter</b> or <b>comma</b> to add.</div>
+        <div class="tags-wrap" id="tags-wrap" onclick="document.getElementById('tag-inp').focus()">
+          <input id="tag-inp" placeholder="Type tag + Enter..." onkeydown="handleTag(event)">
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ PROJECTS ════ -->
+    <div class="page" id="page-projects">
+      <div class="page-header">
+        <div class="page-title">Web <span>Projects</span></div>
+        <div class="page-desc">Add new projects here. Each one gets a card with live link, tech tags, demo video toggle, and filter category. Old projects are never deleted.</div>
+      </div>
+      <div class="notice ok"><i class="fas fa-check-circle" style="color:var(--green)"></i> Adding new projects <b>never removes old ones</b>. Everything stacks.</div>
+      <div id="projects-list"></div>
+      <button class="add-btn" onclick="addProject()"><i class="fas fa-plus"></i> Add New Project</button>
+    </div>
+
+    <!-- ════ ROBOTICS ════ -->
+    <div class="page" id="page-robotics">
+      <div class="page-header">
+        <div class="page-title">Robotics <span>Builds</span></div>
+        <div class="page-desc">Your hardware and electronics projects. Add new builds with dual images as you make them.</div>
+      </div>
+      <div id="robotics-list"></div>
+      <button class="add-btn" onclick="addRobotics()"><i class="fas fa-plus"></i> Add Robotics Build</button>
+    </div>
+
+    <!-- ════ GITHUB ════ -->
+    <div class="page" id="page-github">
+      <div class="page-header">
+        <div class="page-title">GitHub <span>Settings</span></div>
+        <div class="page-desc">Your GitHub repos are fetched live and automatically — nothing to update here manually. Just make sure your GitHub username is correct in Basics.</div>
+      </div>
+      <div class="notice info"><i class="fas fa-info-circle" style="color:var(--cyan)"></i> Repos auto-update every time your portfolio loads. Sorted by most recently updated. Only public repos are shown.</div>
+      <div class="card">
+        <div class="card-hd"><h3>GitHub Display Settings</h3></div>
+        <div class="grid g2">
+          <div class="fg"><label>Max repos to show (1-12)</label><input id="gh-max" type="number" min="1" max="12" value="6"></div>
+          <div class="fg"><label>Sort by</label>
+            <select id="gh-sort">
+              <option value="updated">Recently Updated</option>
+              <option value="created">Recently Created</option>
+              <option value="pushed">Recently Pushed</option>
+              <option value="full_name">Name</option>
+            </select>
+          </div>
+          <div class="fg s2"><label>Pinned / Featured repo (show first)</label><input id="gh-pin" placeholder="repo-name (optional)"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Repos to Hide</h3><span class="badge">Skip these</span></div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Repo names to exclude from the live list (e.g. config repos, forks you don't want shown).</p>
+        <div class="tags-wrap" id="gh-exclude-wrap" onclick="document.getElementById('gh-exc-inp').focus()">
+          <input id="gh-exc-inp" placeholder="repo-name + Enter to exclude..." onkeydown="handleGhExclude(event)">
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ CREATIVE ════ -->
+    <div class="page" id="page-creative">
+      <div class="page-header">
+        <div class="page-title">Creative <span>Videos</span></div>
+        <div class="page-desc">Guitar clips, singing, cinematic shots — your creative work videos. Add the video file to <code style="color:var(--cyan)">videos/</code> folder and register it here.</div>
+      </div>
+      <div id="creative-list"></div>
+      <button class="add-btn" onclick="addCreative()"><i class="fas fa-plus"></i> Add Video</button>
+    </div>
+
+    <!-- ════ CERTIFICATES ════ -->
+    <div class="page" id="page-certs">
+      <div class="page-header">
+        <div class="page-title"><span>Certificates</span></div>
+        <div class="page-desc">Add every new certificate. Put the image in <code style="color:var(--cyan)">images/</code> folder, then register the filename here. Old certs are never removed.</div>
+      </div>
+      <div class="notice ok"><i class="fas fa-check-circle" style="color:var(--green)"></i> New certs <b>stack on top</b>. Old ones stay forever.</div>
+      <div id="certs-list"></div>
+      <button class="add-btn" onclick="addCert()"><i class="fas fa-plus"></i> Add Certificate</button>
+    </div>
+
+    <!-- ════ ACHIEVEMENTS ════ -->
+    <div class="page" id="page-achievements">
+      <div class="page-header">
+        <div class="page-title">Key <span>Achievements</span></div>
+        <div class="page-desc">Got a new position, company, award, internship, or win? Add it here. Old achievements always stay.</div>
+      </div>
+      <div class="notice ok"><i class="fas fa-check-circle" style="color:var(--green)"></i> Adding new achievements <b>never removes old ones</b>.</div>
+      <div id="achievements-list"></div>
+      <button class="add-btn" onclick="addAchievement()"><i class="fas fa-plus"></i> Add Achievement / Position / Award</button>
+    </div>
+
+    <!-- ════ JOURNEY ════ -->
+    <div class="page" id="page-journey">
+      <div class="page-header">
+        <div class="page-title">Journey <span>Timeline</span></div>
+        <div class="page-desc">Your life milestones. Items with a Switch Date automatically change their text on that date — perfect for school→college transitions.</div>
+      </div>
+      <div class="notice warn"><i class="fas fa-clock" style="color:var(--yellow)"></i> Items with a <b>Switch Date</b> auto-show different text before and after that date. No code needed.</div>
+      <div id="journey-list"></div>
+      <button class="add-btn" onclick="addJourney()"><i class="fas fa-plus"></i> Add Timeline Item</button>
+    </div>
+
+    <!-- ════ CONTACT ════ -->
+    <div class="page" id="page-contact">
+      <div class="page-header">
+        <div class="page-title">Contact <span>Section</span></div>
+        <div class="page-desc">The big call-to-action at the bottom of your site.</div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Contact Copy</h3></div>
+        <div class="grid g1">
+          <div class="fg"><label>Headline (use \n for line break)</label><input id="ct-headline" placeholder="Let's build something great."></div>
+          <div class="fg"><label>Subtext</label><input id="ct-sub" placeholder="Open to collaborations, opportunities, and interesting conversations."></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3>Contact Form</h3></div>
+        <div class="grid g2">
+          <div class="fg"><label>Form Title</label><input id="ct-form-title" placeholder="Send a Message"></div>
+          <div class="fg"><label>Submit Button Text</label><input id="ct-form-btn" placeholder="Send Message"></div>
+          <div class="fg s2"><label>Success Message (shown after send)</label><input id="ct-form-success" placeholder="✅ Opening your email client..."></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ CUSTOM SECTIONS ════ -->
+    <div class="page" id="page-custom">
+      <div class="page-header">
+        <div class="page-title">Custom <span>Sections</span></div>
+        <div class="page-desc">Add brand new sections to your portfolio — experience, education, blog, gallery, testimonials, and more. Drag them to reorder.</div>
+      </div>
+      <div class="notice info"><i class="fas fa-info-circle" style="color:var(--cyan)"></i> Choose a section type below, fill it in, and it'll appear on your site. Your existing sections are never touched.</div>
+
+      <div class="card">
+        <div class="card-hd"><h3>Add New Section</h3></div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:16px;">Choose section type:</p>
+        <div class="section-type-grid" id="type-grid"></div>
+        <button class="add-btn" id="add-custom-btn" onclick="addCustomSection()" style="display:none;"><i class="fas fa-plus"></i> Add This Section</button>
+      </div>
+
+      <div id="custom-sections-list"></div>
+    </div>
+
+    <!-- ════ VISIBILITY ════ -->
+    <div class="page" id="page-visibility">
+      <div class="page-header">
+        <div class="page-title">Show / <span>Hide Sections</span></div>
+        <div class="page-desc">Toggle sections on or off. Hidden sections won't appear on your site at all.</div>
+      </div>
+      <div id="vis-list"></div>
+    </div>
+
+    <!-- ════ ACCESS ════ -->
+    <div class="page" id="page-access">
+      <div class="page-header">
+        <div class="page-title">Access <span>& Password</span></div>
+        <div class="page-desc">How to access your admin panel securely from GitHub Pages.</div>
+      </div>
+
+      <div class="access-grid">
+        <div class="access-card">
+          <h4>🔗 Your Admin URL</h4>
+          <p>After pushing to GitHub Pages, your admin is at:<br><br>
+          <code>yourusername.github.io/portfolio/admin.html</code><br><br>
+          The main site is still <code>yourusername.github.io/portfolio</code> — they're separate.</p>
+          <span class="pro">✅ Easy to access from any device</span>
+          <span class="con">⚠️ Anyone who knows the URL can try to access it</span>
+        </div>
+        <div class="access-card">
+          <h4>🔐 Password Protection</h4>
+          <p>The admin is protected by the password you set below. Change it from the default immediately.<br><br>
+          The password is stored in <code>admin.html</code> itself — open the file in a text editor and search for <code>ADMIN_PASSWORD</code>.</p>
+          <span class="pro">✅ Simple, no server needed</span>
+          <span class="pro">✅ Works on GitHub Pages (free)</span>
+        </div>
+        <div class="access-card">
+          <h4>💻 Local Use (Recommended)</h4>
+          <p>Download admin.html, open it directly in your browser from your computer. No internet needed. No one else can access it.</p>
+          <span class="pro">✅ Most secure option</span>
+          <span class="pro">✅ Works offline</span>
+          <span class="con">⚠️ Can't access from phone/other device</span>
+        </div>
+        <div class="access-card">
+          <h4>📁 Private Repo Option</h4>
+          <p>Keep your portfolio public, but move <code>admin.html</code> to a <b>separate private repo</b>. Then just open it locally when needed.</p>
+          <span class="pro">✅ Most private — admin never online</span>
+          <span class="pro">✅ Main site stays fully public</span>
+        </div>
+      </div>
+
+      <div class="pw-section">
+        <div class="card-hd"><h3>🔑 Change Admin Password</h3></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">After changing, download data.json AND re-download admin.html (or edit the file manually — search for <code style="color:var(--cyan)">ADMIN_PASSWORD</code> in the file).</p>
+        <div class="grid g2">
+          <div class="fg"><label>New Password</label><input id="new-pw" type="password" placeholder="New password"></div>
+          <div class="fg"><label>Confirm Password</label><input id="confirm-pw" type="password" placeholder="Confirm"></div>
+        </div>
+        <button class="add-btn" onclick="changePw()" style="margin-top:12px;"><i class="fas fa-key"></i> Update Password Instructions</button>
+        <div id="pw-change-msg" style="font-size:13px;color:var(--green);margin-top:12px;display:none;"></div>
+      </div>
+    </div>
+
+    <!-- ════ EXPORT ════ -->
+    <div class="page" id="page-export">
+      <div class="page-header">
+        <div class="page-title">Export <span>& Import</span></div>
+        <div class="page-desc">Download your updated data.json and replace the old one in your portfolio folder. All old content is preserved.</div>
+      </div>
+      <div class="dl-box">
+        <h3>📦 Export data.json</h3>
+        <p>All your changes are saved. Click below to download and replace the file in your portfolio folder.</p>
+        <button class="dl-btn" onclick="exportJSON()"><i class="fas fa-download"></i> Download data.json</button>
+        <div class="steps">
+          <div class="step"><div class="snum">1</div><div>Click <b>Download data.json</b></div></div>
+          <div class="step"><div class="snum">2</div><div>Copy it to your portfolio folder — <b>replace</b> the old one</div></div>
+          <div class="step"><div class="snum">3</div><div>If you added images/videos — put them in <code style="color:var(--cyan)">images/</code> or <code style="color:var(--cyan)">videos/</code></div></div>
+          <div class="step"><div class="snum">4</div><div>Open GitHub Desktop (or terminal) → <b>commit + push</b></div></div>
+          <div class="step"><div class="snum">5</div><div>Visit your live site — changes appear instantly 🎉</div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:20px;">
+        <div class="card-hd"><h3>📥 Load Existing data.json</h3></div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Load a previously exported data.json to continue editing where you left off.</p>
+        <input type="file" id="import-file" accept=".json" onchange="importJSON(event)" style="display:none;">
+        <button class="add-btn" onclick="document.getElementById('import-file').click()"><i class="fas fa-upload"></i> Load data.json</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════
+   PASSWORD
+════════════════════════════════════════════ */
+const ADMIN_PASSWORD = 'riyansh2006'; // ← Change this
+
+function checkPw() {
+  const val = document.getElementById('pw-inp').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('pw-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    init();
+  } else {
+    document.getElementById('pw-err').style.display = 'block';
+    document.getElementById('pw-inp').value = '';
+    setTimeout(() => document.getElementById('pw-err').style.display='none', 2000);
+  }
+}
+
+function changePw() {
+  const a = document.getElementById('new-pw').value;
+  const b = document.getElementById('confirm-pw').value;
+  if (!a) { alert('Enter a password.'); return; }
+  if (a !== b) { alert('Passwords do not match!'); return; }
+  document.getElementById('pw-change-msg').style.display = 'block';
+  document.getElementById('pw-change-msg').innerHTML =
+    `Open <b>admin.html</b> in a text editor, find <code style="color:var(--cyan)">ADMIN_PASSWORD = 'riyansh2006'</code> and change it to <code style="color:var(--cyan)">ADMIN_PASSWORD = '${a}'</code>`;
+}
+
+/* ════════════════════════════════════════════
+   STATE
+════════════════════════════════════════════ */
+let S = {
+  name:"Riyansh Singh", dob:"2006-01-01",
+  tagline:"Developer & Creative Builder",
+  location:"Agra, India", email:"singhriyansh2006@gmail.com",
+  github_username:"riiyansh-singh",
+  footer_quote:"Build. Break. Learn. Repeat.",
+  bio:[
+    "I'm an aspiring engineer focused on building real-world skills in <b>robotics, development, and creative tech</b>.",
+    "My journey started with hands-on robotics using <b>Arduino, sensors, and motors</b>, where I built a <b>sensor-based motor car</b> and a <b>robotic arm</b>.",
+    "Alongside hardware, I moved into <b>web development</b>, creating Slice Frenzy, FunHub, and a Turf Tournament website.",
+    "I also explore <b>video editing, design, and creative media</b> — combining tech with creativity.",
+    "Outside tech, I was selected for a <b>national-level football camp</b> as goalkeeper & left defender."
+  ],
+  socials:{github:"https://github.com/riiyansh-singh",linkedin:"https://www.linkedin.com/in/riyansh-singh-839817385",instagram:"https://www.instagram.com/riiiyanshh.3",twitter:"",youtube:"",website:""},
+  skills:[
+    {name:"HTML & CSS",level:85},{name:"Web Development",level:80},
+    {name:"JavaScript",level:70},{name:"Arduino / Robotics",level:75},
+    {name:"Video Editing",level:70},{name:"Creative Tech",level:78}
+  ],
+  tags:["Arduino","Web Dev","JavaScript","Robotics","Video Editing","HTML & CSS","Creative Tech","Guitar","Football"],
+  stats:[
+    {num:3,suffix:"+",label:"Web Projects"},{num:2,suffix:"",label:"Robotics Builds"},
+    {num:5,suffix:"",label:"Certificates"},{num:1,suffix:"",label:"National Sports Selection"}
+  ],
+  github_settings:{max:6,sort:"updated",pinned:"",exclude:[]},
+  projects:[
+    {id:"turf",title:"Turf Tournament",desc:"Modern sports tournament website UI.",img:"images/turf-project.png",video:"videos/turf-demo.mp4",live:"https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html",category:"web",tags:["HTML","CSS","JavaScript"]},
+    {id:"funhub",title:"FunHub",desc:"Creative experimental web features.",img:"images/funhub-project.png",video:"videos/funhub-demo.mp4",live:"https://riiyansh-singh.github.io/FunHub/",category:"web",tags:["HTML","CSS","JavaScript"]},
+    {id:"slice",title:"Slice Frenzy",desc:"Interactive fruit-slicing game.",img:"images/slice-frenzy.png",video:"videos/Fruit.mp4",live:"https://riiyansh-singh.github.io/slice-frenzy/",category:"web",tags:["JavaScript","Canvas","Game"]}
+  ],
+  robotics:[
+    {title:"Sensor-Based Motor Car",desc:"Proximity sensors + motor control via Arduino. Autonomous obstacle avoidance.",imgs:["images/robot-car.jpg","images/robot-car1.jpg"],badge:"Arduino · Solo Project"},
+    {title:"Robotic Arm",desc:"Multi-joint mechanical movement using servo motors.",imgs:["images/robot-hand.jpg","images/robot-hand1.jpg"],badge:"Arduino · Team Project"}
+  ],
+  creative_videos:[
+    {src:"videos/guitar.mp4",title:"Guitar Practice",sub:"Session 1 — Original Riff"},
+    {src:"videos/guitar2.mp4",title:"Guitar Practice",sub:"Session 2 — Chord Progressions"},
+    {src:"videos/singing.mp4",title:"Singing Clip",sub:"Vocals & Expression"},
+    {src:"videos/shot-1.mp4",title:"Cinematic Shot",sub:"Visual Story 1"},
+    {src:"videos/shot-2.mp4",title:"Cinematic Shot",sub:"Visual Story 2"}
+  ],
+  certificates:[
+    {img:"images/cert-infosys-ai.jpeg",label:"Infosys AI Certification",year:"2025"},
+    {img:"images/cert-infosys-generative.jpeg",label:"Generative AI",year:"2025"},
+    {img:"images/cert-launchpad.jpeg",label:"Launchpad Program",year:"2025"},
+    {img:"images/cert-robotics-achievement.jpeg",label:"Robotics Achievement",year:"2025"},
+    {img:"images/cert-robotics-participation.jpeg",label:"Robotics Participation",year:"2025"}
+  ],
+  achievements:[
+    {icon:"fas fa-trophy",title:"National Football Camp",desc:"Selected as goalkeeper & left defender for national-level camp.",year:"2024"},
+    {icon:"fas fa-robot",title:"Robotics Build Award",desc:"Recognised for sensor-based motor car project.",year:"2025"},
+    {icon:"fas fa-certificate",title:"Infosys AI Certification",desc:"Completed Infosys Springboard AI & Generative AI courses.",year:"2025"},
+    {icon:"fas fa-code",title:"3 Live Web Projects",desc:"Turf Tournament, FunHub and Slice Frenzy deployed and live.",year:"2025"}
+  ],
+  journey:[
+    {year:"2024",title:"High School Completed",sub:"Academic foundation laid — time to build."},
+    {year:"2025",title:"Robotics & Web Development",sub:"Built sensor cars, robotic arms, web projects & AI certifications."},
+    {year:"2026",title_before:"Secondary School (PCM) Ongoing",title_after:"Secondary School (PCM) Completed",sub_before:"Pushing forward every day.",sub_after:"Milestone reached.",switch_date:"2026-08-01"},
+    {year:"NEXT",title_before:"B.Tech Engineering (Planned)",title_after:"B.Tech Engineering (CS) — Started",sub_before:"The chapter I'm working toward.",sub_after:"CS engineer in the making.",switch_date:"2026-08-01"}
+  ],
+  contact:{headline:"Let's build\nsomething great.",sub:"Open to collaborations, opportunities, and interesting conversations.",form_title:"Send a Message",form_btn:"Send Message",form_success:"✅ Opening your email client..."},
+  custom_sections:[],
+  sections:{about:true,projects:true,robotics:true,github:true,creative:true,certs:true,achievements:true,journey:true,contact:true}
+};
+
+/* ════ NAV ════ */
+function go(id) {
+  collectAll();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelector(`[onclick="go('${id}')"]`).classList.add('active');
+  renderPage(id);
+}
+
+function renderPage(id) {
+  const map = {
+    basics:renderBasics, socials:renderSocials, stats:renderStats,
+    skills:renderSkills, projects:renderProjects, robotics:renderRobotics,
+    github:renderGithub, creative:renderCreative, certs:renderCerts,
+    achievements:renderAchievements, journey:renderJourney, contact:renderContact,
+    custom:renderCustom, visibility:renderVisibility, access:()=>{}, export:()=>{}
+  };
+  if (map[id]) map[id]();
+}
+
+function init() { renderBasics(); }
+
+/* ════ COLLECT ALL ════ */
+function collectAll() {
+  // basics
+  S.name = v('b-name')||S.name;
+  S.dob = v('b-dob')||S.dob;
+  S.tagline = v('b-tagline')||S.tagline;
+  S.location = v('b-loc')||S.location;
+  S.email = v('b-email')||S.email;
+  S.github_username = v('b-ghuser')||S.github_username;
+  S.footer_quote = v('b-quote')||S.footer_quote;
+  // bio
+  const bioEls = document.querySelectorAll('.bio-ta');
+  if (bioEls.length) S.bio = [...bioEls].map(e=>e.value).filter(Boolean);
+  // socials
+  ['github','linkedin','instagram','twitter','youtube','website'].forEach(k=>{
+    const el=document.getElementById('s-'+k); if(el) S.socials[k]=el.value;
+  });
+  // github settings
+  const ghmax=document.getElementById('gh-max'); if(ghmax) S.github_settings.max=+ghmax.value||6;
+  const ghsort=document.getElementById('gh-sort'); if(ghsort) S.github_settings.sort=ghsort.value;
+  const ghpin=document.getElementById('gh-pin'); if(ghpin) S.github_settings.pinned=ghpin.value;
+  // contact
+  const cth=document.getElementById('ct-headline'); if(cth) S.contact.headline=cth.value;
+  const cts=document.getElementById('ct-sub'); if(cts) S.contact.sub=cts.value;
+  const ctft=document.getElementById('ct-form-title'); if(ctft) S.contact.form_title=ctft.value;
+  const ctfb=document.getElementById('ct-form-btn'); if(ctfb) S.contact.form_btn=ctfb.value;
+  const ctfs=document.getElementById('ct-form-success'); if(ctfs) S.contact.form_success=ctfs.value;
+  // visibility
+  ['about','projects','robotics','github','creative','certs','achievements','journey','contact'].forEach(k=>{
+    const el=document.getElementById('vis-'+k); if(el) S.sections[k]=el.checked;
+  });
+}
+
+const v = id => { const e=document.getElementById(id); return e?e.value:''; };
+const $  = id => document.getElementById(id);
+
+/* ════ BASICS ════ */
+function renderBasics() {
+  $('b-name').value  = S.name||'';
+  $('b-dob').value   = S.dob||'';
+  $('b-tagline').value= S.tagline||'';
+  $('b-loc').value   = S.location||'';
+  $('b-email').value = S.email||'';
+  $('b-ghuser').value= S.github_username||'';
+  $('b-quote').value = S.footer_quote||'';
+  renderBio();
+}
+function renderBio() {
+  $('bio-list').innerHTML = S.bio.map((p,i)=>
+    `<div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;">
+      <textarea class="bio-ta" style="flex:1;background:var(--bg4);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--white);font-family:var(--fb);font-size:13px;outline:none;resize:vertical;min-height:70px;">${p}</textarea>
+      <button class="del-btn" onclick="S.bio.splice(${i},1);renderBio()"><i class="fas fa-trash"></i></button>
+    </div>`).join('');
+}
+function addBio() {
+  const els=document.querySelectorAll('.bio-ta');
+  S.bio=[...[...els].map(e=>e.value),'New paragraph here...'];
+  renderBio();
+}
+
+/* ════ SOCIALS ════ */
+function renderSocials() {
+  $('s-github').value   = S.socials.github||'';
+  $('s-linkedin').value = S.socials.linkedin||'';
+  $('s-instagram').value= S.socials.instagram||'';
+  $('s-twitter').value  = S.socials.twitter||'';
+  $('s-youtube').value  = S.socials.youtube||'';
+  $('s-website').value  = S.socials.website||'';
+}
+
+/* ════ STATS ════ */
+function renderStats() {
+  $('stats-list').innerHTML = S.stats.map((s,i)=>
+    `<div class="card">
+      <div class="card-hd"><h3>Stat #${i+1}</h3><button class="del-btn" onclick="S.stats.splice(${i},1);renderStats()"><i class="fas fa-trash"></i> Remove</button></div>
+      <div class="grid g3">
+        <div class="fg"><label>Number</label><input type="number" value="${s.num}" oninput="S.stats[${i}].num=+this.value"></div>
+        <div class="fg"><label>Suffix (+ or blank)</label><input value="${s.suffix||''}" oninput="S.stats[${i}].suffix=this.value"></div>
+        <div class="fg"><label>Label</label><input value="${s.label}" oninput="S.stats[${i}].label=this.value"></div>
+      </div>
+    </div>`).join('');
+}
+function addStat() { S.stats.push({num:0,suffix:'+',label:'New Stat'}); renderStats(); toast('Stat added ✅'); }
+
+/* ════ SKILLS ════ */
+function renderSkills() {
+  $('skills-list').innerHTML = S.skills.map((s,i)=>
+    `<div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+      <input value="${s.name}" oninput="S.skills[${i}].name=this.value" style="flex:2;background:var(--bg4);border:1px solid var(--border);border-radius:10px;padding:9px 14px;color:var(--white);font-family:var(--fb);font-size:13px;outline:none;" placeholder="Skill name">
+      <div style="display:flex;align-items:center;gap:6px;flex:1;">
+        <input type="range" min="0" max="100" value="${s.level}" oninput="S.skills[${i}].level=+this.value;this.nextElementSibling.textContent=this.value+'%'" style="flex:1;accent-color:var(--cyan);">
+        <span style="color:var(--cyan);font-size:13px;min-width:36px;">${s.level}%</span>
+      </div>
+      <button class="del-btn" onclick="S.skills.splice(${i},1);renderSkills()"><i class="fas fa-trash"></i></button>
+    </div>`).join('');
+  renderTags();
+}
+function addSkill() { S.skills.push({name:'New Skill',level:60}); renderSkills(); }
+function renderTags() {
+  const wrap=$('tags-wrap'); if(!wrap) return;
+  wrap.querySelectorAll('.tag-chip').forEach(e=>e.remove());
+  const inp=$('tag-inp');
+  S.tags.forEach((t,i)=>{
+    const chip=document.createElement('span');
+    chip.className='tag-chip';
+    chip.innerHTML=`${t}<button onclick="S.tags.splice(${i},1);renderTags()">×</button>`;
+    wrap.insertBefore(chip,inp);
+  });
+}
+function handleTag(e) {
+  if(e.key==='Enter'||e.key===','){
+    e.preventDefault();
+    const val=e.target.value.replace(',','').trim();
+    if(val&&!S.tags.includes(val)){S.tags.push(val);renderTags();}
+    e.target.value='';
+  }
+}
+
+/* ════ GITHUB ════ */
+function renderGithub() {
+  $('gh-max').value = S.github_settings?.max||6;
+  $('gh-sort').value = S.github_settings?.sort||'updated';
+  $('gh-pin').value = S.github_settings?.pinned||'';
+  renderGhExclude();
+}
+function renderGhExclude() {
+  const wrap=$('gh-exclude-wrap'); if(!wrap) return;
+  wrap.querySelectorAll('.tag-chip').forEach(e=>e.remove());
+  const inp=$('gh-exc-inp');
+  (S.github_settings?.exclude||[]).forEach((r,i)=>{
+    const chip=document.createElement('span');
+    chip.className='tag-chip';
+    chip.innerHTML=`${r}<button onclick="S.github_settings.exclude.splice(${i},1);renderGhExclude()">×</button>`;
+    wrap.insertBefore(chip,inp);
+  });
+}
+function handleGhExclude(e) {
+  if(e.key==='Enter'){
+    e.preventDefault();
+    const val=e.target.value.trim();
+    if(val){if(!S.github_settings.exclude)S.github_settings.exclude=[];S.github_settings.exclude.push(val);renderGhExclude();}
+    e.target.value='';
+  }
+}
+
+/* ════ PROJECTS ════ */
+function renderProjects() {
+  $('projects-list').innerHTML = S.projects.map((p,i)=>
+    `<div class="card">
+      <div class="card-hd">
+        <h3>${p.title||'Project #'+(i+1)}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.projects,${i},-1,renderProjects)" title="Move up"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.projects,${i},1,renderProjects)" title="Move down"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.projects.splice(${i},1);renderProjects();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="fg"><label>Title</label><input value="${p.title}" oninput="S.projects[${i}].title=this.value"></div>
+        <div class="fg"><label>Category</label>
+          <select onchange="S.projects[${i}].category=this.value">
+            <option value="web" ${p.category==='web'?'selected':''}>Web</option>
+            <option value="robotics" ${p.category==='robotics'?'selected':''}>Robotics</option>
+            <option value="game" ${p.category==='game'?'selected':''}>Game</option>
+            <option value="ai" ${p.category==='ai'?'selected':''}>AI / ML</option>
+            <option value="other" ${p.category==='other'?'selected':''}>Other</option>
+          </select>
+        </div>
+        <div class="fg s2"><label>Description</label><input value="${p.desc}" oninput="S.projects[${i}].desc=this.value"></div>
+        <div class="fg"><label>Thumbnail (images/filename.png)</label><input value="${p.img||''}" oninput="S.projects[${i}].img=this.value" placeholder="images/project.png"></div>
+        <div class="fg"><label>Demo Video (videos/... or leave blank)</label><input value="${p.video||''}" oninput="S.projects[${i}].video=this.value" placeholder="videos/demo.mp4"></div>
+        <div class="fg s2"><label>Live URL</label><input value="${p.live||''}" oninput="S.projects[${i}].live=this.value" placeholder="https://..."></div>
+        <div class="fg"><label>GitHub Repo URL (optional)</label><input value="${p.repo||''}" oninput="S.projects[${i}].repo=this.value" placeholder="https://github.com/..."></div>
+        <div class="fg"><label>Tech Tags (comma separated)</label><input value="${(p.tags||[]).join(', ')}" oninput="S.projects[${i}].tags=this.value.split(',').map(s=>s.trim()).filter(Boolean)" placeholder="HTML, CSS, JavaScript"></div>
+      </div>
+    </div>`).join('');
+}
+function addProject() {
+  S.projects.push({id:'p'+Date.now(),title:'New Project',desc:'Description.',img:'images/',video:'',live:'https://',repo:'',category:'web',tags:[]});
+  renderProjects(); toast('Project added ✅');
+}
+
+/* ════ ROBOTICS ════ */
+function renderRobotics() {
+  $('robotics-list').innerHTML = S.robotics.map((r,i)=>
+    `<div class="card">
+      <div class="card-hd"><h3>${r.title}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.robotics,${i},-1,renderRobotics)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.robotics,${i},1,renderRobotics)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.robotics.splice(${i},1);renderRobotics();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="fg s2"><label>Title</label><input value="${r.title}" oninput="S.robotics[${i}].title=this.value"></div>
+        <div class="fg s2"><label>Description</label><textarea oninput="S.robotics[${i}].desc=this.value">${r.desc}</textarea></div>
+        <div class="fg"><label>Image 1 (images/...)</label><input value="${r.imgs[0]||''}" oninput="S.robotics[${i}].imgs[0]=this.value" placeholder="images/robot1.jpg"></div>
+        <div class="fg"><label>Image 2 (images/...)</label><input value="${r.imgs[1]||''}" oninput="S.robotics[${i}].imgs[1]=this.value" placeholder="images/robot2.jpg"></div>
+        <div class="fg s2"><label>Badge (e.g. Arduino · Solo Project)</label><input value="${r.badge||''}" oninput="S.robotics[${i}].badge=this.value"></div>
+      </div>
+    </div>`).join('');
+}
+function addRobotics() {
+  S.robotics.push({title:'New Build',desc:'Description.',imgs:['images/','images/'],badge:'Arduino · Solo'});
+  renderRobotics(); toast('Robotics build added ✅');
+}
+
+/* ════ CREATIVE ════ */
+function renderCreative() {
+  $('creative-list').innerHTML = S.creative_videos.map((v,i)=>
+    `<div class="card">
+      <div class="card-hd"><h3>${v.title} — ${v.sub}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.creative_videos,${i},-1,renderCreative)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.creative_videos,${i},1,renderCreative)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.creative_videos.splice(${i},1);renderCreative();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="fg"><label>Title</label><input value="${v.title}" oninput="S.creative_videos[${i}].title=this.value"></div>
+        <div class="fg"><label>Subtitle / Description</label><input value="${v.sub}" oninput="S.creative_videos[${i}].sub=this.value"></div>
+        <div class="fg s2"><label>Video file (videos/filename.mp4)</label><input value="${v.src}" oninput="S.creative_videos[${i}].src=this.value" placeholder="videos/myvideo.mp4"></div>
+      </div>
+    </div>`).join('');
+}
+function addCreative() {
+  S.creative_videos.push({src:'videos/',title:'New Video',sub:'Description'});
+  renderCreative(); toast('Video added ✅');
+}
+
+/* ════ CERTIFICATES ════ */
+function renderCerts() {
+  $('certs-list').innerHTML = S.certificates.map((c,i)=>
+    `<div class="card">
+      <div class="card-hd"><h3>${c.label}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.certificates,${i},-1,renderCerts)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.certificates,${i},1,renderCerts)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.certificates.splice(${i},1);renderCerts();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g3">
+        <div class="fg s2"><label>Image path (images/cert-name.jpeg)</label><input value="${c.img}" oninput="S.certificates[${i}].img=this.value" placeholder="images/cert.jpeg"></div>
+        <div class="fg"><label>Year</label><input value="${c.year||''}" oninput="S.certificates[${i}].year=this.value" placeholder="2025"></div>
+        <div class="fg s3"><label>Certificate Name / Label</label><input value="${c.label}" oninput="S.certificates[${i}].label=this.value"></div>
+      </div>
+    </div>`).join('');
+}
+function addCert() {
+  S.certificates.push({img:'images/cert-new.jpeg',label:'New Certificate',year:new Date().getFullYear()+''});
+  renderCerts(); toast('Certificate added ✅');
+}
+
+/* ════ ACHIEVEMENTS ════ */
+const ICONS=['fas fa-trophy','fas fa-medal','fas fa-star','fas fa-certificate','fas fa-code',
+  'fas fa-robot','fas fa-futbol','fas fa-graduation-cap','fas fa-briefcase',
+  'fas fa-building','fas fa-rocket','fas fa-award','fas fa-crown','fas fa-fire',
+  'fas fa-bolt','fas fa-heart','fas fa-handshake','fas fa-users','fas fa-laptop-code',
+  'fas fa-globe','fas fa-microphone','fas fa-music','fas fa-camera','fas fa-pen'];
+
+function renderAchievements() {
+  $('achievements-list').innerHTML = S.achievements.map((a,i)=>
+    `<div class="card">
+      <div class="card-hd"><h3>${a.title}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.achievements,${i},-1,renderAchievements)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.achievements,${i},1,renderAchievements)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.achievements.splice(${i},1);renderAchievements();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="fg"><label>Icon</label>
+          <select onchange="S.achievements[${i}].icon=this.value">
+            ${ICONS.map(ic=>`<option value="${ic}" ${a.icon===ic?'selected':''}><i class="${ic}"></i> ${ic.replace('fas fa-','')}</option>`).join('')}
+          </select>
+        </div>
+        <div class="fg"><label>Year / Date</label><input value="${a.year||''}" oninput="S.achievements[${i}].year=this.value" placeholder="2025"></div>
+        <div class="fg s2"><label>Title (e.g. Software Intern at Google)</label><input value="${a.title}" oninput="S.achievements[${i}].title=this.value"></div>
+        <div class="fg s2"><label>Description</label><textarea oninput="S.achievements[${i}].desc=this.value">${a.desc}</textarea></div>
+        <div class="fg"><label>Company / Organisation (optional)</label><input value="${a.company||''}" oninput="S.achievements[${i}].company=this.value" placeholder="Google, ISRO, etc."></div>
+        <div class="fg"><label>Location (optional)</label><input value="${a.location||''}" oninput="S.achievements[${i}].location=this.value" placeholder="Bangalore, Remote, etc."></div>
+      </div>
+    </div>`).join('');
+}
+function addAchievement() {
+  S.achievements.push({icon:'fas fa-star',title:'New Achievement',desc:'Describe it here.',year:new Date().getFullYear()+'',company:'',location:''});
+  renderAchievements(); toast('Achievement added ✅');
+}
+
+/* ════ JOURNEY ════ */
+function renderJourney() {
+  $('journey-list').innerHTML = S.journey.map((j,i)=>{
+    const sw=!!j.switch_date;
+    return `<div class="card">
+      <div class="card-hd"><h3>${j.year} — ${j.title||(j.title_before)||''}</h3>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.journey,${i},-1,renderJourney)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.journey,${i},1,renderJourney)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove?')){S.journey.splice(${i},1);renderJourney();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="fg"><label>Year / Label</label><input value="${j.year}" oninput="S.journey[${i}].year=this.value"></div>
+        ${!sw?`
+          <div class="fg"><label>Title</label><input value="${j.title||''}" oninput="S.journey[${i}].title=this.value"></div>
+          <div class="fg s2"><label>Subtitle</label><input value="${j.sub||''}" oninput="S.journey[${i}].sub=this.value"></div>
+        `:`
+          <div class="fg"><label>🗓 Auto-Switch Date</label><input type="date" value="${j.switch_date}" oninput="S.journey[${i}].switch_date=this.value"></div>
+          <div class="fg"><label>Title BEFORE date</label><input value="${j.title_before||''}" oninput="S.journey[${i}].title_before=this.value"></div>
+          <div class="fg"><label>Title AFTER date</label><input value="${j.title_after||''}" oninput="S.journey[${i}].title_after=this.value"></div>
+          <div class="fg"><label>Subtitle BEFORE</label><input value="${j.sub_before||''}" oninput="S.journey[${i}].sub_before=this.value"></div>
+          <div class="fg"><label>Subtitle AFTER</label><input value="${j.sub_after||''}" oninput="S.journey[${i}].sub_after=this.value"></div>
+        `}
+      </div>
+      <button class="add-btn" style="margin-top:12px;max-width:230px;" onclick="toggleSwitch(${i})">
+        <i class="fas fa-${sw?'times':'magic'}"></i> ${sw?'Remove auto-switch':'Add auto-switch date'}
+      </button>
+    </div>`;
+  }).join('');
+}
+function toggleSwitch(i) {
+  const j=S.journey[i];
+  S.journey[i]=j.switch_date
+    ?{year:j.year,title:j.title_before||'',sub:j.sub_before||''}
+    :{year:j.year,title_before:j.title||'',title_after:'',sub_before:j.sub||'',sub_after:'',switch_date:''};
+  renderJourney();
+}
+function addJourney() {
+  S.journey.push({year:new Date().getFullYear()+'',title:'New Milestone',sub:'Details.'});
+  renderJourney(); toast('Timeline item added ✅');
+}
+
+/* ════ CONTACT ════ */
+function renderContact() {
+  $('ct-headline').value = S.contact?.headline||'';
+  $('ct-sub').value      = S.contact?.sub||'';
+  $('ct-form-title').value  = S.contact?.form_title||'';
+  $('ct-form-btn').value    = S.contact?.form_btn||'';
+  $('ct-form-success').value= S.contact?.form_success||'';
+}
+
+/* ════ CUSTOM SECTIONS ════ */
+const SECTION_TYPES=[
+  {id:'experience',icon:'fas fa-briefcase',name:'Experience',sub:'Jobs & internships'},
+  {id:'education',icon:'fas fa-graduation-cap',name:'Education',sub:'College & courses'},
+  {id:'gallery',icon:'fas fa-images',name:'Photo Gallery',sub:'Grid of photos'},
+  {id:'blog',icon:'fas fa-pen-nib',name:'Blog / Articles',sub:'Written posts'},
+  {id:'testimonials',icon:'fas fa-quote-left',name:'Testimonials',sub:'What people say'},
+  {id:'tools',icon:'fas fa-tools',name:'Tools & Stack',sub:'Technologies you use'},
+  {id:'publications',icon:'fas fa-book',name:'Publications',sub:'Papers, articles'},
+  {id:'volunteer',icon:'fas fa-hands-helping',name:'Volunteering',sub:'Community work'},
+  {id:'languages',icon:'fas fa-language',name:'Languages',sub:'Spoken languages'},
+  {id:'interests',icon:'fas fa-heart',name:'Interests',sub:'Hobbies & passions'},
+  {id:'faq',icon:'fas fa-question-circle',name:'FAQ',sub:'Common questions'},
+  {id:'custom',icon:'fas fa-star',name:'Custom',sub:'Free-form content'},
+];
+
+let selectedType=null;
+
+function renderCustom() {
+  $('type-grid').innerHTML = SECTION_TYPES.map(t=>
+    `<div class="type-card ${selectedType===t.id?'selected':''}" onclick="selectType('${t.id}')">
+      <i class="${t.icon}"></i>
+      <div class="tname">${t.name}</div>
+      <div class="tsub">${t.sub}</div>
+    </div>`).join('');
+  renderCustomSections();
+}
+
+function selectType(id) {
+  selectedType=id;
+  $('add-custom-btn').style.display='flex';
+  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.type-card').forEach(c=>{
+    if(c.querySelector('.tname').textContent===SECTION_TYPES.find(t=>t.id===id)?.name) c.classList.add('selected');
+  });
+}
+
+function addCustomSection() {
+  if(!selectedType){alert('Select a section type first.');return;}
+  const type=SECTION_TYPES.find(t=>t.id===selectedType);
+  S.custom_sections.push({
+    id:'cs-'+Date.now(), type:selectedType, type_name:type.name,
+    icon:type.icon, title:type.name+' Section',
+    items:[], visible:true
+  });
+  selectedType=null;
+  $('add-custom-btn').style.display='none';
+  renderCustom();
+  toast(type.name+' section added ✅');
+}
+
+function renderCustomSections() {
+  if(!S.custom_sections.length){
+    $('custom-sections-list').innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:30px;">No custom sections yet. Choose a type above and click Add.</div>';
+    return;
+  }
+  $('custom-sections-list').innerHTML=S.custom_sections.map((cs,si)=>
+    `<div class="custom-section-card">
+      <div class="cs-header">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="${cs.icon}" style="color:var(--cyan);font-size:18px;"></i>
+          <div>
+            <div style="font-family:var(--fh);font-size:14px;font-weight:700;">${cs.title}</div>
+            <span class="cs-type-badge">${cs.type_name}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="move-btn" onclick="moveItem(S.custom_sections,${si},-1,renderCustom)"><i class="fas fa-arrow-up"></i></button>
+          <button class="move-btn" onclick="moveItem(S.custom_sections,${si},1,renderCustom)"><i class="fas fa-arrow-down"></i></button>
+          <button class="del-btn" onclick="if(confirm('Remove entire section?')){S.custom_sections.splice(${si},1);renderCustom();}"><i class="fas fa-trash"></i> Remove</button>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-bottom:16px;">
+        <div class="fg s2"><label>Section Title (shown on site)</label><input value="${cs.title}" oninput="S.custom_sections[${si}].title=this.value"></div>
+      </div>
+      <div id="cs-items-${si}">${renderCustomItems(cs,si)}</div>
+      <button class="add-btn" onclick="addCustomItem(${si})"><i class="fas fa-plus"></i> Add Item</button>
+    </div>`).join('');
+}
+
+function renderCustomItems(cs, si) {
+  if(!cs.items.length) return '<p style="font-size:12px;color:var(--muted);margin-bottom:12px;">No items yet. Click Add Item below.</p>';
+  return cs.items.map((item,ii)=>
+    `<div class="card" style="margin-bottom:10px;">
+      <div class="card-hd"><h3>${item.title||'Item #'+(ii+1)}</h3>
+        <button class="del-btn" onclick="S.custom_sections[${si}].items.splice(${ii},1);document.getElementById('cs-items-${si}').innerHTML=renderCustomItems(S.custom_sections[${si}],${si})"><i class="fas fa-trash"></i></button>
+      </div>
+      <div class="grid g2">
+        <div class="fg"><label>Title / Name</label><input value="${item.title||''}" oninput="S.custom_sections[${si}].items[${ii}].title=this.value"></div>
+        <div class="fg"><label>Year / Date / Duration</label><input value="${item.date||''}" oninput="S.custom_sections[${si}].items[${ii}].date=this.value" placeholder="2024 — Present"></div>
+        <div class="fg"><label>Organisation / Company</label><input value="${item.org||''}" oninput="S.custom_sections[${si}].items[${ii}].org=this.value" placeholder="Google, IIT, etc."></div>
+        <div class="fg"><label>Location (optional)</label><input value="${item.location||''}" oninput="S.custom_sections[${si}].items[${ii}].location=this.value" placeholder="Remote, Bangalore"></div>
+        <div class="fg s2"><label>Description</label><textarea oninput="S.custom_sections[${si}].items[${ii}].desc=this.value">${item.desc||''}</textarea></div>
+        <div class="fg"><label>Link / URL (optional)</label><input value="${item.link||''}" oninput="S.custom_sections[${si}].items[${ii}].link=this.value" placeholder="https://..."></div>
+        <div class="fg"><label>Image path (optional)</label><input value="${item.img||''}" oninput="S.custom_sections[${si}].items[${ii}].img=this.value" placeholder="images/..."></div>
+      </div>
+    </div>`).join('');
+}
+
+function addCustomItem(si) {
+  S.custom_sections[si].items.push({title:'',date:'',org:'',location:'',desc:'',link:'',img:''});
+  document.getElementById('cs-items-'+si).innerHTML=renderCustomItems(S.custom_sections[si],si);
+}
+
+/* ════ VISIBILITY ════ */
+const VIS_ITEMS=[
+  {key:'about',name:'About Me',desc:'Bio and skill bars'},
+  {key:'projects',name:'Projects',desc:'Web projects with live links'},
+  {key:'robotics',name:'Robotics',desc:'Hardware builds'},
+  {key:'github',name:'GitHub Repos',desc:'Live-fetched repositories'},
+  {key:'creative',name:'Creative Work',desc:'Guitar, singing, cinematic videos'},
+  {key:'certs',name:'Certificates',desc:'All credentials'},
+  {key:'achievements',name:'Achievements',desc:'Awards, positions, milestones'},
+  {key:'journey',name:'Journey Timeline',desc:'Life milestones'},
+  {key:'contact',name:'Contact Section',desc:'Email form and socials'},
+];
+function renderVisibility() {
+  $('vis-list').innerHTML = VIS_ITEMS.map(item=>
+    `<div class="toggle-row">
+      <div class="toggle-info">
+        <div class="tname">${item.name}</div>
+        <div class="tdesc">${item.desc}</div>
+      </div>
+      <label class="sw">
+        <input type="checkbox" id="vis-${item.key}" ${S.sections[item.key]!==false?'checked':''}>
+        <span class="sl"></span>
+      </label>
+    </div>`).join('') +
+    (S.custom_sections.length ? '<div style="font-size:12px;color:var(--muted);margin-top:16px;margin-bottom:10px;">CUSTOM SECTIONS</div>' +
+      S.custom_sections.map((cs,i)=>
+        `<div class="toggle-row">
+          <div class="toggle-info">
+            <div class="tname">${cs.title}</div>
+            <div class="tdesc">${cs.type_name} section</div>
+          </div>
+          <label class="sw">
+            <input type="checkbox" ${cs.visible!==false?'checked':''} onchange="S.custom_sections[${i}].visible=this.checked">
+            <span class="sl"></span>
+          </label>
+        </div>`).join('') : '');
+}
+
+/* ════ UTILS ════ */
+function moveItem(arr,i,dir,renderFn) {
+  const ni=i+dir;
+  if(ni<0||ni>=arr.length) return;
+  [arr[i],arr[ni]]=[arr[ni],arr[i]];
+  renderFn();
+}
+
+/* ════ EXPORT ════ */
+function exportJSON() {
+  collectAll();
+  const json=JSON.stringify(S,null,2);
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([json],{type:'application/json'}));
+  a.download='data.json'; a.click();
+  toast('data.json downloaded 🎉');
+}
+
+/* ════ IMPORT ════ */
+function importJSON(e) {
+  const file=e.target.files[0]; if(!file) return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    try{
+      S=JSON.parse(ev.target.result);
+      if(!S.sections) S.sections={};
+      if(!S.custom_sections) S.custom_sections=[];
+      if(!S.github_settings) S.github_settings={max:6,sort:'updated',pinned:'',exclude:[]};
+      if(!S.contact) S.contact={};
+      const active=document.querySelector('.sb-item.active');
+      const id=active?active.getAttribute('onclick').match(/'(.+)'/)?.[1]:'basics':'basics';
+      renderPage(id);
+      toast('data.json loaded ✅');
+    }catch{alert('Invalid JSON file!');}
+  };
+  r.readAsText(file);
+}
+
+/* ════ TOAST ════ */
+function toast(msg) {
+  $('toast-msg').textContent=msg;
+  $('toast').classList.add('show');
+  clearTimeout($('toast')._t);
+  $('toast')._t=setTimeout(()=>$('toast').classList.remove('show'),3000);
+}
+
+/* ════ KEYBOARD ════ */
+document.addEventListener('keydown', e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();exportJSON();}
+});
+</script>
+</body>
+</html>
