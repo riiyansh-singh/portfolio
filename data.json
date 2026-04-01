@@ -1,0 +1,168 @@
+{
+  "name": "Riyansh Singh",
+  "dob": "2007-08-29",
+  "tagline": "Developer & Creative Builder",
+  "location": "Agra, India",
+  "email": "singhriyansh2006@gmail.com",
+  "github_username": "riiyansh-singh",
+  "bio": [
+    "I'm an aspiring engineer building real-world skills in <b>web development, robotics, and creative tech</b>.",
+    "I've shipped <b>3 live web projects</b> — a sports tournament site, a creative UI lab, and a JavaScript game — all deployed and publicly accessible.",
+    "On the hardware side, I've built a <b>sensor-based autonomous motor car</b> and a <b>servo-controlled robotic arm</b> using Arduino from scratch.",
+    "Outside tech, I was selected for a <b>national-level football camp</b> as goalkeeper & left defender — discipline and pressure aren't new to me."
+  ],
+  "socials": {
+    "github":    "https://github.com/riiyansh-singh",
+    "linkedin":  "https://www.linkedin.com/in/riyansh-singh-839817385",
+    "instagram": "https://www.instagram.com/riiiyanshh.3",
+    "twitter":   "",
+    "youtube":   "",
+    "discord":   "",
+    "telegram":  "",
+    "website":   ""
+  },
+  "skills": [
+    { "name": "HTML & CSS",         "level": 85 },
+    { "name": "Web Development",    "level": 80 },
+    { "name": "JavaScript",         "level": 70 },
+    { "name": "Arduino / Robotics", "level": 75 },
+    { "name": "Video Editing",      "level": 70 },
+    { "name": "Creative Tech",      "level": 78 }
+  ],
+  "tags": ["Arduino","Web Dev","JavaScript","Robotics","Video Editing","HTML & CSS","Creative Tech","Guitar","Football"],
+  "stack": [
+    {
+      "category": "Frontend",
+      "items": [
+        { "name": "HTML5",      "icon": "fab fa-html5",     "color": "#e44d26" },
+        { "name": "CSS3",       "icon": "fab fa-css3-alt",  "color": "#264de4" },
+        { "name": "JavaScript", "icon": "fab fa-js",        "color": "#f7df1e" }
+      ]
+    },
+    {
+      "category": "Tools & Platforms",
+      "items": [
+        { "name": "Git",        "icon": "fab fa-git-alt",   "color": "#f05032" },
+        { "name": "GitHub",     "icon": "fab fa-github",    "color": "#f0f0f5" },
+        { "name": "VS Code",    "icon": "fas fa-code",      "color": "#007acc" },
+        { "name": "Vercel",     "icon": "fas fa-globe",     "color": "#f0f0f5" }
+      ]
+    },
+    {
+      "category": "Hardware",
+      "items": [
+        { "name": "Arduino",    "icon": "fas fa-microchip", "color": "#00979d" },
+        { "name": "Sensors",    "icon": "fas fa-satellite-dish", "color": "#00e5ff" },
+        { "name": "Servo Motors","icon": "fas fa-cogs",    "color": "#7b5ea7" }
+      ]
+    },
+    {
+      "category": "Creative",
+      "items": [
+        { "name": "Video Editing", "icon": "fas fa-film",   "color": "#ff4d6d" },
+        { "name": "Guitar",     "icon": "fas fa-music",     "color": "#ffd166" },
+        { "name": "Photography","icon": "fas fa-camera",    "color": "#00e5ff" }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "slice",
+      "title": "Slice Frenzy",
+      "desc": "A fully playable fruit-slicing browser game built with vanilla JavaScript and Canvas API. Features collision detection, score tracking, particle effects, and increasing difficulty — no libraries used.",
+      "img": "images/slice-frenzy.png",
+      "video": "videos/Fruit.mp4",
+      "live": "https://riiyansh-singh.github.io/slice-frenzy/",
+      "repo": "https://github.com/riiyansh-singh/slice-frenzy",
+      "category": "web",
+      "tags": ["JavaScript", "Canvas API", "Game Dev"],
+      "featured": true
+    },
+    {
+      "id": "turf",
+      "title": "Turf Tournament",
+      "desc": "A modern sports tournament management website with match scheduling UI, team listings, and a clean responsive design. Built entirely with HTML, CSS, and JavaScript.",
+      "img": "images/turf-project.png",
+      "video": "videos/turf-demo.mp4",
+      "live": "https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html",
+      "repo": "https://github.com/riiyansh-singh/The-Turf-Tournament-",
+      "category": "web",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "featured": false
+    },
+    {
+      "id": "funhub",
+      "title": "FunHub",
+      "desc": "A creative playground of interactive web experiments — custom UI components, animations, and micro-interactions built without any frameworks. A sandbox for testing JavaScript ideas.",
+      "img": "images/funhub-project.png",
+      "video": "videos/funhub-demo.mp4",
+      "live": "https://riiyansh-singh.github.io/FunHub/",
+      "repo": "https://github.com/riiyansh-singh/FunHub",
+      "category": "web",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "featured": false
+    }
+  ],
+  "robotics": [
+    {
+      "title": "Sensor-Based Motor Car",
+      "desc": "Individual project using proximity sensors + motor control via Arduino. Autonomous obstacle avoidance built from scratch.",
+      "imgs": ["images/robot-car.jpg", "images/robot-car1.jpg"],
+      "badge": "Arduino · Solo Project"
+    },
+    {
+      "title": "Robotic Arm",
+      "desc": "Group project focusing on multi-joint mechanical movement using servo motors and programmed motion sequences.",
+      "imgs": ["images/robot-hand.jpg", "images/robot-hand1.jpg"],
+      "badge": "Arduino · Team Project"
+    }
+  ],
+  "creative_videos": [
+    { "src": "videos/guitar.mp4",  "title": "Guitar Practice", "sub": "Session 1 — Original Riff"      },
+    { "src": "videos/guitar2.mp4", "title": "Guitar Practice", "sub": "Session 2 — Chord Progressions"  },
+    { "src": "videos/singing.mp4", "title": "Singing Clip",    "sub": "Vocals & Expression"             },
+    { "src": "videos/shot-1.mp4",  "title": "Cinematic Shot",  "sub": "Visual Story 1"                  },
+    { "src": "videos/shot-2.mp4",  "title": "Cinematic Shot",  "sub": "Visual Story 2"                  }
+  ],
+  "certificates": [
+    { "img": "images/cert-infosys-ai.jpeg",            "label": "Infosys AI Certification", "year": "2025" },
+    { "img": "images/cert-infosys-generative.jpeg",    "label": "Generative AI",            "year": "2025" },
+    { "img": "images/cert-launchpad.jpeg",             "label": "Launchpad Program",        "year": "2025" },
+    { "img": "images/cert-robotics-achievement.jpeg",  "label": "Robotics Achievement",     "year": "2025" },
+    { "img": "images/cert-robotics-participation.jpeg","label": "Robotics Participation",   "year": "2025" }
+  ],
+  "achievements": [
+    { "icon": "fas fa-trophy",      "title": "National Football Camp",   "desc": "Selected as goalkeeper & left defender for national-level football camp.", "year": "2024" },
+    { "icon": "fas fa-robot",       "title": "Robotics Build Award",     "desc": "Recognised for sensor-based motor car project.",                          "year": "2025" },
+    { "icon": "fas fa-certificate", "title": "Infosys AI Certification", "desc": "Completed Infosys Springboard AI & Generative AI courses.",               "year": "2025" },
+    { "icon": "fas fa-code",        "title": "3 Live Web Projects",      "desc": "Turf Tournament, FunHub and Slice Frenzy — all deployed and live.",       "year": "2025" }
+  ],
+  "journey": [
+    {
+      "year": "2024",
+      "title": "High School Completed",
+      "sub": "Academic foundation laid — time to build."
+    },
+    {
+      "year": "2025",
+      "title": "Robotics & Web Development",
+      "sub": "Built sensor cars, robotic arms, web projects & AI certifications."
+    },
+    {
+      "year": "2026",
+      "title_before": "Secondary School (PCM) Ongoing",
+      "title_after":  "Secondary School (PCM) Completed",
+      "sub_before": "Pushing forward every single day.",
+      "sub_after":  "Milestone reached. Next chapter begins.",
+      "switch_date": "2026-08-01"
+    },
+    {
+      "year": "NEXT",
+      "title_before": "B.Tech Engineering (Planned)",
+      "title_after":  "B.Tech Engineering (CS) — Started",
+      "sub_before": "The chapter I'm working toward.",
+      "sub_after":  "Officially a Computer Science engineer in the making.",
+      "switch_date": "2026-08-01"
+    }
+  ]
+}
