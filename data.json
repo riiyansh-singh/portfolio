@@ -100,7 +100,7 @@
       "repo": "https://github.com/riiyansh-singh/FunHub",
       "category": "web",
       "tags": ["HTML", "CSS", "JavaScript"],
-      "featured": false
+      "featured": true
     }
   ],
   "robotics": [
