@@ -164,5 +164,9 @@
       "sub_after":  "Officially a Computer Science engineer in the making.",
       "switch_date": "2026-08-01"
     }
-  ]
+  ],
+  "resume": {
+  "file": "resume.pdf",
+  "last_updated": "2026"
+}
 }
