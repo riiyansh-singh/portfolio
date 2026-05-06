@@ -1133,6 +1133,16 @@ function fallback() {
 
 /* ── KICK OFF ─────────────────────────────────────────────── */
 init();
+
+   /* ── FIX STATS + ICON ─────────────────────────────────────── */
+setTimeout(() => {
+  document.querySelectorAll(".stat-num").forEach(el => {
+    if (!el.textContent.includes("+")) {
+      el.textContent = el.textContent.trim() + "+";
+    }
+  });
+}, 500);
+   
 </script>
 
 </body>
