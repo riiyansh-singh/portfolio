@@ -787,8 +787,8 @@ function render() {
   // Stats — auto-counted from arrays (add a project → number goes up)
   const autoStats = [
     { num: D.projects.length,     suffix: '+', label: 'Web Projects'   },
-    { num: D.robotics.length,     suffix: '',  label: 'Robotics Builds' },
-    { num: D.certificates.length, suffix: '',  label: 'Certificates'    },
+    { num: D.robotics.length,     suffix: '+',  label: 'Robotics Builds' },
+    { num: D.certificates.length, suffix: '+',  label: 'Certificates'    },
     { num: D.achievements.length, suffix: '+', label: 'Achievements'    },
   ];
   document.getElementById('stats-strip').innerHTML = autoStats.map(s =>
