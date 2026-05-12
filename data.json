@@ -108,6 +108,7 @@
   "desc": "A modern AI-powered Android chat application built on mobile using Android IDE. Features clean UI, smart conversations, and a smooth native experience.",
   "img": "images/ai-chat-android.png",
   "video": "",
+  "live": "https://github.com/riiyansh-singh/AI-Chat-Android",
   "repo": "https://github.com/riiyansh-singh/AI-Chat-Android",
   "category": "android",
   "tags": ["Android", "Kotlin", "AI", "Mobile"],
