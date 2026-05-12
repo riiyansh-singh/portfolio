@@ -147,7 +147,31 @@
     { "icon": "fas fa-trophy",      "title": "National Football Camp",   "desc": "Selected as goalkeeper & left defender for national-level football camp.", "year": "2024" },
     { "icon": "fas fa-robot",       "title": "Robotics Build Award",     "desc": "Recognised for sensor-based motor car project.",                          "year": "2025" },
     { "icon": "fas fa-certificate", "title": "Infosys AI Certification", "desc": "Completed Infosys Springboard AI & Generative AI courses.",               "year": "2025" },
-    { "icon": "fas fa-code",        "title": "3+ Live Web Projects",      "desc": "Turf Tournament, FunHub and Slice Frenzy etc. — all deployed and live.",       "year": "2025" }
+    { "icon": "fas fa-code",        "title": "3+ Live Web Projects",      "desc": "Turf Tournament, FunHub and Slice Frenzy etc. — all deployed and live.",       "year": "2025" },
+    {
+  "icon": "fas fa-briefcase",
+  "title": "Fiverr Freelance Developer",
+  "desc": "7 months delivering real client projects — websites, video edits, and a complete turf tournament site.",
+  "year": "2025"
+},
+{
+  "icon": "fas fa-rocket",
+  "title": "PrettiFlow Fellowship",
+  "desc": "Selected as Community Growth & Content Fellow at a San Francisco-based startup.",
+  "year": "2026"
+},
+{
+  "icon": "fas fa-shield-halved",
+  "title": "Ethical Hacking Certification",
+  "desc": "Completed a full ethical hacking certification course covering cybersecurity fundamentals.",
+  "year": "2025"
+},
+{
+  "icon": "fas fa-mobile-screen",
+  "title": "AI Chat Android App",
+  "desc": "Built a fully functional AI-powered Android chat app using Kotlin — built entirely on mobile.",
+  "year": "2026"
+}
   ],
   "journey": [
     {
