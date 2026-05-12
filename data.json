@@ -147,7 +147,7 @@
     { "icon": "fas fa-trophy",      "title": "National Football Camp",   "desc": "Selected as goalkeeper & left defender for national-level football camp.", "year": "2024" },
     { "icon": "fas fa-robot",       "title": "Robotics Build Award",     "desc": "Recognised for sensor-based motor car project.",                          "year": "2025" },
     { "icon": "fas fa-certificate", "title": "Infosys AI Certification", "desc": "Completed Infosys Springboard AI & Generative AI courses.",               "year": "2025" },
-    { "icon": "fas fa-code",        "title": "5+ Live Web Projects",      "desc": "Turf Tournament, FunHub and Slice Frenzy — all deployed and live.",       "year": "2025" }
+    { "icon": "fas fa-code",        "title": "3+ Live Web Projects",      "desc": "Turf Tournament, FunHub and Slice Frenzy etc. — all deployed and live.",       "year": "2025" }
   ],
   "journey": [
     {
