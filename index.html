@@ -785,12 +785,12 @@ function render() {
     socialHTML + `<a href="mailto:${D.email}"><i class="fas fa-envelope"></i></a>`;
 
   // Stats — auto-counted from arrays (add a project → number goes up)
-  const autoStats = [
-    { num: D.projects.length,     suffix: '+', label: 'Web Projects'   },
-    { num: D.robotics.length,     suffix: '+',  label: 'Robotics Builds' },
-    { num: D.certificates.length, suffix: '+',  label: 'Certificates'    },
-    { num: D.achievements.length, suffix: '+', label: 'Achievements'    },
-  ];
+const autoStats = [
+  { num: 7,  suffix: '+', label: 'Web Projects'   },
+  { num: 2,  suffix: '',  label: 'Robotics Builds' },
+  { num: 6,  suffix: '',  label: 'Certificates'    },
+  { num: 10,  suffix: '+', label: 'Achievements'    },
+];
   document.getElementById('stats-strip').innerHTML = autoStats.map(s =>
     `<div class="stat-item">
        <div class="stat-num" data-target="${s.num}" data-suffix="${s.suffix}">${s.num}${s.suffix}</div>
