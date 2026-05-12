@@ -558,7 +558,7 @@ footer{padding:28px 6%;border-top:1px solid var(--border);display:flex;justify-c
 ============================================================ -->
 <section id="projects">
   <div class="reveal"><span class="section-tag">— What I've Built</span></div>
-  <h2 class="section-title reveal rd1">Web <span>Projects</span></h2>
+  <h2 class="section-title reveal rd1">My <span>Projects</span></h2>
   <div class="filter-tabs reveal rd2" id="proj-tabs"></div>
   <div class="projects-grid" id="projects-grid"></div>
 </section>
@@ -888,13 +888,18 @@ function buildProjects(cat, btn) {
             onerror="this.style.minHeight='160px';this.style.background='var(--bg2)'">
        <div class="card-body">
          ${p.featured ? '<div class="featured-badge"><i class="fas fa-star"></i> Featured Project</div>' : ''}
-         <div class="card-title">${p.title}</div>
+         <div class="card-title">
+  ${p.category === 'android' ? '<i class="fab fa-android" style="color:#3ddc84;margin-right:8px;"></i>' : ''}
+  ${p.title}
+</div>
          <div class="card-desc">${p.desc}</div>
          <div class="card-tech">${p.tags.map(t => `<span class="tech-pill">${t}</span>`).join('')}</div>
          <div class="card-actions">
            <a class="live-btn" href="${p.live}" target="_blank">
-             <i class="fas fa-arrow-up-right-from-square" style="font-size:10px;margin-right:4px;"></i>Live
-           </a>
+  <i class="${p.category === 'android' ? 'fab fa-github' : 'fas fa-arrow-up-right-from-square'}"
+     style="font-size:10px;margin-right:4px;"></i>
+  ${p.category === 'android' ? 'Repo' : 'Live'}
+</a>
            ${p.repo ? `<a class="repo-btn" href="${p.repo}" target="_blank"><i class="fab fa-github"></i> Code</a>` : ''}
            ${p.video ? `<button class="video-toggle" onclick="toggleVid(this)"><i class="fas fa-play"></i> Demo</button>` : ''}
          </div>
@@ -1094,6 +1099,18 @@ function fallback() {
     tags:["Arduino","Web Dev","JavaScript","Robotics","Video Editing","Creative Tech","Guitar"],
     stack:[],
     projects:[
+       {
+  id:"aichat",
+  title:"AI Chat Android",
+  desc:"A modern AI-powered Android chat application built directly on mobile using Android IDE. Features clean UI, smart conversations, and a smooth native app experience.",
+  img:"images/ai-chat-android.png",
+  video:"videos/ai-chat-demo.mp4",
+  live:"https://github.com/riiyansh-singh/AI-Chat-Android",
+  repo:"https://github.com/riiyansh-singh/AI-Chat-Android",
+  category:"android",
+  tags:["Android","Kotlin","AI","Mobile App"],
+  featured:true
+}
       {id:"slice",title:"Slice Frenzy",desc:"Fruit-slicing game built with vanilla JS and Canvas API.",img:"images/slice-frenzy.png",video:"videos/Fruit.mp4",live:"https://riiyansh-singh.github.io/slice-frenzy/",repo:"https://github.com/riiyansh-singh/slice-frenzy",category:"web",tags:["JavaScript","Canvas"],featured:false},
       {id:"turf",title:"Turf Tournament",desc:"Sports tournament website UI.",img:"images/turf-project.png",video:"videos/turf-demo.mp4",live:"https://onlineprojects-ui.github.io/The-Turf-Tournament-/index.html",repo:"",category:"web",tags:["HTML","CSS","JS"],featured:false},
       {id:"funhub",title:"FunHub",desc:"Creative web UI experiments.",img:"images/funhub-project.png",video:"videos/funhub-demo.mp4",live:"https://riiyansh-singh.github.io/FunHub/",repo:"",category:"web",tags:["HTML","CSS","JS"],featured:true}
