@@ -139,9 +139,11 @@
   "certificates": [
     { "img": "images/cert-infosys-ai.jpeg",            "label": "Infosys AI Certification", "year": "2025" },
     { "img": "images/cert-infosys-generative.jpeg",    "label": "Generative AI",            "year": "2025" },
-    { "img": "images/cert-launchpad.jpeg",             "label": "Launchpad Program",        "year": "2025" },
-    { "img": "images/cert-robotics-achievement.jpeg",  "label": "Robotics Achievement",     "year": "2025" },
-    { "img": "images/cert-robotics-participation.jpeg","label": "Robotics Participation",   "year": "2025" }
+    { "img": "images/cert-launchpad.jpeg",             "label": "Launchpad Program",        "year": "2020" },
+    { "img": "images/cert-robotics-achievement.jpeg",  "label": "Robotics Achievement",     "year": "2019" },
+    { "img": "images/cert-robotics-participation.jpeg","label": "Robotics Participation",   "year": "2019" },
+    { "img": "images/AWS Foundations.jpg",             "label": "AWS Foundations",          "year": "2019" },
+    { "img": "images/AWS Cloud Practitioner Essentials.jpg","label": "AWS Cloud Practitioner Essentials",   "year": "2019" }
   ],
   "achievements": [
     { "icon": "fas fa-trophy",      "title": "National Football Camp",   "desc": "Selected as goalkeeper & left defender for national-level football camp.", "year": "2024" },
