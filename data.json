@@ -143,6 +143,7 @@
     { "img": "images/cert-robotics-achievement.jpeg",  "label": "Robotics Achievement",     "year": "2019" },
     { "img": "images/cert-robotics-participation.jpeg","label": "Robotics Participation",   "year": "2019" },
     { "img": "images/AWS Foundations.jpg",             "label": "AWS Foundations",          "year": "2019" },
+    { "img": "images/QuizOff 2026.jpg",             "label": "QuizOff 2026: India's Biggest AI Quiz – Participation",          "year": "2026" },
     { "img": "images/AWS Cloud Practitioner Essentials.jpg","label": "AWS Cloud Practitioner Essentials",   "year": "2019" }
   ],
   "achievements": [
