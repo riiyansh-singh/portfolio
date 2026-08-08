@@ -516,7 +516,7 @@ footer{padding:28px 6%;border-top:1px solid var(--border);display:flex;justify-c
       <img src="images/profile.jpeg" class="hero-img" alt="Riyansh Singh"
            onerror="this.src='https://ui-avatars.com/api/?name=Riyansh+Singh&background=00e5ff&color=000&size=200'">
     </div>
-    <div class="info-card"><div class="lbl">📍 Location</div><div class="val" id="c-loc">Agra, India</div></div>
+    <div class="info-card"><div class="lbl">📍 Location</div><div class="val" id="c-loc">Gr. Noida, India</div></div>
     <div class="info-card"><div class="lbl">⚡ Status</div><div class="val" id="c-status">Loading...</div></div>
     <div class="info-card">
       <div class="lbl">📩 Email</div>
@@ -761,7 +761,7 @@ function render() {
   // Status — auto-switches after Aug 1 2026
   const sw = new Date('2026-08-01');
   document.getElementById('c-status').textContent =
-    new Date() >= sw ? 'B.Tech CS Student' : 'Secondary School + Developer';
+    new Date() >= sw ? 'B.Tech CSE Student' : 'Secondary School + Developer';
 
   // Resume button — shown only if "resume" key exists in data.json
   if (D.resume) {
